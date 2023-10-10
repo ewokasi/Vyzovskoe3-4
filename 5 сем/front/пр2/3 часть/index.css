@@ -1,0 +1,33 @@
+#general{
+    background-color: lightblue;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#caption{
+    width: fit-content;
+    font-weight: bold;
+    margin-left: auto;
+    margin-right: auto;
+}
+#password{
+    right: 1px;
+    width: fit-content;
+}
+p{
+    text-align: center;
+}
+div{
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
+}
+#send{
+   
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

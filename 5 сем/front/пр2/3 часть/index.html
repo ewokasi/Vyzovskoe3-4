@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Часть 3</title>
+    <link rel="stylesheet" href="index.css">
+
+</head>
+<body>
+    <form id="general" action="#" required>
+        <p id="caption">Форма записи в качалку</p>
+        <label for="fio" >Как вас зовут *</label>
+        <input id="fio" maxlength="25" size="25" placeholder="ФИО" required>
+        <br>
+        <label for="fio">Пароль *</label>
+        <input id="password" type ="password" maxlength="25" size="25" placeholder="123" required>
+        
+        <p>Какой пакет занятий вам нужен</p>
+        <div class="packet">
+            
+            <input  type="radio" id="radio1" name="status" value="standart" checked>
+            <label  for="radio1">Стандарт</label>
+
+            <input type="radio" id="radio2" name="status" value="VIP">
+            <label  for="radio2">VIP</label>
+
+            <input  type="radio" id="radio3" name="status" value="SVIP">
+            <label  for="radio3">SUPER</label>
+        </div>
+        
+        <div>
+            <p>Выберите тренера</p>
+            <input type="radio" id="colorradio1" name="color" value="billy" checked>
+            <label for="colorradio1">Billy</label>
+
+            <input type="radio" id="colorradio2" name="color" value="van">
+            <label for="colorradio2">Van</label>
+
+        </div>
+        <div>
+            <p>Что вы хотите дополнительно</p>
+            <p><input type="checkbox" name="a" value="polotentse"> Полотенце</p>
+            <p><input type="checkbox" name="a" value="pool" > Бассейн</p>
+            <p><input type="checkbox" name="a" value="weight" > Гантели</p>
+            <p><input type="checkbox" name="a" value="tshirt" > Футболку</p>
+        </div>
+        <div>
+            <p>Выберите качалку</p>
+            <select>
+                <option>"Башня"</option>
+                <option>"Цокольная"</option>
+                <option>"Некст"</option>
+              </select>
+        </div>
+        <div>
+            <p>Выберите дату</p>
+            <input type="date" name="date" id="select date" value="2023-10-05" min="2023-10-05">
+        </div>
+        <div>
+            <p>Дополнительно</p>
+            <textarea name="optional" id="textarea" cols="30" rows="10"></textarea>
+        </div>
+        <div  id = "send">
+            <input type="submit">
+    
+            <button type="reset">Сбросить</button>
+        </div>
+        
+     
+    </form>
+</body>
+</html>

@@ -1,0 +1,20 @@
+table, td,  th{
+    border: solid 1px;
+    text-align: center;
+    border-collapse: collapse;
+    padding-left: 4px;
+    font-size: large;
+}
+table {
+    width: 50%;
+}
+table th{
+    background-color: lightblue;
+}
+.to-left{
+    text-align: left;
+}
+caption{
+    font-weight: bold;
+    padding-bottom: 10px;
+}
