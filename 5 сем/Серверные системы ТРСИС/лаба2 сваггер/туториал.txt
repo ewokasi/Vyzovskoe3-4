@@ -1,0 +1,4 @@
+https://editor.swagger.io/ - вот сюда заходишь, 
+https://www.youtube.com/watch?v=hPzorok-gI4 - потом смотришь этот тутор,
+
+потом тыкаешь generate server spring, скачиваешь и через idea spring-boot: run
