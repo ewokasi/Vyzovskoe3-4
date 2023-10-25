@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+
+    <meta charset="utf-8"></meta>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+
+    <title>TimeTable</title>
+
+    <link href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet"></link>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    <script>
+        var app = angular.module('time', []);
+        app.controller("TtApiController", function( $scope, $http){
+            $scope.getTt = function (){
+                $http.get('/api/v3/tt').success(function (data, status, headers, config){
+                    $scope.ttList = data;
+                    console.log($scope.ttList)
+                }).error(function (data, status, headers, config){
+                    if (data.message === 'Time is out'){
+                        $scope.finishByTimeout();
+                        console.log('Errorrrr')
+                    }
+                });
+            };
+
+
+            $scope.delTime = function (id){
+                $http.delete('/api/v3/tt/'+id).success(function (data, status, headers, config){
+                    for (var i = 0; i <$scope.ttList.length;i++){
+                        var j = $scope.ttList[i];
+                        if (j.id===id){
+                            $scope.ttList.splice(i, 1);
+                            break;
+                        }
+                    }
+                }).error(function (data, status, headers, config){
+                    if (data.message === 'Time is out'){
+                        console.log('Errorrrr')
+                    }
+                });
+            };
+
+            $scope.createTime = function (){
+                $http.post('/api/v3/tt/', JSON.stringify({
+                    'name': $scope.name,
+                    'type': $scope.type
+                })).success(function (data, status, headers, config){
+
+                        $scope.ttList.splice(0,0,data);
+
+                }).error(function (data, status, headers, config){
+                    if (data.message === 'Time is out'){
+                        console.log('Errorrrr')
+                    }
+                });
+            };
+
+        });
+    </script>
+</head>
+<body ng-app="time" ng-controller="TtApiController">
+    <h1>Расписание</h1>
+    <div ng-controller="getTt" ng-show="ttList.length>0">
+        <table id ="Tttable">
+            <thead>
+                <tr>
+                    <th>Номер</th>
+                    <th>название</th>
+                    <th>Тип</th>
+                    <th>Действие</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="Time in ttList" id ="{{Time.id}}">
+                    <td>{{Time.time_id}}</td>
+                    <td>{{Time.name}}</td>
+                    <td>{{Time.type}}</td>
+                    <td><input type="button" value="remove" ng-click="delTime(Time.time_id-1)"></td>
+
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <div>
+        <form role="form" ng-submit="createTime()">
+            <div>
+                <input placeholder="Название роута" type="text" name ="name" ng-model="name" />
+                <input placeholder="Тип маршрута (Автобус, корабль, самолет)" type="text" name="type" ng-model="type" />
+            </div>
+            <div><input type="submit" value="Отпарвить"></div>
+        </form>
+    </div>
+
+
+
+</body>
+</html>
