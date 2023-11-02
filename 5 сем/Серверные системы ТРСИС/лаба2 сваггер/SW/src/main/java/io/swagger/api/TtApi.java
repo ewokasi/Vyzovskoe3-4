@@ -65,7 +65,7 @@ public interface TtApi {
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "Успех", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TimeTable.class))),
         
-        @ApiResponse(responseCode = "200", description = "Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))) })
+        @ApiResponse(responseCode = "400", description = "Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))) })
     @RequestMapping(value = "/tt",
         produces = { "application/json" }, 
         method = RequestMethod.GET)

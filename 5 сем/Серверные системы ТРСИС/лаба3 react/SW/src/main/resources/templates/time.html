@@ -20,6 +20,7 @@
             $scope.getTt = function (){
                 $http.get('/api/v3/tt').success(function (data, status, headers, config){
                     $scope.ttList = data;
+
                     console.log($scope.ttList)
                 }).error(function (data, status, headers, config){
                     if (data.message === 'Time is out'){
@@ -51,7 +52,8 @@
                     'name': $scope.name,
                     'type': $scope.type
                 })).success(function (data, status, headers, config){
-
+                        console.log("successsssssssssss");
+                        console.log(data);
                         $scope.ttList.splice(0,0,data);
 
                 }).error(function (data, status, headers, config){
