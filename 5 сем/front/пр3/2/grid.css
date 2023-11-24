@@ -1,0 +1,75 @@
+#pageHeader {
+
+    grid-area: header;
+    background-color: lightgray;
+  
+  }
+  
+  #mainNav {
+  
+    grid-area: nav;
+    background-color: lightgray;
+  
+  }
+  
+  #mainArticle {
+  
+    grid-area: article; 
+    background-color: lightgray;    
+  
+  }
+  
+  #siteAds {
+  
+    grid-area: ads;
+    background-color: lightgray;
+  
+  }
+  
+  #pageFooter {
+  
+    grid-area: footer;
+    background-color: lightgray;
+  
+  }
+  body {
+    text-align: center;
+    margin: 10px;
+    display: grid;
+  
+    grid-template-rows: 70px 200px 70px;
+  
+    grid-template-columns: 20% 1fr 15%;
+  
+
+  
+    grid-template-areas:
+
+    "header header header "
+  
+    "nav article article"
+  
+    "footer footer footer";
+    grid-gap: 1vw;
+  
+
+  
+  }
+  @media screen and (max-width: 700px) {
+    body {
+
+        grid-template-rows: 70px 100px 200px 70px;
+  
+        grid-template-columns: 20% 1fr 15%;
+        grid-template-areas:
+
+        "header header header "
+      
+        "nav nav nav"
+      
+        "article article article"
+
+        "footer footer footer";
+        grid-gap: 1vw;
+    }
+  }

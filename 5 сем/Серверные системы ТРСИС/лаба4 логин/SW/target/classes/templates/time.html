@@ -15,17 +15,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
     <script>
-
-
-        var app = angular.module('time', []).config(function ($httpProvider) {
-            csrftoken = $("meta[name='_csrf']").attr("content");
-            csrfheader = $("meta[name='_csrf_header']").attr("content");
-            $httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = csrftoken;
-            $(document).ajaxSend(function(e, xhr, options) {
-                xhr.setRequestHeader(csrfheader, csrftoken);
-            });
-        });
-
+        var app = angular.module('time', []);
         app.controller("TtApiController", function( $scope, $http){
             $scope.getTt = function (){
                 $http.get('/tt').success(function (data, status, headers, config){
@@ -62,9 +52,9 @@
                     'name': $scope.name,
                     'type': $scope.type
                 })).success(function (data, status, headers, config){
-                        console.log("successsssssssssss");
-                        console.log(data);
-                        $scope.ttList.splice(0,0,data);
+                    console.log("successsssssssssss");
+                    console.log(data);
+                    $scope.ttList.splice(0,0,data);
 
                 }).error(function (data, status, headers, config){
                     if (data.message === 'Time is out'){
@@ -92,21 +82,21 @@
     <div ng-controller="getTt" ng-show="ttList.length>0">
         <table id ="Tttable">
             <thead>
-                <tr>
-                    <th>Номер</th>
-                    <th>название</th>
-                    <th>Тип</th>
-                    <th>Действие</th>
-                </tr>
+            <tr>
+                <th>Номер</th>
+                <th>название</th>
+                <th>Тип</th>
+                <th>Действие</th>
+            </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="Time in ttList" id ="{{Time.id}}">
-                    <td>{{Time.time_id}}</td>
-                    <td>{{Time.name}}</td>
-                    <td>{{Time.type}}</td>
-                    <td><input type="button" value="remove" ng-click="delTime(Time.time_id-1)"></td>
+            <tr ng-repeat="Time in ttList" id ="{{Time.id}}">
+                <td>{{Time.time_id}}</td>
+                <td>{{Time.name}}</td>
+                <td>{{Time.type}}</td>
+                <td><input type="button" value="remove" ng-click="delTime(Time.time_id-1)"></td>
 
-                </tr>
+            </tr>
             </tbody>
         </table>
 

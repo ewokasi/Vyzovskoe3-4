@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4994b6d7-e50a-4492-b8cc-2923598fce9b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../БД/лаба 5/selects.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../БД/лаба 5/selects.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../БД/лаба 5/ОТЧЕТ.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../../БД/лаба 5/ОТЧЕТ.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../БД/лаба4/database.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/../../БД/лаба4/database.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ППС/Лаба 2/Лаба 2.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../../ППС/Лаба 2/Лаба 2.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Прикладные модели оптимизации/задание 5/4134к_КостяковНА_5.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../../Прикладные модели оптимизации/задание 5/4134к_КостяковНА_5.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Прикладные модели оптимизации/задание 5/main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ПрогКринж/Лаба1/290ba6be927b94ef.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ПрогКринж/Лаба1/flowchart.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ПрогКринж/Лаба1/Концепция и границы.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ПрогКринж/Лаба1/Модель предметной области.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ПрогКринж/Лаба1/Требования к програмному обеспечению.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../лаба2 сваггер/SW/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../лаба2 сваггер/SW/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../лаба3 react/SW/src/main/java/io/swagger/configuration/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../лаба3 react/SW/src/main/java/io/swagger/configuration/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../лаба3 react/SW/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../лаба3 react/SW/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../лаба3 react/SW/src/main/resources/templates/time.html" beforeDir="false" afterPath="$PROJECT_DIR$/../лаба3 react/SW/src/main/resources/templates/time.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../лаба3 react/SW/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../лаба3 react/SW/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../лаба3 react/SW/target/classes/io/swagger/configuration/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../лаба3 react/SW/target/classes/io/swagger/configuration/HomeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../лаба3 react/SW/target/classes/templates/time.html" beforeDir="false" afterPath="$PROJECT_DIR$/../лаба3 react/SW/target/classes/templates/time.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../лаба4 логин/SW/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../лаба4 логин/SW/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../лаба4 логин/SW/src/main/java/io/swagger/api/TtApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/../лаба4 логин/SW/src/main/java/io/swagger/api/TtApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../лаба4 логин/SW/src/main/java/io/swagger/api/TtApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../лаба4 логин/SW/src/main/java/io/swagger/api/TtApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../лаба4 логин/SW/src/main/java/io/swagger/configuration/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../лаба4 логин/SW/src/main/java/io/swagger/configuration/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../лаба4 логин/SW/src/main/java/io/swagger/service/LoginServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../лаба4 логин/SW/src/main/java/io/swagger/service/LoginServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../лаба4 логин/SW/src/main/resources/templates/time.html" beforeDir="false" afterPath="$PROJECT_DIR$/../лаба4 логин/SW/src/main/resources/templates/time.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../лаба4 логин/SW/target/classes/io/swagger/api/TtApi.class" beforeDir="false" afterPath="$PROJECT_DIR$/../лаба4 логин/SW/target/classes/io/swagger/api/TtApi.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../лаба4 логин/SW/target/classes/io/swagger/api/TtApiController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../лаба4 логин/SW/target/classes/io/swagger/api/TtApiController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../лаба4 логин/SW/target/classes/io/swagger/configuration/WebSecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/../лаба4 логин/SW/target/classes/io/swagger/configuration/WebSecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../лаба4 логин/SW/target/classes/io/swagger/service/LoginServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../лаба4 логин/SW/target/classes/io/swagger/service/LoginServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../лаба4 логин/SW/target/classes/templates/time.html" beforeDir="false" afterPath="$PROJECT_DIR$/../лаба4 логин/SW/target/classes/templates/time.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 2
+}]]></component>
+  <component name="ProjectId" id="2YXJjasaS8XtOL7KqVeo7eEt2eF" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4994b6d7-e50a-4492-b8cc-2923598fce9b" name="Changes" comment="" />
+      <created>1700666127955</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1700666127955</updated>
+      <workItem from="1700666129593" duration="84000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

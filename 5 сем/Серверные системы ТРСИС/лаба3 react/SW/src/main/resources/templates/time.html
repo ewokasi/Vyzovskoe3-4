@@ -18,7 +18,7 @@
         var app = angular.module('time', []);
         app.controller("TtApiController", function( $scope, $http){
             $scope.getTt = function (){
-                $http.get('/api/v3/tt').success(function (data, status, headers, config){
+                $http.get('/tt').success(function (data, status, headers, config){
                     $scope.ttList = data;
 
                     console.log($scope.ttList)
@@ -32,7 +32,7 @@
 
 
             $scope.delTime = function (id){
-                $http.delete('/api/v3/tt/'+id).success(function (data, status, headers, config){
+                $http.delete('/tt/'+id).success(function (data, status, headers, config){
                     for (var i = 0; i <$scope.ttList.length;i++){
                         var j = $scope.ttList[i];
                         if (j.id===id){
@@ -48,7 +48,7 @@
             };
 
             $scope.createTime = function (){
-                $http.post('/api/v3/tt/', JSON.stringify({
+                $http.post('/tt', JSON.stringify({
                     'name': $scope.name,
                     'type': $scope.type
                 })).success(function (data, status, headers, config){

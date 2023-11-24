@@ -1,0 +1,28 @@
+.header{
+    background-color:dark;
+ 
+}
+a, a:hover, a:active, a:visited { color: white; }
+
+#about{
+    background-color: #d3d3d3;
+    
+}
+#carouselExampleControls{
+    min-width: 400px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    aspect-ratio: 16/9;
+    
+}
+#video{
+    min-width: 400px;
+    width: 50%;
+}
+#footer{
+    border: 1px solid;
+    margin: 5px;
+    background-color: #1d1d1d;
+    color: white;
+}

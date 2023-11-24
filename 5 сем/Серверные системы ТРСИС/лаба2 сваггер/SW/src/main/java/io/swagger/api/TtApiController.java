@@ -76,7 +76,7 @@ public class TtApiController implements TtApi {
     public ResponseEntity<TimeTable> getTt() {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
-
+                System.out.println("con");
               synchronized (TTable){
                   return new ResponseEntity<TimeTable>(TTable,HttpStatus.OK);
               }

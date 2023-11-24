@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script deref src="index.js"></script>
+</head>
+<body>
+    <script>alert("У меня появились навыки работы при создании web страниц и понимание общей концепции Web разработки");</script>
+    <p>Цель работы – приобретение навыков создания для HTML-документа внешних и внутренних скриптов на JavaScript, формирование практических навыков использования операторов и создания функций.</p>
+    <script>
+        let num=4134;
+        let litera ='К';
+        let intro = "Пример приведения операндов к строковому типу: ";
+        alert(intro + num + litera); 
+    </script>
+
+    <div style="width: fit-content; margin-left: auto; margin-right: auto;  align-items: center;">
+        <p>Индекс массы тела</p>
+        <input id="imt" type="text" placeholder="Введите индекс массы тела">
+        <button onclick="tip()">"Получить совет"</button>
+    </div>
+    
+    <div style=" width: fit-content; margin-left: auto; margin-right: auto; margin-top: 20px; align-items: center;">
+        <p>Сложение двух чисел (Унарный +)</p>
+        <input id="1st" type="text" placeholder="Первое число">
+        <input id="2nd" type="text" placeholder="Второе число">
+        <button onclick="sumup()">Сложить</button>
+    </div>
+
+    
+     <script>
+        //Function Declaration, дистанция в метрах, время в минутах
+        function time_for_path_1(distance, speed){
+            let minutes;
+            minutes= Math.round(distance/speed); 
+            return minutes;
+        }
+
+        //Function Expression, дистанция в метрах, время в минутах
+        let time_for_path_2 = function(distance, speed) {
+            let minutes;
+            minutes= Math.round(distance/speed); 
+            return minutes;
+        };
+
+        //Arrow Function.
+        let time_for_path_3 = (distance, speed) => Math.round(distance/speed) ;
+
+     </script>
+    
+    <div style="width: fit-content; margin-left: auto; margin-right: auto; margin-top: 20px;">
+        <p>Рассчитать вреся на путь при обычой ходьбе</p>
+        <input id="distance" type="text" placeholder="дистанция в метрах">
+        <input id="spped" type="number" min="1" placeholder="Средняя скорость 80м\с">
+        <button onclick="alert(time_for_path_1(document.getElementById('distance').value, document.getElementById('spped').value) + ' Минуты. f1')">Тест f1</button>
+        <button onclick="alert(time_for_path_2(document.getElementById('distance').value, document.getElementById('spped').value)+ ' Минуты. f2')">Тест f2</button>
+        <button onclick="alert(time_for_path_3(document.getElementById('distance').value, document.getElementById('spped').value)+ ' Минуты. f3')">Тест f3</button>
+    </div>
+            
+    
+
+</body>
+</html>

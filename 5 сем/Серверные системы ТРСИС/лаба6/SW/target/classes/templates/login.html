@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <title th:text="#{login.welcome}">Log in</title>
+
+    <link href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet"></link>
+    <link href="css/login.css" rel="stylesheet"></link>
+
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/angular-1.7.5.min.js"></script>
+
+
+</head>
+<body id="LoginForm">
+<div class="container">
+    <div class="login-form">
+        <div class="main-div">
+            <div class="panel">
+                <h2 class="form-heading" th:text="#{login.welcome}">TimeTable</h2>
+                <p th:text="#{login.ps}" >Please enter your login and password</p>
+                <div th:text="#{login.error}" th:if="${param.error}"  class="alert alert-danger">Unknown username or password.</div>
+                <div  th:text="#{login.logout}" th:if="${param.logout}" class="alert alert-success">Good bye!</div>
+            </div>
+            <form th:action="@{/login}" method="post">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="login" name="login" placeholder="Login"/>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="pass" name="pass" placeholder="Password"/>
+                </div>
+
+                <div class="forgot">
+                    <!--<a href="reset.html">Forgot password?</a>-->
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
+    </div></div>
+</body>
+</html>

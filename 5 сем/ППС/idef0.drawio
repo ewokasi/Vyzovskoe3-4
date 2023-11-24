@@ -1,0 +1,414 @@
+<mxfile host="app.diagrams.net" modified="2023-11-22T11:05:19.520Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36" etag="u8IxRcO0OLicVl2P1A92" version="22.1.3" type="device">
+  <diagram name="Страница — 1" id="ywrntl9T5qYjW6Miu2e3">
+    <mxGraphModel dx="1750" dy="957" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-3" value="Авторизация пользователя" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="50" y="30" width="190" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" target="PPFiBA-7BCIYIN9y1hDd-4">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="400" y="160" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="PPFiBA-7BCIYIN9y1hDd-4">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="680" y="275" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" target="PPFiBA-7BCIYIN9y1hDd-4">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="400" y="450" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-4" value="Авторизация на сайте" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="220" width="200" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-5" value="" style="endArrow=classic;html=1;rounded=0;entryX=-0.03;entryY=0.273;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="PPFiBA-7BCIYIN9y1hDd-4">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="100" y="250" as="sourcePoint" />
+            <mxPoint x="440" y="200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-6" value="Данные для входа" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="100" y="220" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-8" value="База данных пользователей" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="410" y="150" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-10" value="Доступ к сайту" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="550" y="240" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-12" value="Пользователь системы" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="220" y="380" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-15" value="браузер" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="395" y="368" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="PPFiBA-7BCIYIN9y1hDd-16">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="610" y="745" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-16" value="Сканировать артикул товара камерой" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="700" width="170" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-17" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="350" y="890" as="sourcePoint" />
+            <mxPoint x="350" y="790" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-18" value="пользователь системы" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="200" y="860" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-19" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="369" y="890" as="sourcePoint" />
+            <mxPoint x="369" y="790" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-20" value="браузер" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="365" y="860" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-21" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="435" y="890" as="sourcePoint" />
+            <mxPoint x="435" y="790" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-22" value="Модуль камеры устройства" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="435" y="840" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-23" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="200" y="720" as="sourcePoint" />
+            <mxPoint x="320" y="720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-24" value="изображение с камеры" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="130" y="688" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-25" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="350" y="600" as="sourcePoint" />
+            <mxPoint x="350" y="700" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-26" value="только арабские числа" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="200" y="590" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-27" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="380" y="600" as="sourcePoint" />
+            <mxPoint x="380" y="700" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-28" value="достаточное освещение" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="390" y="598" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-30" value="сохраненный артикул" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="510" y="700" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-47" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="PPFiBA-7BCIYIN9y1hDd-31">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="590" y="1190" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-31" value="Получение информации о товаре" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="290" y="1140" width="190" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-32" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="350" y="1340" as="sourcePoint" />
+            <mxPoint x="350" y="1240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-33" value="пользователь системы" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="200" y="1310" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-34" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="369" y="1340" as="sourcePoint" />
+            <mxPoint x="369" y="1240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-35" value="браузер" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="375" y="1308" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-36" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="160" y="1189.5" as="sourcePoint" />
+            <mxPoint x="280" y="1189.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-37" value="Артикул товара" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="130" y="1160" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-40" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="330" y="1038" as="sourcePoint" />
+            <mxPoint x="330" y="1138" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-41" value="База Данных" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="225" y="1030" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-42" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="435" y="1038" as="sourcePoint" />
+            <mxPoint x="435" y="1138" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-43" value="Пользователь авторизирован" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="435" y="1030" width="190" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-45" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="460" y="1340" as="sourcePoint" />
+            <mxPoint x="460" y="1240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-46" value="Серверная база данных" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="465" y="1308" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-48" value="Вывод информации о товаре" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="500" y="1160" width="190" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-66" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="PPFiBA-7BCIYIN9y1hDd-49">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="630" y="1625" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-49" value="Регистрация Пользователя" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="290" y="1560" width="200" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-50" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="342.5" y="1790" as="sourcePoint" />
+            <mxPoint x="342.5" y="1690" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-51" value="пользователь системы" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="192.5" y="1760" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-52" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="361.5" y="1790" as="sourcePoint" />
+            <mxPoint x="361.5" y="1690" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-53" value="браузер" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="367.5" y="1758" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-54" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="452.5" y="1790" as="sourcePoint" />
+            <mxPoint x="452.5" y="1690" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-55" value="Серверная база данных" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="457.5" y="1758" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-56" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="335" y="1460" as="sourcePoint" />
+            <mxPoint x="335" y="1560" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-57" value="База Данных" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="230" y="1452" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-58" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="440" y="1460" as="sourcePoint" />
+            <mxPoint x="440" y="1560" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-59" value="Директор авторизирован" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="455" y="1452" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-64" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="170" y="1620" as="sourcePoint" />
+            <mxPoint x="290" y="1620" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-65" value="данные о сторуднике" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="110" y="1578" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-67" value="регистрация завершена" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="490" y="1590" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-81" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="PPFiBA-7BCIYIN9y1hDd-68">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="650" y="2070" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-68" value="добавление товара в чек" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="2010" width="230" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-69" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="342.5" y="2230" as="sourcePoint" />
+            <mxPoint x="342.5" y="2130" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-70" value="пользователь системы" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="192.5" y="2200" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-71" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="361.5" y="2230" as="sourcePoint" />
+            <mxPoint x="361.5" y="2130" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-72" value="браузер" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="367.5" y="2198" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-73" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="452.5" y="2230" as="sourcePoint" />
+            <mxPoint x="452.5" y="2130" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-74" value="Серверная база данных" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="457.5" y="2198" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-75" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="160" y="2069.5" as="sourcePoint" />
+            <mxPoint x="280" y="2069.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-76" value="Артикул товара" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="125" y="2040" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-77" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="340" y="1910" as="sourcePoint" />
+            <mxPoint x="340" y="2010" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-78" value="База Данных" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="235" y="1902" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-79" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="445" y="1910" as="sourcePoint" />
+            <mxPoint x="445" y="2010" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-80" value="Пользователь авторизирован" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="445" y="1902" width="190" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-82" value="товар добавлен" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="550" y="2040" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-105" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="PPFiBA-7BCIYIN9y1hDd-83">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="660" y="2610" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-83" value="Формирование запроса об оплате" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="2550" width="210" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-84" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="322.5" y="2770" as="sourcePoint" />
+            <mxPoint x="322.5" y="2670" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-85" value="пользователь системы" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="172.5" y="2740" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-86" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="341.5" y="2770" as="sourcePoint" />
+            <mxPoint x="341.5" y="2670" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-87" value="браузер" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="320" y="2770" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-88" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="409.5" y="2770" as="sourcePoint" />
+            <mxPoint x="409.5" y="2670" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-89" value="Серверная база данных" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="375" y="2780" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-96" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="444" y="2770" as="sourcePoint" />
+            <mxPoint x="444" y="2670" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-97" value="Касса/Терминал оплаты" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="445" y="2728" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-98" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="160" y="2609.5" as="sourcePoint" />
+            <mxPoint x="280" y="2609.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-99" value="Сформированная корзина товаров" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="30" y="2558" width="220" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-100" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="330" y="2450" as="sourcePoint" />
+            <mxPoint x="330" y="2550" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-101" value="База Данных" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="225" y="2442" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-102" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="435" y="2450" as="sourcePoint" />
+            <mxPoint x="435" y="2550" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-103" value="Пользователь авторизирован" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="435" y="2442" width="190" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-106" value="Запрос сформирован" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="535" y="2580" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-107" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="370" y="330" as="targetPoint" />
+            <mxPoint x="370" y="450" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-108" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="341.96" y="220" as="targetPoint" />
+            <mxPoint x="341.96" y="160" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="341.96" y="180" />
+              <mxPoint x="341.96" y="180" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-109" value="Протоколы безопасности" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="175" y="150" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-111" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="469.73" y="330" as="targetPoint" />
+            <mxPoint x="469.73" y="450" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PPFiBA-7BCIYIN9y1hDd-112" value="Сервер" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="465" y="390" width="70" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
