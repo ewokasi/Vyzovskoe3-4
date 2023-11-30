@@ -1,0 +1,144 @@
+create OR REPLACE procedure ins_tree(ins_kind varchar(128), ins_plant date, ins_alleya varchar(128), ins_park varchar(128))
+LANGUAGE plpgsql 
+AS $$
+	BEGIN declare id_all_new int;
+
+	declare id_park_new int;
+	 
+	begin
+	IF exists (select * from park where park.name=ins_park)
+			THEN select park.id_park into id_park_new from park where park.name = ins_park;
+		else begin 
+				select id_park_new = (nullif(max(park.id_park), 0)+1) from park ;
+				insert into park(id_park, name_park) values (id_park_new, ins_park);
+		end;
+	end if;
+	
+	
+	
+	begin
+		IF exists(select * from alleya where alleya.name = ins_alleya) 
+				THEN select alleya.id_alleya into id_all_new from alleya where alleya.name = ins_alleya;
+			else begin
+				select id_all_new  = (nullif(max(alleya.id_alleya), 0)+1) from alleya ;
+				insert into alleya(id_alleya, name_alleya, id_park) values (id_alleya_new, ins_alleya, is_park_new);
+			END;
+		end if;
+	
+	
+	declare id_kind_new int;
+	begin
+		if exists(select * from kind where kind.name = ins_kind) 
+				then select kind.id_kind into id_kind_new from kind where kind.name = ins_kind;
+			else begin
+				select id_kind_new = (nullif(max(kind.id_kind), 0)+1) from kind ;
+				insert into kind(id_kind, name) values (id_kind_new, ins_kind);
+			end;
+		end if;
+
+	declare id_t_a int = (nullif(max(tree_alleya.id_tree_alleya), 0)+1) from tree_alleya; 
+	declare id_tree_new int = (nullif(max(tree.id_tree), 0)+1) from tree; 
+	begin
+	insert into tree values (id_tree_new, id_kind_new, ins_plant);
+	insert into tree_alleya(id_tree_alleya ,id_tree, id_alleya) values (id_t_a,id_tree_new, id_all_new);
+	end;
+	end;
+	end;
+end;
+end
+$$;
+
+call ins_tree ( 'Дуб'::varchar(128),  '2023-11-25'::date, 'Быстрая'::varchar(128), 'Космический'::varchar(128));
+
+-- ///////////////////////////////////////////////////////////////////////////////////
+
+--удаление с очисткой справочника
+create or replace procedure del_tree(id_t int)
+language plpgsql
+as $$
+begin
+
+	
+	begin
+	delete from tree_alleya where id_t = tree_alleya.id_tree;
+	end;
+	declare id_all_new int = (select id_alleya from tree_alleya where id_tree = id_t);
+	begin
+	if not exists (select * from tree_alleya where id_alleya=id_all_new)
+	then delete from alleya where id_alleya = id_all_new;
+	end if;
+	delete from tree where id_tree = id_t;
+	end;
+
+end
+$$;
+
+-- call del_tree(25);
+
+--Каскадное удаление
+create or replace procedure del_kind_cascade(id_to_del int)
+language plpgsql 
+as $$
+begin
+	delete from tree_alleya where tree_alleya.id_tree in
+		(select tree.id_tree from tree where id_kind = id_to_del);
+	
+	delete from cut where cut.id_tree in 
+		(select tree.id_tree from tree where tree.id_kind=id_to_del);
+	
+	delete from tree where tree.id_kind = id_to_del;
+	delete from kind where kind.id_kind = id_to_del;
+end;
+$$
+--Процедура вычисления и возврат значения агрегатной функции
+create or replace function count_trees() returns integer
+language plpgsql
+as $$
+begin
+
+	return nullif(count(id_tree), 0) from tree;
+end
+$$;
+select count_trees();
+
+--Формирование статистики во временной таблице
+
+
+	
+create or replace function stats() 
+returns table (id_park integer, name_park varchar(128), 
+			   alleya_cnt integer, tree_cnt integer,
+			   kind_cnt integer) 
+language plpgsql
+as $$
+begin
+	CREATE TEMPORARY TABLE stat(
+	   id_park integer, name_park varchar(128), 
+			   alleya_cnt integer, tree_cnt integer,
+			   kind_cnt integer
+	);
+
+	insert into stat(id_park, name_park, alleya_cnt, tree_cnt, kind_cnt)
+	select park.id_park,
+	park.name, 
+	count(DISTINCT alleya.name), 
+	count( tree_alleya.id_tree ), 
+	count(DISTINCT kind.name) 
+	FROM park 
+	join alleya on alleya.id_park = park.id_park 
+	join tree_alleya on tree_alleya.id_alleya = alleya.id_alleya 
+	join tree on tree.id_tree = tree_alleya.id_tree
+	join kind on kind.id_kind = tree.id_kind
+	GROUP BY park.id_park;
+	
+	
+	return  query select stat.id_park, stat.name_park 
+	,stat.alleya_cnt , stat.tree_cnt, stat.kind_cnt FROM stat;
+	
+	drop table stat;
+	
+end
+$$;
+
+select * from  stats();
+

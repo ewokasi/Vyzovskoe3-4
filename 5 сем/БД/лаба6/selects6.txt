@@ -79,6 +79,40 @@ INSERT INTO CUT (ID_CUT, CUT, ID_TREE) VALUES (6, 1.11, 6);
 INSERT INTO CUT (ID_CUT, CUT, ID_TREE) VALUES (7, 1.14, 7);
 INSERT INTO CUT (ID_CUT, CUT, ID_TREE) VALUES (8, 10.12, 8);
 
-Г) SELECT DISTINCT * FROM ALLEYA JOIN TREE_ALLEYA ON TREE_ALLEYA.ID_ALLEYA=ALLEYA.ID_ALLEYA JOIN TREE ON TREE.ID_TREE = TREE_ALLEYA.ID_TREE WHERE TREE.PLANT > ALL (SELECT TREE.PLANT FROM TREE);
+Г) select * from tree where tree.plant >= all(select plant from tree );
 
-Д) 
+
+д) select kind.name, count(kind.name) from kind join tree on tree.id_kind = kind.id_kind join cut on cut.id_tree = tree.id_tree group by kind.name
+having count(kind.name) = (select min(mcount) from (select kind.name, count(kind.name) mcount from kind join tree on tree.id_kind = kind.id_kind join cut on cut.id_tree = tree.id_tree group by kind.name)) ; 
+
+
+
+е) select distinct kind.name from kind 
+join tree on tree.id_kind = kind.id_kind join tree_alleya on tree_alleya.id_tree = tree.id_tree join alleya on alleya.id_alleya = tree_alleya.id_alleya join park on park.id_park=alleya.id_park 
+where park.name='Космический' and not exists  
+(Select * from alleya 
+where not exists
+(select * from tree as tr join kind as ki on ki.id_kind = tr.id_kind 
+join tree_alleya as t_a on t_a.id_tree = tr.id_tree
+where t_a.id_alleya = alleya.id_alleya
+ and tr.id_kind = tree.id_kind
+ ));
+ 
+ж1) select alleya.name from alleya join tree_alleya as t_a on t_a.id_alleya= alleya.id_alleya join tree on tree.id_tree =t_a.id_tree join kind on kind.id_kind = tree.id_kind where kind.name = 'Дуб'
+except
+select alleya.name from alleya join tree_alleya as t_a on t_a.id_alleya= alleya.id_alleya join tree on tree.id_tree =t_a.id_tree join kind on kind.id_kind = tree.id_kind where kind.name = 'Липа';
+
+2)select distinct alleya.name from alleya join tree_alleya as t_a on t_a.id_alleya= alleya.id_alleya join tree on tree.id_tree =t_a.id_tree join kind on kind.id_kind = tree.id_kind where kind.name = 'Дуб'
+and alleya.id_alleya NOT IN (
+select alleya.id_alleya from alleya join tree_alleya as t_a on t_a.id_alleya= alleya.id_alleya join tree on tree.id_tree =t_a.id_tree join kind on kind.id_kind = tree.id_kind where kind.name = 'Липа');
+
+3)select distinct alleya.name from alleya join tree_alleya as t_a on t_a.id_alleya= alleya.id_alleya join tree on tree.id_tree =t_a.id_tree join kind on kind.id_kind = tree.id_kind where kind.name = 'Дуб'
+and not exists (
+select * from alleya as a2 join tree_alleya as t_a on t_a.id_alleya= a2.id_alleya join tree on tree.id_tree =t_a.id_tree join kind on kind.id_kind = tree.id_kind where kind.name = 'Липа'
+and alleya.id_alleya = a2.id_alleya);
+
+
+4) select distinct alleya.name from alleya join tree_alleya on tree_alleya.id_alleya = alleya.id_alleya join tree on tree.id_tree = tree_alleya.id_tree join kind on kind.id_kind = tree.id_kind
+left join
+(select * from alleya2 as a2 inner join tree_alleya on tree_alleya.id_alleya = a2.id_a inner join tree on tree.id_tree = tree_alleya.id_tree inner join kind on kind.id_kind = tree.id_kind
+where kind.name = 'Липа') as qq on alleya.id_alleya = qq.id_a where kind.name = 'Дуб' and qq.id_a is NULL; 

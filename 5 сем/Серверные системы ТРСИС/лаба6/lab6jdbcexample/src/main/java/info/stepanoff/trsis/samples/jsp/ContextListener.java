@@ -5,7 +5,7 @@
 
 package info.stepanoff.trsis.samples.jsp;
 
-import javax.servlet.ServletContextEvent;
+import  javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 import info.stepanoff.trsis.samples.db.DBHelper;
