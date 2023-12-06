@@ -115,4 +115,4 @@ and alleya.id_alleya = a2.id_alleya);
 4) select distinct alleya.name from alleya join tree_alleya on tree_alleya.id_alleya = alleya.id_alleya join tree on tree.id_tree = tree_alleya.id_tree join kind on kind.id_kind = tree.id_kind
 left join
 (select * from alleya2 as a2 inner join tree_alleya on tree_alleya.id_alleya = a2.id_a inner join tree on tree.id_tree = tree_alleya.id_tree inner join kind on kind.id_kind = tree.id_kind
-where kind.name = 'Липа') as qq on alleya.id_alleya = qq.id_a where kind.name = 'Дуб' and qq.id_a is NULL; 
+where kind.name = 'Липа') as qq on alleya.id_alleya = qq.id_a where kind.name = 'Дуб' and qq.id_a is NULL;

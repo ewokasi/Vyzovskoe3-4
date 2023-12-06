@@ -18,6 +18,7 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public UserDetails loadUserByUsername(String string) throws UsernameNotFoundException {
         User login = userRepository.findByLogin(string);
+        System.out.println(1);
         if (login == null) {
             throw new UsernameNotFoundException("user not found");
         }
