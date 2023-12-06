@@ -16,7 +16,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 @SpringBootApplication
 @ComponentScan(basePackages = { "io.swagger", "io.swagger.api" , "io.swagger.configuration"})
-public class Swagger2SpringBoot implements CommandLineRunner {
+public class Application implements CommandLineRunner {
 
     @Override
     public void run(String... arg0) throws Exception {
@@ -26,7 +26,7 @@ public class Swagger2SpringBoot implements CommandLineRunner {
     }
 
     public static void main(String[] args) throws Exception {
-        new SpringApplication(Swagger2SpringBoot.class).run(args);
+        new SpringApplication(Application.class).run(args);
     }
 
     @Configuration
