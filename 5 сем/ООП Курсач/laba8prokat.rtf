@@ -1,0 +1,769 @@
+{\rtf1\ansi\uc0\deff0{\fonttbl{\f0\fmodern\fprq1\fcharset0;}}{\colortbl;\red187\green187\blue187;\red61\green123\blue123;\red156\green101\blue0;\red0\green128\blue0;\red176\green0\blue64;\red102\green102\blue102;\red170\green34\blue255;\red0\green0\blue255;\red203\green63\blue56;\red25\green23\blue124;\red136\green0\blue0;\red118\green118\blue0;\red113\green113\blue113;\red104\green120\blue34;\red186\green33\blue33;\red164\green90\blue119;\red170\green93\blue31;\red0\green0\blue128;\red128\green0\blue128;\red160\green0\blue0;\red0\green132\blue0;\red228\green0\blue0;\red0\green68\blue221;\red255\green0\blue0;}\f0 dailyrentalstrategy.h{\cf1 \par
+}{\cf3 #}{\cf3 ifndef DAILYRENTALSTRATEGY_H}{\cf3 \par
+}{\cf3 #}{\cf3 define DAILYRENTALSTRATEGY_H}{\cf3 \par
+}{\cf3 #}{\cf3 include}{\cf1  }{\cf2\i "rentalstrategy.h"}{\cf3 \par
+}{\cf4\b class}{\cf1  }{\cf8\b DailyRentalStrategy}{\cf1  }{\cf6 :}{\cf1  }{\cf4\b public}{\cf1  }IRentalStrategy{\cf1  }\{{\cf1 \par
+}{\cf4\b public}{\cf6 :}{\cf1 \par
+}{\cf1     }{\cf5 double}{\cf1  }CalculateRentalCost({\cf5 int}{\cf1  }rentalTime){\cf1  }{\cf4\b override}{\cf1  }\{{\cf1 \par
+}{\cf1         }{\cf4\b return}{\cf1  }rentalTime{\cf1  }{\cf6 *}{\cf1  }{\cf6 5.0};{\cf1 \par
+}{\cf1     }\}{\cf1 \par
+}\};{\cf1 \par
+}{\cf3 #}{\cf3 endif }{\cf2\i // DAILYRENTALSTRATEGY_H\par
+}{\cf1 \par
+}dailyrentalstrategyh.cpp{\cf1 \par
+}{\cf3 #}{\cf3 include}{\cf1  }{\cf2\i "dailyrentalstrategyh.h"}{\cf3 \par
+}{\cf1 \par
+}dailyrentalstrategyh{\cf6 :}{\cf6 :}dailyrentalstrategyh(){\cf1 \par
+}\{{\cf1 \par
+}{\cf1 \par
+}\}{\cf1 \par
+}{\cf1 \par
+}main.cpp{\cf1 \par
+}{\cf3 #}{\cf3 include}{\cf1  }{\cf2\i "widget.h"}{\cf3 \par
+}{\cf3 #}{\cf3 include}{\cf1  }{\cf2\i <QApplication>}{\cf3 \par
+}{\cf1 \par
+}{\cf5 int}{\cf1  }main({\cf5 int}{\cf1  }argc,{\cf1  }{\cf5 char}{\cf1  }{\cf6 *}argv[]){\cf1 \par
+}\{{\cf1 \par
+}{\cf1     }QApplication{\cf1  }{\cf8 a}(argc,{\cf1  }argv);{\cf1 \par
+}{\cf1     }Widget{\cf1  }w;{\cf1 \par
+}{\cf1     }w.show();{\cf1 \par
+}{\cf1 \par
+}{\cf1     }{\cf4\b return}{\cf1  }a.exec();{\cf1 \par
+}\}{\cf1 \par
+}{\cf1 \par
+}movies.h{\cf1 \par
+}{\cf3 #}{\cf3 ifndef MOVIES_H}{\cf3 \par
+}{\cf3 #}{\cf3 define MOVIES_H}{\cf3 \par
+}{\cf3 #}{\cf3 include}{\cf1  }{\cf2\i <string>}{\cf3 \par
+}{\cf1 \par
+}{\cf1 \par
+}{\cf4\b class}{\cf1  }{\cf8\b movie}\{{\cf1 \par
+}{\cf4\b public}{\cf6 :}{\cf1 \par
+}{\cf1     }{\cf5 int}{\cf1  }number;{\cf1 \par
+}{\cf1     }{\cf5 int}{\cf1  }id,{\cf1  }year;{\cf1 \par
+}{\cf1     }std{\cf6 :}{\cf6 :}string{\cf1  }author,{\cf1  }name;{\cf1 \par
+}{\cf1     }{\cf5 bool}{\cf1  }state;{\cf1  }{\cf2\i //0 - {\u1085}{\u1072} {\u1089}{\u1082}{\u1083}{\u1072}{\u1076}{\u1077}, 1 - {\u1074}{\u1099}{\u1076}{\u1072}{\u1085}\par
+}{\cf1 \par
+}{\cf1     }movie{\cf6 *}{\cf1  }next{\cf6 =}{\cf1  }{\cf4\b nullptr};{\cf1 \par
+}{\cf1     }movie({\cf5 int}{\cf1  }num{\cf6 =}{\cf6 0},{\cf1  }{\cf5 int}{\cf1  }i{\cf6 =}{\cf6 0},{\cf1  }{\cf5 int}{\cf1  }y{\cf6 =}{\cf6 0},{\cf1  }std{\cf6 :}{\cf6 :}string{\cf1  }auth{\cf6 =}{\cf6 0},{\cf1  }std{\cf6 :}{\cf6 :}string{\cf1  }n{\cf6 =}{\cf6 0},{\cf1  }{\cf5 bool}{\cf1  }stat{\cf1  }{\cf6 =}{\cf6 1})\{number{\cf6 =}num;id{\cf6 =}i;{\cf1  }year{\cf1  }{\cf6 =}{\cf1  }y;{\cf1  }author{\cf1  }{\cf6 =}{\cf1  }auth;{\cf1  }name{\cf1  }{\cf6 =}{\cf1  }n;{\cf1  }state{\cf1  }{\cf6 =}{\cf1  }stat;\}{\cf1 \par
+}{\cf1 \par
+}\};{\cf1 \par
+}{\cf1 \par
+}{\cf4\b class}{\cf1  }{\cf8\b movies}\{{\cf1 \par
+}{\cf4\b private}{\cf6 :}{\cf1 \par
+}{\cf1     }{\cf5 int}{\cf1  }count;{\cf1 \par
+}{\cf1     }movie{\cf6 *}{\cf1  }head{\cf1  }{\cf6 =}{\cf1  }{\cf4\b nullptr};{\cf1 \par
+}{\cf1 \par
+}{\cf4\b public}{\cf6 :}{\cf1 \par
+}{\cf1     }{\cf5 void}{\cf1  }add({\cf5 int}{\cf1  }y,{\cf1  }std{\cf6 :}{\cf6 :}string{\cf1  }auth,{\cf1  }std{\cf6 :}{\cf6 :}string{\cf1  }n);{\cf1 \par
+}{\cf1     }movie{\cf6 *}{\cf1  }{\cf8 get}({\cf5 int}{\cf1  }index);{\cf1 \par
+}{\cf1     }{\cf5 int}{\cf1  }{\cf8 get_length}()\{{\cf4\b return}{\cf1  }count;\}{\cf1 \par
+}{\cf1 \par
+}{\cf1     }movies()\{{\cf1 \par
+}{\cf1 \par
+}{\cf1     }\}{\cf1 \par
+}\};{\cf1 \par
+}{\cf1 \par
+}movie{\cf6 *}{\cf1  }{\cf8 movies::get}({\cf5 int}{\cf1  }index)\{{\cf1 \par
+}{\cf1     }{\cf4\b if}(count{\cf6 <}index){\cf1  }{\cf4\b return}{\cf1  }{\cf4\b nullptr};{\cf1 \par
+}{\cf1     }movie{\cf6 *}{\cf1  }current{\cf1  }{\cf6 =}{\cf1  }head;{\cf1 \par
+}{\cf1     }{\cf5 int}{\cf1  }i{\cf1  }{\cf6 =}{\cf1  }{\cf6 0};{\cf1 \par
+}{\cf1     }{\cf4\b while}{\cf1  }(i{\cf6 <}index)\{{\cf1 \par
+}{\cf1         }current{\cf6 =}current{\cf6 -}{\cf6 >}next;{\cf1 \par
+}{\cf1         }i{\cf6 +}{\cf6 +};{\cf1 \par
+}{\cf1     }\}{\cf1 \par
+}{\cf1     }{\cf4\b return}{\cf1  }current;{\cf1 \par
+}\}{\cf1 \par
+}{\cf1 \par
+}{\cf5 void}{\cf1  }{\cf8 movies::add}({\cf5 int}{\cf1  }y,{\cf1  }std{\cf6 :}{\cf6 :}string{\cf1  }auth,{\cf1  }std{\cf6 :}{\cf6 :}string{\cf1  }n)\{{\cf1 \par
+}{\cf1     }{\cf5 int}{\cf1  }number{\cf1  }{\cf6 =}{\cf1  }get_length();{\cf1 \par
+}{\cf1     }{\cf5 int}{\cf1  }id{\cf1  }{\cf6 =}{\cf6 1}{\cf6 +}{\cf1  }number{\cf6 *}{\cf6 7};{\cf1 \par
+}{\cf1     }movie{\cf6 *}{\cf1  }sub{\cf1  }{\cf6 =}{\cf1  }{\cf4\b new}{\cf1  }movie(number,{\cf1  }id,{\cf1  }y,{\cf1  }auth,{\cf1  }n{\cf1  },{\cf6 1});{\cf1 \par
+}{\cf1 \par
+}{\cf1     }{\cf4\b if}(head{\cf6 =}{\cf6 =}{\cf4\b nullptr})\{{\cf1 \par
+}{\cf1         }head{\cf1  }{\cf6 =}{\cf1  }sub;{\cf1 \par
+}{\cf1         }count{\cf6 +}{\cf6 +};{\cf1 \par
+}{\cf1         }{\cf4\b return};{\cf1 \par
+}{\cf1     }\}{\cf1 \par
+}{\cf1     }movie{\cf6 *}{\cf1  }current{\cf1  }{\cf6 =}{\cf1  }head;{\cf1 \par
+}{\cf1     }{\cf4\b while}(current{\cf6 -}{\cf6 >}next{\cf6 !}{\cf6 =}{\cf4\b nullptr})\{{\cf1 \par
+}{\cf1         }current{\cf1  }{\cf6 =}{\cf1  }current{\cf6 -}{\cf6 >}next;{\cf1 \par
+}{\cf1     }\}{\cf1 \par
+}{\cf1     }current{\cf6 -}{\cf6 >}next{\cf1  }{\cf6 =}{\cf1  }sub;{\cf1 \par
+}{\cf1     }count{\cf6 +}{\cf6 +};{\cf1 \par
+}{\cf1     }{\cf4\b return};{\cf1 \par
+}\}{\cf1 \par
+}{\cf1 \par
+}{\cf3 #}{\cf3 endif }{\cf2\i // MOVIES_H\par
+}{\cf1 \par
+}rental.h{\cf1 \par
+}{\cf3 #}{\cf3 ifndef RENTAL_H}{\cf3 \par
+}{\cf3 #}{\cf3 define RENTAL_H}{\cf3 \par
+}{\cf3 #}{\cf3 include}{\cf1  }{\cf2\i "rentalstrategy.h"}{\cf3 \par
+}{\cf3 #}{\cf3 include}{\cf1  }{\cf2\i "weeklystrategy.h"}{\cf3 \par
+}{\cf3 #}{\cf3 include}{\cf1  }{\cf2\i "dailyrentalstrategy.h"}{\cf3 \par
+}{\cf1 \par
+}{\cf1 \par
+}{\cf1 \par
+}{\cf4\b class}{\cf1  }{\cf8\b Rental}{\cf1  }\{{\cf1 \par
+}{\cf4\b private}{\cf6 :}{\cf1 \par
+}{\cf1     }IRentalStrategy{\cf6 *}{\cf1  }_rentalStrategy;{\cf1 \par
+}{\cf1 \par
+}{\cf4\b public}{\cf6 :}{\cf1 \par
+}{\cf1     }Rental(IRentalStrategy{\cf6 *}{\cf1  }rentalStrategy){\cf1  }{\cf6 :}{\cf1  }_rentalStrategy(rentalStrategy){\cf1  }\{\}{\cf1 \par
+}{\cf1 \par
+}{\cf1     }{\cf5 double}{\cf1  }CalculateRentalCost({\cf5 int}{\cf1  }rentalTime){\cf1  }\{{\cf1 \par
+}{\cf1         }{\cf4\b return}{\cf1  }_rentalStrategy{\cf6 -}{\cf6 >}CalculateRentalCost(rentalTime);{\cf1 \par
+}{\cf1     }\}{\cf1 \par
+}\};{\cf1 \par
+}{\cf1 \par
+}{\cf2\i //int main() \{\par
+}{\cf1     }{\cf2\i //auto dailyRental = new Rental(new DailyRentalStrategy());\par
+}{\cf1     }{\cf2\i //std::cout << "Daily rental cost for 3 days: " << dailyRental->CalculateRentalCost(3) << std::endl;\par
+}{\cf1 \par
+}{\cf1    }{\cf2\i // auto weeklyRental = new Rental(new WeeklyRentalStrategy());\par
+}{\cf1    }{\cf2\i // std::cout << "Weekly rental cost for 2 weeks: " << weeklyRental->CalculateRentalCost(2) << std::endl;\par
+}{\cf1 \par
+}{\cf1    }{\cf2\i // delete dailyRental;\par
+}{\cf1    }{\cf2\i // delete weeklyRental;\par
+}{\cf1 \par
+}{\cf1    }{\cf2\i // return 0;\par
+}{\cf2\i //\}\par
+}{\cf3 #}{\cf3 endif }{\cf2\i // RENTAL_H\par
+}{\cf1 \par
+}rentalmovieadapter.h{\cf1 \par
+}{\cf3 #}{\cf3 ifndef RENTALMOVIEADAPTER_H}{\cf3 \par
+}{\cf3 #}{\cf3 define RENTALMOVIEADAPTER_H}{\cf3 \par
+}{\cf3 #}{\cf3 include}{\cf1  }{\cf2\i "rentalmovies.h"}{\cf3 \par
+}{\cf3 #}{\cf3 include}{\cf1  }{\cf2\i "movies.h"}{\cf3 \par
+}{\cf3 #}{\cf3 include}{\cf1  }{\cf2\i "subscriber.h"}{\cf3 \par
+}{\cf1 \par
+}{\cf4\b class}{\cf1  }{\cf8\b RentalMoviesAdapter}{\cf1  }{\cf6 :}{\cf1  }{\cf4\b public}{\cf1  }RentalMovies{\cf1  }\{{\cf1 \par
+}{\cf4\b private}{\cf6 :}{\cf1 \par
+}{\cf1     }movie{\cf1  }movieInfo;{\cf1 \par
+}{\cf1     }subscriber{\cf1  }customerInfo;{\cf1 \par
+}{\cf1 \par
+}{\cf4\b public}{\cf6 :}{\cf1 \par
+}{\cf1     }RentalMoviesAdapter(movie{\cf1  }movieInfo,{\cf1  }subscriber{\cf1  }customerInfo){\cf1  }\{{\cf1 \par
+}{\cf1         }{\cf4\b this}{\cf6 -}{\cf6 >}movieInfo{\cf1  }{\cf6 =}{\cf1  }movieInfo;{\cf1 \par
+}{\cf1         }{\cf4\b this}{\cf6 -}{\cf6 >}customerInfo{\cf1  }{\cf6 =}{\cf1  }customerInfo;{\cf1 \par
+}{\cf1     }\}{\cf1 \par
+}{\cf1 \par
+}{\cf1     }{\cf5 void}{\cf1  }rentMovie(string{\cf1  }movieName){\cf1  }{\cf4\b override}{\cf1  }\{{\cf1 \par
+}{\cf1             }\}{\cf1 \par
+}{\cf1 \par
+}{\cf1     }{\cf5 void}{\cf1  }returnMovie(string{\cf1  }movieName){\cf1  }{\cf4\b override}{\cf1  }\{{\cf1 \par
+}{\cf1         }cout{\cf1  }{\cf6 <}{\cf6 <}{\cf1  }{\cf15 "}{\cf15 The movie }{\cf15 "}{\cf1  }{\cf6 <}{\cf6 <}{\cf1  }movieName{\cf1  }{\cf6 <}{\cf6 <}{\cf1  }{\cf15 "}{\cf15  has been returned by }{\cf15 "}{\cf1  }{\cf6 <}{\cf6 <}{\cf1  }customerInfo.name{\cf1  }{\cf6 <}{\cf6 <}{\cf1  }{\cf15 "}{\cf15 .}{\cf15 "}{\cf1  }{\cf6 <}{\cf6 <}{\cf1  }endl;{\cf1 \par
+}{\cf1     }\}{\cf1 \par
+}\};{\cf1 \par
+}{\cf1 \par
+}{\cf3 #}{\cf3 endif }{\cf2\i // RENTALMOVIEADAPTER_H\par
+}{\cf1 \par
+}rentalmovies.h{\cf1 \par
+}{\cf3 #}{\cf3 ifndef ARENDA_H}{\cf3 \par
+}{\cf3 #}{\cf3 define ARENDA_H}{\cf3 \par
+}{\cf3 #}{\cf3 include}{\cf1  }{\cf2\i <string>}{\cf3 \par
+}{\cf3 #}{\cf3 include}{\cf1  }{\cf2\i "movies.h"}{\cf3 \par
+}{\cf3 #}{\cf3 include}{\cf1  }{\cf2\i "subscriber.h"}{\cf3 \par
+}{\cf3 #}{\cf3 include}{\cf1  }{\cf2\i <iostream>}{\cf3 \par
+}{\cf4\b class}{\cf1  }{\cf8\b info}\{{\cf1 \par
+}{\cf4\b public}{\cf6 :}{\cf1 \par
+}{\cf1     }{\cf5 int}{\cf1  }renterId;{\cf1 \par
+}{\cf1     }{\cf5 int}{\cf1  }filmId;{\cf1 \par
+}{\cf1     }{\cf5 int}{\cf1  }OperId;{\cf1 \par
+}{\cf1     }std{\cf6 :}{\cf6 :}string{\cf1  }date_take;{\cf1 \par
+}{\cf1     }std{\cf6 :}{\cf6 :}string{\cf1  }date_return;{\cf1 \par
+}{\cf1     }std{\cf6 :}{\cf6 :}string{\cf1  }film_name;{\cf1 \par
+}{\cf1     }info{\cf6 *}{\cf1  }next{\cf1  }{\cf6 =}{\cf1  }{\cf4\b nullptr};{\cf1 \par
+}{\cf1 \par
+}{\cf1     }info(movie{\cf6 *}{\cf1  }mov,{\cf1  }subscriber{\cf6 *}{\cf1  }sub)\{{\cf1 \par
+}{\cf1         }renterId{\cf1  }{\cf6 =}{\cf1  }sub{\cf6 -}{\cf6 >}id;{\cf1 \par
+}{\cf1         }filmId{\cf1  }{\cf6 =}{\cf1  }mov{\cf6 -}{\cf6 >}id;{\cf1 \par
+}{\cf1         }film_name{\cf1  }{\cf6 =}{\cf1  }mov{\cf6 -}{\cf6 >}name;{\cf1 \par
+}{\cf1         }date_take{\cf1  }{\cf6 =}{\cf1  }{\cf15 "}{\cf15 16.07.23}{\cf15 "};{\cf1 \par
+}{\cf1         }date_return{\cf1  }{\cf6 =}{\cf1  }{\cf15 "}{\cf15 17.07.23}{\cf15 "};{\cf1 \par
+}{\cf1     }\}{\cf1 \par
+}\};{\cf1 \par
+}{\cf1 \par
+}{\cf4\b class}{\cf1  }{\cf8\b RentalMovies}{\cf1  }\{{\cf1 \par
+}{\cf4\b private}{\cf6 :}{\cf1 \par
+}{\cf1     }{\cf5 int}{\cf1  }count;{\cf1 \par
+}{\cf1 \par
+}{\cf1 \par
+}{\cf4\b public}{\cf6 :}{\cf1 \par
+}{\cf1     }info{\cf6 *}{\cf1  }head{\cf6 =}{\cf1  }{\cf4\b nullptr};{\cf1 \par
+}{\cf1     }{\cf5 int}{\cf1  }{\cf8 get_length}()\{{\cf4\b return}{\cf1  }count;\}{\cf1 \par
+}{\cf1     }std{\cf6 :}{\cf6 :}string{\cf1  }{\cf8 show}();{\cf1 \par
+}{\cf1     }{\cf5 void}{\cf1  }{\cf8 add}(info{\cf1  }{\cf6 *}input);{\cf1 \par
+}{\cf1     }info{\cf6 *}{\cf1  }{\cf8 find}(std{\cf6 :}{\cf6 :}string{\cf1  }name,{\cf1  }{\cf5 int}{\cf1  }sub_id);{\cf1 \par
+}{\cf1     }{\cf5 void}{\cf1  }{\cf8 return_film}(std{\cf6 :}{\cf6 :}string{\cf1  }name,{\cf1  }subscriber{\cf6 *}{\cf1  }sub);{\cf1 \par
+}{\cf1     }std{\cf6 :}{\cf6 :}string{\cf6 *}{\cf1  }{\cf8 get_all_from_sub}(subscriber{\cf6 *}{\cf1  }sub);{\cf1 \par
+}{\cf1     }info{\cf6 *}{\cf1  }{\cf8 get}({\cf5 int}{\cf1  }index);{\cf1 \par
+}\};{\cf1 \par
+}{\cf1 \par
+}info{\cf6 *}{\cf1  }{\cf8 RentalMovies::get}({\cf5 int}{\cf1  }index)\{{\cf1 \par
+}{\cf1 \par
+}{\cf1         }{\cf4\b if}(count{\cf6 <}index){\cf1  }{\cf4\b return}{\cf1  }{\cf4\b nullptr};{\cf1 \par
+}{\cf1         }info{\cf6 *}{\cf1  }current{\cf1  }{\cf6 =}{\cf1  }head;{\cf1 \par
+}{\cf1         }{\cf5 int}{\cf1  }i{\cf1  }{\cf6 =}{\cf1  }{\cf6 0};{\cf1 \par
+}{\cf1         }{\cf4\b while}{\cf1  }(i{\cf6 <}index)\{{\cf1 \par
+}{\cf1             }current{\cf6 =}current{\cf6 -}{\cf6 >}next;{\cf1 \par
+}{\cf1             }i{\cf6 +}{\cf6 +};{\cf1 \par
+}{\cf1         }\}{\cf1 \par
+}{\cf1         }{\cf4\b return}{\cf1  }current;{\cf1 \par
+}{\cf1 \par
+}\}{\cf1 \par
+}{\cf1 \par
+}{\cf5 void}{\cf1  }{\cf8 RentalMovies::return_film}(std{\cf6 :}{\cf6 :}string{\cf1  }name,{\cf1  }subscriber{\cf6 *}{\cf1  }sub)\{{\cf1 \par
+}{\cf1     }info{\cf6 *}{\cf1  }to_remove{\cf1  }{\cf6 =}{\cf1  }find(name,{\cf1  }sub{\cf6 -}{\cf6 >}id);{\cf1 \par
+}{\cf1     }info{\cf6 *}{\cf1  }current{\cf1  }{\cf6 =}{\cf1  }head;{\cf1 \par
+}{\cf1     }{\cf4\b if}(current{\cf1  }{\cf6 =}{\cf6 =}{\cf1  }to_remove)\{{\cf1 \par
+}{\cf1         }head{\cf1  }{\cf6 =}{\cf1  }head{\cf6 -}{\cf6 >}next;{\cf1 \par
+}{\cf1         }count{\cf6 -}{\cf6 -};{\cf1 \par
+}{\cf1         }{\cf4\b return};{\cf1 \par
+}{\cf1 \par
+}{\cf1     }\}{\cf1 \par
+}{\cf1 \par
+}{\cf1     }{\cf4\b while}(current{\cf6 -}{\cf6 >}next{\cf6 !}{\cf6 =}{\cf1  }to_remove)\{{\cf1 \par
+}{\cf1         }current{\cf1  }{\cf6 =}{\cf1  }current{\cf6 -}{\cf6 >}next;{\cf1 \par
+}{\cf1     }\}{\cf1 \par
+}{\cf1     }current{\cf6 -}{\cf6 >}next{\cf6 =}current{\cf6 -}{\cf6 >}next{\cf6 -}{\cf6 >}next;{\cf1 \par
+}{\cf1     }count{\cf6 -}{\cf6 -};{\cf1 \par
+}\}{\cf1 \par
+}{\cf1 \par
+}info{\cf6 *}{\cf1  }{\cf8 RentalMovies::find}(std{\cf6 :}{\cf6 :}string{\cf1  }name,{\cf1  }{\cf5 int}{\cf1  }sub_id)\{{\cf1 \par
+}{\cf1     }info{\cf6 *}{\cf1  }current{\cf1  }{\cf6 =}{\cf1  }head;{\cf1 \par
+}{\cf1     }{\cf4\b while}{\cf1  }(current{\cf6 !}{\cf6 =}{\cf4\b nullptr})\{{\cf1 \par
+}{\cf1         }{\cf4\b if}(current{\cf6 -}{\cf6 >}film_name{\cf6 =}{\cf6 =}name{\cf1  }{\cf6 &}{\cf6 &}{\cf1  }current{\cf6 -}{\cf6 >}renterId{\cf1  }{\cf6 =}{\cf6 =}{\cf1  }sub_id){\cf1  }{\cf4\b return}{\cf1  }current;{\cf1 \par
+}{\cf1         }current{\cf6 =}{\cf1  }current{\cf6 -}{\cf6 >}next;{\cf1 \par
+}{\cf1     }\}{\cf1 \par
+}{\cf1     }{\cf4\b return}{\cf1  }{\cf4\b nullptr};{\cf1 \par
+}\}{\cf1 \par
+}{\cf1 \par
+}std{\cf6 :}{\cf6 :}string{\cf1  }{\cf8 RentalMovies::show}()\{{\cf1 \par
+}{\cf1     }std{\cf6 :}{\cf6 :}string{\cf1  }res{\cf1  }{\cf6 =}{\cf1  }{\cf15 "}{\cf15 "};{\cf1 \par
+}{\cf1     }info{\cf6 *}{\cf1  }current{\cf1  }{\cf6 =}{\cf1  }head;{\cf1 \par
+}{\cf1     }{\cf4\b while}(current{\cf6 !}{\cf6 =}{\cf4\b nullptr})\{{\cf1 \par
+}{\cf1         }res{\cf1  }{\cf6 +}{\cf6 =}{\cf1  }std{\cf6 :}{\cf6 :}to_string(current{\cf6 -}{\cf6 >}OperId){\cf6 +}{\cf15 "}{\cf15 : }{\cf15 "}{\cf6 +}{\cf15 "}{\cf15  }{\cf15 "}{\cf6 +}current{\cf6 -}{\cf6 >}film_name{\cf6 +}{\cf15 "}{\cf15 , }{\cf15 "};{\cf1 \par
+}{\cf1         }current{\cf1  }{\cf6 =}{\cf1  }current{\cf6 -}{\cf6 >}next;{\cf1 \par
+}{\cf1     }\}{\cf1 \par
+}{\cf1     }{\cf4\b return}{\cf1  }res;{\cf1 \par
+}\}{\cf1 \par
+}{\cf1 \par
+}{\cf5 void}{\cf1  }{\cf8 RentalMovies::add}(info{\cf6 *}{\cf1  }input)\{{\cf1 \par
+}{\cf1     }{\cf4\b if}({\cf6 !}input){\cf1  }{\cf4\b return};{\cf1 \par
+}{\cf1     }{\cf5 int}{\cf1  }number{\cf1  }{\cf6 =}{\cf1  }get_length();{\cf1 \par
+}{\cf1     }{\cf5 int}{\cf1  }id{\cf1  }{\cf6 =}{\cf1  }{\cf6 1}{\cf6 +}number{\cf6 *}{\cf6 21};{\cf1 \par
+}{\cf1     }input{\cf6 -}{\cf6 >}OperId{\cf6 =}{\cf1  }id;{\cf1 \par
+}{\cf1     }info{\cf6 *}{\cf1  }sub{\cf1  }{\cf6 =}{\cf1  }input;{\cf1 \par
+}{\cf1 \par
+}{\cf1     }{\cf4\b if}(head{\cf6 =}{\cf6 =}{\cf4\b nullptr})\{{\cf1 \par
+}{\cf1         }head{\cf1  }{\cf6 =}{\cf1  }sub;{\cf1 \par
+}{\cf1         }count{\cf6 +}{\cf6 +};{\cf1 \par
+}{\cf1         }{\cf4\b return};{\cf1 \par
+}{\cf1     }\}{\cf1 \par
+}{\cf1     }info{\cf6 *}{\cf1  }current{\cf1  }{\cf6 =}{\cf1  }head;{\cf1 \par
+}{\cf1     }{\cf4\b while}(current{\cf6 -}{\cf6 >}next{\cf6 !}{\cf6 =}{\cf4\b nullptr})\{{\cf1 \par
+}{\cf1         }current{\cf1  }{\cf6 =}{\cf1  }current{\cf6 -}{\cf6 >}next;{\cf1 \par
+}{\cf1     }\}{\cf1 \par
+}{\cf1     }current{\cf6 -}{\cf6 >}next{\cf1  }{\cf6 =}{\cf1  }sub;{\cf1 \par
+}{\cf1     }count{\cf6 +}{\cf6 +};{\cf1 \par
+}{\cf1     }{\cf4\b return};{\cf1 \par
+}\}{\cf1 \par
+}{\cf3 #}{\cf3 endif}{\cf3 \par
+}{\cf1 \par
+}rentalstrategy.h{\cf1 \par
+}{\cf3 #}{\cf3 ifndef RENTALSTRATEGY_H}{\cf3 \par
+}{\cf3 #}{\cf3 define RENTALSTRATEGY_H}{\cf3 \par
+}{\cf1 \par
+}{\cf4\b class}{\cf1  }{\cf8\b IRentalStrategy}{\cf1  }\{{\cf1 \par
+}{\cf4\b public}{\cf6 :}{\cf1 \par
+}{\cf1     }{\cf4\b virtual}{\cf1  }{\cf5 double}{\cf1  }CalculateRentalCost({\cf5 int}{\cf1  }rentalTime){\cf1  }{\cf6 =}{\cf1  }{\cf6 0};{\cf1 \par
+}\};{\cf1 \par
+}{\cf1 \par
+}{\cf3 #}{\cf3 endif }{\cf2\i // RENTALSTRATEGY_H\par
+}{\cf1 \par
+}shop.cpp{\cf1 \par
+}{\cf3 #}{\cf3 include}{\cf1  }{\cf2\i "shop.h"}{\cf3 \par
+}{\cf3 #}{\cf3 include}{\cf1  }{\cf2\i "movies.h"}{\cf3 \par
+}{\cf1 \par
+}shop{\cf6 :}{\cf6 :}shop(){\cf1 \par
+}\{{\cf1 \par
+}{\cf1     }{\cf4\b public}{\cf6 :}{\cf1 \par
+}{\cf1     }movies{\cf1  }catalog;{\cf1 \par
+}\}{\cf1 \par
+}{\cf1 \par
+}shop.h{\cf1 \par
+}{\cf3 #}{\cf3 ifndef SHOP_H}{\cf3 \par
+}{\cf3 #}{\cf3 define SHOP_H}{\cf3 \par
+}{\cf3 #}{\cf3 include}{\cf1  }{\cf2\i "string.h"}{\cf3 \par
+}{\cf1 \par
+}{\cf4\b class}{\cf1  }{\cf8\b shop}{\cf1 \par
+}\{{\cf1 \par
+}{\cf4\b public}{\cf6 :}{\cf1 \par
+}{\cf1     }movies{\cf1  }catalog;{\cf1 \par
+}{\cf1     }std{\cf6 :}{\cf6 :}string{\cf1  }name;{\cf1 \par
+}{\cf1 \par
+}{\cf1     }{\cf5 void}{\cf1  }{\cf8 set_name}(std{\cf6 :}{\cf6 :}string{\cf1  }name)\{{\cf1 \par
+}{\cf1         }{\cf4\b this}{\cf6 -}{\cf6 >}name{\cf1  }{\cf6 =}{\cf1  }name;{\cf1 \par
+}{\cf1     }\}{\cf1 \par
+}{\cf1 \par
+}{\cf1     }shop(std{\cf6 :}{\cf6 :}string{\cf1  }name)\{{\cf1 \par
+}{\cf1         }set_name(name);{\cf1 \par
+}{\cf1 \par
+}{\cf1     }\}{\cf1 \par
+}{\cf1 \par
+}{\cf1 \par
+}{\cf1     }std{\cf6 :}{\cf6 :}string{\cf1  }get_name()\{{\cf1 \par
+}{\cf1         }{\cf4\b return}{\cf1  }name;{\cf1 \par
+}{\cf1     }\}{\cf1 \par
+}\};{\cf1 \par
+}{\cf1 \par
+}{\cf3 #}{\cf3 endif }{\cf2\i // SHOP_H\par
+}{\cf1 \par
+}subscriber.h{\cf1 \par
+}{\cf1 \par
+}{\cf3 #}{\cf3 ifndef SUBSCRIBER_H}{\cf3 \par
+}{\cf3 #}{\cf3 define SUBSCRIBER_H}{\cf3 \par
+}{\cf3 #}{\cf3 include}{\cf1  }{\cf2\i <string>}{\cf3 \par
+}{\cf4\b class}{\cf1  }{\cf8\b subscriber}\{{\cf1 \par
+}{\cf4\b public}{\cf6 :}{\cf1 \par
+}{\cf1     }{\cf5 int}{\cf1  }number;{\cf1 \par
+}{\cf1     }{\cf5 int}{\cf1  }id;{\cf1 \par
+}{\cf1     }std{\cf6 :}{\cf6 :}string{\cf1  }fio;{\cf1 \par
+}{\cf1 \par
+}{\cf1     }subscriber{\cf6 *}{\cf1  }next{\cf1  }{\cf6 =}{\cf1  }{\cf4\b nullptr};{\cf1 \par
+}{\cf1     }subscriber(std{\cf6 :}{\cf6 :}string{\cf1  }fio,{\cf1  }{\cf5 int}{\cf1  }number,{\cf1  }{\cf5 int}{\cf1  }id)\{{\cf1 \par
+}{\cf1         }{\cf4\b this}{\cf6 -}{\cf6 >}fio{\cf1  }{\cf6 =}{\cf1  }fio;{\cf1 \par
+}{\cf1         }{\cf4\b this}{\cf6 -}{\cf6 >}id{\cf1  }{\cf6 =}{\cf1  }id;{\cf1 \par
+}{\cf1         }{\cf4\b this}{\cf6 -}{\cf6 >}number{\cf1  }{\cf6 =}{\cf1  }number;{\cf1 \par
+}{\cf1     }\}{\cf1 \par
+}{\cf1 \par
+}\};{\cf1 \par
+}{\cf1 \par
+}{\cf4\b class}{\cf1  }{\cf8\b sub_table}\{{\cf1 \par
+}{\cf1   }{\cf4\b private}{\cf6 :}{\cf1 \par
+}{\cf1     }subscriber{\cf6 *}{\cf1  }head{\cf1  }{\cf6 =}{\cf1  }{\cf4\b nullptr};{\cf1 \par
+}{\cf1     }{\cf5 int}{\cf1  }count{\cf1  }{\cf6 =}{\cf1  }{\cf6 0};{\cf1 \par
+}{\cf1 \par
+}{\cf1   }{\cf4\b public}{\cf6 :}{\cf1 \par
+}{\cf1 \par
+}{\cf1     }{\cf5 int}{\cf1  }get_length();{\cf1 \par
+}{\cf1     }std{\cf6 :}{\cf6 :}string{\cf1  }{\cf8 show}();{\cf1 \par
+}{\cf1     }{\cf5 void}{\cf1  }{\cf8 registers}(std{\cf6 :}{\cf6 :}string{\cf1  }name);{\cf1 \par
+}{\cf1     }subscriber{\cf6 *}{\cf1  }{\cf8 find}(std{\cf6 :}{\cf6 :}string{\cf1  }name);{\cf1 \par
+}{\cf1     }subscriber{\cf6 *}{\cf1  }{\cf8 get}({\cf5 int}{\cf1  }index);{\cf1 \par
+}\};{\cf1 \par
+}{\cf1 \par
+}subscriber{\cf6 *}{\cf1  }{\cf8 sub_table::get}({\cf5 int}{\cf1  }index)\{{\cf1 \par
+}{\cf1     }subscriber{\cf6 *}{\cf1  }current{\cf1  }{\cf6 =}{\cf1  }head;{\cf1 \par
+}{\cf1     }{\cf4\b for}({\cf5 int}{\cf1  }i{\cf1  }{\cf6 =}{\cf1  }{\cf6 0};{\cf1  }i{\cf6 <}index;{\cf1  }i{\cf6 +}{\cf6 +})\{{\cf1 \par
+}{\cf1         }current{\cf6 =}current{\cf6 -}{\cf6 >}next;{\cf1 \par
+}{\cf1     }\}{\cf1 \par
+}{\cf1     }{\cf4\b return}{\cf1  }current;{\cf1 \par
+}\}{\cf1 \par
+}{\cf1 \par
+}std{\cf6 :}{\cf6 :}string{\cf1  }{\cf8 sub_table::show}()\{{\cf1 \par
+}{\cf1 \par
+}{\cf1     }std{\cf6 :}{\cf6 :}string{\cf1  }res{\cf6 =}{\cf1  }{\cf15 "}{\cf15 "};{\cf1 \par
+}{\cf1     }subscriber{\cf6 *}{\cf1  }current{\cf1  }{\cf6 =}{\cf1  }head;{\cf1 \par
+}{\cf1     }{\cf4\b while}(current{\cf6 !}{\cf6 =}{\cf4\b nullptr})\{{\cf1 \par
+}{\cf1         }res{\cf1  }{\cf6 =}{\cf1  }res{\cf1  }{\cf6 +}{\cf1  }current{\cf6 -}{\cf6 >}fio{\cf6 +}{\cf15 "}{\cf15 , }{\cf15 "};{\cf1 \par
+}{\cf1         }current{\cf1  }{\cf6 =}{\cf1  }current{\cf6 -}{\cf6 >}next;{\cf1 \par
+}{\cf1    }\}{\cf1 \par
+}{\cf1     }{\cf4\b return}{\cf1  }res;{\cf1 \par
+}\}{\cf1 \par
+}{\cf1 \par
+}{\cf1 \par
+}subscriber{\cf6 *}{\cf1  }{\cf8 sub_table::find}(std{\cf6 :}{\cf6 :}string{\cf1  }name)\{{\cf1 \par
+}{\cf1 \par
+}{\cf1     }{\cf4\b if}(name{\cf1  }{\cf6 =}{\cf6 =}{\cf1  }{\cf15 "}{\cf15 "}){\cf4\b return}{\cf1  }{\cf4\b nullptr};{\cf1 \par
+}{\cf1     }subscriber{\cf6 *}{\cf1  }current{\cf1  }{\cf6 =}{\cf1  }head;{\cf1 \par
+}{\cf1     }{\cf4\b while}(current{\cf6 !}{\cf6 =}{\cf4\b nullptr})\{{\cf1 \par
+}{\cf1         }{\cf4\b if}{\cf1  }(current{\cf6 -}{\cf6 >}fio{\cf1  }{\cf6 =}{\cf6 =}{\cf1  }name)\{{\cf1 \par
+}{\cf1             }{\cf4\b return}{\cf1  }current;{\cf1 \par
+}{\cf1         }\}{\cf1 \par
+}{\cf1         }current{\cf1  }{\cf6 =}{\cf1  }current{\cf6 -}{\cf6 >}next;{\cf1 \par
+}{\cf1    }\}{\cf1 \par
+}{\cf1     }{\cf4\b return}{\cf1  }{\cf4\b nullptr};{\cf1 \par
+}\}{\cf1 \par
+}{\cf1 \par
+}{\cf5 void}{\cf1  }{\cf8 sub_table::registers}(std{\cf6 :}{\cf6 :}string{\cf1  }name)\{{\cf1 \par
+}{\cf1 \par
+}{\cf1     }{\cf5 int}{\cf1  }number{\cf1  }{\cf6 =}{\cf1  }get_length();{\cf1 \par
+}{\cf1     }{\cf5 int}{\cf1  }id{\cf1  }{\cf6 =}{\cf1  }{\cf6 1}{\cf6 +}{\cf1  }number{\cf6 *}{\cf6 13};{\cf1 \par
+}{\cf1     }subscriber{\cf6 *}{\cf1  }sub{\cf1  }{\cf6 =}{\cf1  }{\cf4\b new}{\cf1  }subscriber(name,{\cf1  }number,{\cf1  }id);{\cf1 \par
+}{\cf1 \par
+}{\cf1     }{\cf4\b if}(head{\cf6 =}{\cf6 =}{\cf4\b nullptr})\{{\cf1 \par
+}{\cf1         }head{\cf1  }{\cf6 =}{\cf1  }sub;{\cf1 \par
+}{\cf1         }count{\cf6 +}{\cf6 +};{\cf1 \par
+}{\cf1         }{\cf4\b return};{\cf1 \par
+}{\cf1     }\}{\cf1 \par
+}{\cf1     }subscriber{\cf6 *}{\cf1  }current{\cf1  }{\cf6 =}{\cf1  }head;{\cf1 \par
+}{\cf1     }{\cf4\b while}(current{\cf6 -}{\cf6 >}next{\cf6 !}{\cf6 =}{\cf4\b nullptr})\{{\cf1 \par
+}{\cf1         }{\cf4\b if}{\cf1   }(current{\cf6 -}{\cf6 >}fio{\cf6 =}{\cf6 =}name)\{{\cf1 \par
+}{\cf1             }{\cf4\b return};{\cf1 \par
+}{\cf1         }\}{\cf1 \par
+}{\cf1         }current{\cf1  }{\cf6 =}{\cf1  }current{\cf6 -}{\cf6 >}next;{\cf1 \par
+}{\cf1 \par
+}{\cf1     }\}{\cf1 \par
+}{\cf1     }{\cf4\b if}{\cf1   }(current{\cf6 -}{\cf6 >}fio{\cf6 =}{\cf6 =}name)\{{\cf1 \par
+}{\cf1         }{\cf4\b return};{\cf1 \par
+}{\cf1     }\}{\cf1 \par
+}{\cf1     }current{\cf6 -}{\cf6 >}next{\cf1  }{\cf6 =}{\cf1  }sub;{\cf1 \par
+}{\cf1     }count{\cf6 +}{\cf6 +};{\cf1 \par
+}{\cf1     }{\cf4\b return};{\cf1 \par
+}{\cf1 \par
+}\}{\cf1 \par
+}{\cf1 \par
+}{\cf5 int}{\cf1  }{\cf8 sub_table::get_length}()\{{\cf1 \par
+}{\cf1     }{\cf4\b return}{\cf1  }count;{\cf1 \par
+}\}{\cf1 \par
+}{\cf1 \par
+}{\cf3 #}{\cf3 endif }{\cf2\i // SUBSCRIBER_H\par
+}{\cf1 \par
+}weeklystrategy.h{\cf1 \par
+}{\cf3 #}{\cf3 ifndef WEEKLYRENTALSTRATEGY_H}{\cf3 \par
+}{\cf3 #}{\cf3 define WEEKLYRENTALSTRATEGY_H}{\cf3 \par
+}{\cf3 #}{\cf3 include}{\cf1  }{\cf2\i "rentalstrategy.h"}{\cf3 \par
+}{\cf4\b class}{\cf1  }{\cf8\b WeeklyRentalStrategy}{\cf1  }{\cf6 :}{\cf1  }{\cf4\b public}{\cf1  }IRentalStrategy{\cf1  }\{{\cf1 \par
+}{\cf4\b public}{\cf6 :}{\cf1 \par
+}{\cf1     }{\cf5 double}{\cf1  }CalculateRentalCost({\cf5 int}{\cf1  }rentalTime){\cf1  }{\cf4\b override}{\cf1  }\{{\cf1 \par
+}{\cf1         }{\cf4\b return}{\cf1  }rentalTime{\cf1  }{\cf6 *}{\cf1  }{\cf6 20.0};{\cf1 \par
+}{\cf1     }\}{\cf1 \par
+}\};{\cf1 \par
+}{\cf3 #}{\cf3 endif }{\cf2\i // WEEKLYRENTALSTRATEGY_H\par
+}{\cf1 \par
+}widget.cpp{\cf1 \par
+}{\cf3 #}{\cf3 include}{\cf1  }{\cf2\i "widget.h"}{\cf3 \par
+}{\cf3 #}{\cf3 include}{\cf1  }{\cf2\i "ui_widget.h"}{\cf3 \par
+}{\cf3 #}{\cf3 include}{\cf1  }{\cf2\i "subscriber.h"}{\cf3 \par
+}{\cf3 #}{\cf3 include}{\cf1  }{\cf2\i "movies.h"}{\cf3 \par
+}{\cf3 #}{\cf3 include}{\cf1  }{\cf2\i "rental.h"}{\cf3 \par
+}{\cf3 #}{\cf3 include}{\cf1  }{\cf2\i "rentalmovies.h"}{\cf3 \par
+}{\cf3 #}{\cf3 include}{\cf1  }{\cf2\i "shop.h"}{\cf3 \par
+}{\cf3 #}{\cf3 include}{\cf1  }{\cf2\i "string.h"}{\cf3 \par
+}{\cf3 #}{\cf3 include}{\cf1  }{\cf2\i <QMessageBox>}{\cf3 \par
+}sub_table{\cf1  }subs;{\cf1 \par
+}{\cf1 \par
+}RentalMovies{\cf1  }RM;{\cf1 \par
+}shop{\cf1  }Dibenko({\cf15 "}{\cf15 {\u1044}{\u1099}{\u1073}{\u1077}{\u1085}{\u1082}{\u1086}}{\cf15 "});{\cf1 \par
+}shop{\cf1  }Nevskiy({\cf15 "}{\cf15 {\u1053}{\u1077}{\u1074}{\u1089}{\u1082}{\u1080}{\u1081}}{\cf15 "});{\cf1 \par
+}std{\cf6 :}{\cf6 :}string{\cf1  }cur_user{\cf6 =}{\cf15 "}{\cf15 "};{\cf1 \par
+}{\cf5 void}{\cf1  }{\cf8 update_films}(Ui{\cf6 :}{\cf6 :}Widget{\cf1  }{\cf6 *}ui)\{{\cf1 \par
+}{\cf1     }ui{\cf6 -}{\cf6 >}comboBox_film{\cf6 -}{\cf6 >}clear();{\cf1 \par
+}{\cf1     }shop{\cf1  }{\cf6 *}{\cf1  }current;{\cf1 \par
+}{\cf1     }{\cf4\b if}(ui{\cf6 -}{\cf6 >}comboBox__shop_select{\cf6 -}{\cf6 >}currentIndex(){\cf1  }{\cf6 =}{\cf6 =}{\cf1  }{\cf6 0})\{{\cf1 \par
+}{\cf1       }current{\cf1  }{\cf6 =}{\cf6 &}Dibenko;{\cf1 \par
+}{\cf1     }\}{\cf1 \par
+}{\cf1     }{\cf4\b else}\{{\cf1 \par
+}{\cf1         }current{\cf1  }{\cf6 =}{\cf6 &}Nevskiy;{\cf1 \par
+}{\cf1     }\}{\cf1 \par
+}{\cf1 \par
+}{\cf1     }{\cf4\b for}({\cf5 int}{\cf1  }i{\cf1  }{\cf6 =}{\cf1  }{\cf6 0};{\cf1  }i{\cf6 <}{\cf1  }current{\cf6 -}{\cf6 >}catalog.get_length();{\cf1  }i{\cf6 +}{\cf6 +})\{{\cf1 \par
+}{\cf1         }std{\cf6 :}{\cf6 :}string{\cf1  }name{\cf1  }{\cf6 =}{\cf1  }current{\cf6 -}{\cf6 >}catalog.get(i){\cf6 -}{\cf6 >}name{\cf1  }{\cf6 +}{\cf1  }{\cf15 "}{\cf15 , }{\cf15 "}{\cf1  }{\cf6 +}{\cf1  }std{\cf6 :}{\cf6 :}to_string(current{\cf6 -}{\cf6 >}catalog.get(i){\cf6 -}{\cf6 >}year);{\cf1 \par
+}{\cf1         }ui{\cf6 -}{\cf6 >}comboBox_film{\cf6 -}{\cf6 >}addItem(QString{\cf6 :}{\cf6 :}fromStdString(name));{\cf1 \par
+}{\cf1 \par
+}{\cf1     }\}{\cf1 \par
+}\}{\cf1 \par
+}{\cf1 \par
+}Widget{\cf6 :}{\cf6 :}Widget(QWidget{\cf1  }{\cf6 *}parent){\cf1  }{\cf6 :}{\cf1 \par
+}{\cf1     }QWidget(parent),{\cf1 \par
+}{\cf1     }ui({\cf4\b new}{\cf1  }Ui{\cf6 :}{\cf6 :}Widget){\cf1 \par
+}\{{\cf1 \par
+}{\cf1     }ui{\cf6 -}{\cf6 >}setupUi({\cf4\b this});{\cf1 \par
+}{\cf1 \par
+}{\cf1      }ui{\cf6 -}{\cf6 >}comboBox__shop_select{\cf6 -}{\cf6 >}addItem({\cf15 "}{\cf15 {\u1044}{\u1099}{\u1073}{\u1077}{\u1085}{\u1082}{\u1086}}{\cf15 "});{\cf1 \par
+}{\cf1      }ui{\cf6 -}{\cf6 >}comboBox__shop_select{\cf6 -}{\cf6 >}addItem({\cf15 "}{\cf15 {\u1053}{\u1077}{\u1074}{\u1089}{\u1082}{\u1080}{\u1081}}{\cf15 "});{\cf1 \par
+}{\cf1 \par
+}{\cf1 \par
+}{\cf1 \par
+}{\cf1     }ui{\cf6 -}{\cf6 >}comboBox_period{\cf6 -}{\cf6 >}addItem({\cf15 "}{\cf15 1 {\u1076}{\u1077}{\u1085}{\u1100}}{\cf15 "});{\cf1 \par
+}{\cf1     }ui{\cf6 -}{\cf6 >}comboBox_period{\cf6 -}{\cf6 >}addItem({\cf15 "}{\cf15 2 {\u1076}{\u1085}{\u1103}}{\cf15 "});{\cf1 \par
+}{\cf1     }ui{\cf6 -}{\cf6 >}comboBox_period{\cf6 -}{\cf6 >}addItem({\cf15 "}{\cf15 1 {\u1085}{\u1077}{\u1076}{\u1077}{\u1083}{\u1103}}{\cf15 "});{\cf1 \par
+}{\cf1 \par
+}{\cf1 \par
+}{\cf1     }Dibenko.catalog.add({\cf6 1993},{\cf1  }{\cf15 "}{\cf15 {\u1055}{\u1080}{\u1090}{\u1077}{\u1088} {\u1044}{\u1078}{\u1077}{\u1082}{\u1089}{\u1086}{\u1085}}{\cf15 "},{\cf1  }{\cf15 "}{\cf15 {\u1042}{\u1083}{\u1072}{\u1089}{\u1090}{\u1077}{\u1083}{\u1080}{\u1085} {\u1082}{\u1086}{\u1083}{\u1077}{\u1094}: {\u1041}{\u1088}{\u1072}{\u1090}{\u1089}{\u1090}{\u1074}{\u1086} {\u1082}{\u1086}{\u1083}{\u1100}{\u1094}{\u1072}}{\cf15 "}{\cf1  });{\cf1 \par
+}{\cf1     }Dibenko.catalog.add({\cf6 1993},{\cf1  }{\cf15 "}{\cf15 {\u1050}{\u1074}{\u1077}{\u1085}{\u1090}{\u1080}{\u1085} {\u1058}{\u1072}{\u1088}{\u1072}{\u1085}{\u1090}{\u1080}{\u1085}{\u1086}}{\cf15 "},{\cf1  }{\cf15 "}{\cf15 {\u1050}{\u1088}{\u1080}{\u1084}{\u1080}{\u1085}{\u1072}{\u1083}{\u1100}{\u1085}{\u1086}{\u1077} {\u1095}{\u1090}{\u1080}{\u1074}{\u1086}}{\cf15 "}{\cf1            });{\cf1 \par
+}{\cf1     }Dibenko.catalog.add({\cf6 1995},{\cf1  }{\cf15 "}{\cf15 {\u1052}{\u1072}{\u1088}{\u1090}{\u1080}{\u1085} {\u1057}{\u1082}{\u1086}{\u1088}{\u1089}{\u1077}{\u1079}{\u1077}}{\cf15 "},{\cf1  }{\cf15 "}{\cf15 {\u1058}{\u1072}{\u1082}{\u1089}{\u1080}{\u1089}{\u1090}}{\cf15 "}{\cf1                         });{\cf1 \par
+}{\cf1     }Dibenko.catalog.add({\cf6 2006},{\cf1  }{\cf15 "}{\cf15 {\u1050}{\u1074}{\u1077}{\u1085}{\u1090}{\u1080}{\u1085} {\u1058}{\u1072}{\u1088}{\u1072}{\u1085}{\u1090}{\u1080}{\u1085}{\u1086}}{\cf15 "},{\cf1  }{\cf15 "}{\cf15 {\u1059}{\u1073}{\u1080}{\u1090}{\u1100} {\u1041}{\u1080}{\u1083}{\u1083}{\u1072}}{\cf15 "});{\cf1 \par
+}{\cf1     }Dibenko.catalog.add({\cf6 2013},{\cf1  }{\cf15 "}{\cf15 {\u1040}{\u1083}{\u1077}{\u1082}{\u1089}{\u1077}{\u1081} {\u1041}{\u1072}{\u1083}{\u1072}{\u1073}{\u1072}{\u1085}{\u1086}{\u1074}}{\cf15 "},{\cf1  }{\cf15 "}{\cf15 {\u1052}{\u1086}{\u1088}{\u1092}{\u1080}{\u1081}}{\cf15 "});{\cf1 \par
+}{\cf1     }Dibenko.catalog.add({\cf6 2018},{\cf1  }{\cf15 "}{\cf15 {\u1044}{\u1077}{\u1085}{\u1080}{\u1089} {\u1042}{\u1080}{\u1083}{\u1100}{\u1085}{\u1077}{\u1074}}{\cf15 "},{\cf1  }{\cf15 "}{\cf15 {\u1041}{\u1077}{\u1075}{\u1091}{\u1097}{\u1080}{\u1081} {\u1074} {\u1083}{\u1072}{\u1073}{\u1080}{\u1088}{\u1080}{\u1085}{\u1090}{\u1077}}{\cf15 "});{\cf1 \par
+}{\cf1     }Dibenko.catalog.add({\cf6 2000},{\cf1  }{\cf15 "}{\cf15 {\u1057}{\u1090}{\u1080}{\u1074}{\u1077}{\u1085} {\u1057}{\u1087}{\u1080}{\u1083}{\u1073}{\u1077}{\u1088}{\u1075}}{\cf15 "},{\cf1  }{\cf15 "}{\cf15 {\u1057}{\u1087}{\u1080}{\u1089}{\u1086}{\u1082} {\u1064}{\u1080}{\u1085}{\u1076}{\u1083}{\u1077}{\u1088}{\u1072}}{\cf15 "});{\cf1 \par
+}{\cf1     }Dibenko.catalog.add({\cf6 2014},{\cf1  }{\cf15 "}{\cf15 {\u1040}{\u1083}{\u1077}{\u1082}{\u1089}{\u1077}{\u1081} {\u1059}{\u1095}{\u1080}{\u1090}{\u1077}{\u1083}{\u1100}}{\cf15 "},{\cf1  }{\cf15 "}{\cf15 {\u1050}{\u1080}{\u1089}{\u1083}{\u1086}{\u1088}{\u1086}{\u1076}}{\cf15 "});{\cf1 \par
+}{\cf1     }Dibenko.catalog.add({\cf6 2016},{\cf1  }{\cf15 "}{\cf15 {\u1044}{\u1101}{\u1074}{\u1080}{\u1076} {\u1060}{\u1080}{\u1085}{\u1095}{\u1077}{\u1088}}{\cf15 "},{\cf1  }{\cf15 "}{\cf15 {\u1057}{\u1086}{\u1094}{\u1080}{\u1072}{\u1083}{\u1100}{\u1085}{\u1072}{\u1103} {\u1089}{\u1077}{\u1090}{\u1100}}{\cf15 "});{\cf1 \par
+}{\cf1     }Dibenko.catalog.add({\cf6 2019},{\cf1  }{\cf15 "}{\cf15 {\u1044}{\u1101}{\u1074}{\u1080}{\u1076} {\u1060}{\u1080}{\u1085}{\u1095}{\u1077}{\u1088}}{\cf15 "},{\cf1  }{\cf15 "}{\cf15 {\u1052}{\u1072}{\u1085}{\u1082}}{\cf15 "});{\cf1 \par
+}{\cf1     }Dibenko.catalog.add({\cf6 2005},{\cf1  }{\cf15 "}{\cf15 {\u1060}{\u1088}{\u1101}{\u1085}{\u1082} {\u1052}{\u1072}{\u1088}{\u1096}{\u1072}{\u1083}{\u1083}}{\cf15 "},{\cf1  }{\cf15 "}{\cf15 {\u1055}{\u1086}{\u1089}{\u1083}{\u1077}{\u1076}{\u1085}{\u1080}{\u1081} {\u1089}{\u1072}{\u1084}{\u1091}{\u1088}{\u1072}{\u1081}}{\cf15 "});{\cf1 \par
+}{\cf1 \par
+}{\cf1     }Nevskiy.catalog.add({\cf6 1997},{\cf1  }{\cf15 "}{\cf15 {\u1060}{\u1088}{\u1101}{\u1085}{\u1082} {\u1044}{\u1072}{\u1088}{\u1072}{\u1073}{\u1086}{\u1085}{\u1090}}{\cf15 "},{\cf1  }{\cf15 "}{\cf15 {\u1058}{\u1077}{\u1084}{\u1085}{\u1072}{\u1103} {\u1073}{\u1072}{\u1096}{\u1085}{\u1103}}{\cf15 "}{\cf1      });{\cf1 \par
+}{\cf1     }Nevskiy.catalog.add({\cf6 1990},{\cf1  }{\cf15 "}{\cf15 {\u1044}{\u1101}{\u1074}{\u1080}{\u1076} {\u1050}{\u1088}{\u1086}{\u1085}{\u1077}{\u1085}{\u1073}{\u1077}{\u1088}{\u1075}}{\cf15 "},{\cf1  }{\cf15 "}{\cf15 {\u1048}{\u1089}{\u1090}{\u1086}{\u1088}{\u1080}{\u1103} {\u1085}{\u1072}{\u1089}{\u1080}{\u1083}{\u1080}{\u1103}}{\cf15 "});{\cf1 \par
+}{\cf1     }Nevskiy.catalog.add({\cf6 1999},{\cf15 "}{\cf15 {\u1053}{\u1072}{\u1081}{\u1090} {\u1064}{\u1100}{\u1103}{\u1084}{\u1072}{\u1083}{\u1072}{\u1085}}{\cf15 "},{\cf1  }{\cf15 "}{\cf15 {\u1064}{\u1077}{\u1089}{\u1090}{\u1086}{\u1077} {\u1095}{\u1091}{\u1074}{\u1089}{\u1090}{\u1074}{\u1086}}{\cf15 "}{\cf1  });{\cf1 \par
+}{\cf1     }Nevskiy.catalog.add({\cf6 2006},{\cf1  }{\cf15 "}{\cf15 {\u1050}{\u1074}{\u1077}{\u1085}{\u1090}{\u1080}{\u1085} {\u1058}{\u1072}{\u1088}{\u1072}{\u1085}{\u1090}{\u1080}{\u1085}{\u1086}}{\cf15 "},{\cf1  }{\cf15 "}{\cf15 {\u1059}{\u1073}{\u1080}{\u1090}{\u1100} {\u1041}{\u1080}{\u1083}{\u1083}{\u1072}}{\cf15 "});{\cf1 \par
+}{\cf1     }Nevskiy.catalog.add({\cf6 2013},{\cf1  }{\cf15 "}{\cf15 {\u1040}{\u1083}{\u1077}{\u1082}{\u1089}{\u1077}{\u1081} {\u1041}{\u1072}{\u1083}{\u1072}{\u1073}{\u1072}{\u1085}{\u1086}{\u1074}}{\cf15 "},{\cf1  }{\cf15 "}{\cf15 {\u1052}{\u1086}{\u1088}{\u1092}{\u1080}{\u1081}}{\cf15 "});{\cf1 \par
+}{\cf1     }Nevskiy.catalog.add({\cf6 2018},{\cf1  }{\cf15 "}{\cf15 {\u1044}{\u1077}{\u1085}{\u1080}{\u1089} {\u1042}{\u1080}{\u1083}{\u1100}{\u1085}{\u1077}{\u1074}}{\cf15 "},{\cf1  }{\cf15 "}{\cf15 {\u1041}{\u1077}{\u1075}{\u1091}{\u1097}{\u1080}{\u1081} {\u1074} {\u1083}{\u1072}{\u1073}{\u1080}{\u1088}{\u1080}{\u1085}{\u1090}{\u1077}}{\cf15 "});{\cf1 \par
+}{\cf1     }Nevskiy.catalog.add({\cf6 2000},{\cf1  }{\cf15 "}{\cf15 {\u1057}{\u1090}{\u1080}{\u1074}{\u1077}{\u1085} {\u1057}{\u1087}{\u1080}{\u1083}{\u1073}{\u1077}{\u1088}{\u1075}}{\cf15 "},{\cf1  }{\cf15 "}{\cf15 {\u1057}{\u1087}{\u1080}{\u1089}{\u1086}{\u1082} {\u1064}{\u1080}{\u1085}{\u1076}{\u1083}{\u1077}{\u1088}{\u1072}}{\cf15 "});{\cf1 \par
+}{\cf1     }Nevskiy.catalog.add({\cf6 2014},{\cf1  }{\cf15 "}{\cf15 {\u1040}{\u1083}{\u1077}{\u1082}{\u1089}{\u1077}{\u1081} {\u1059}{\u1095}{\u1080}{\u1090}{\u1077}{\u1083}{\u1100}}{\cf15 "},{\cf1  }{\cf15 "}{\cf15 {\u1050}{\u1080}{\u1089}{\u1083}{\u1086}{\u1088}{\u1086}{\u1076}}{\cf15 "});{\cf1 \par
+}{\cf1     }Nevskiy.catalog.add({\cf6 2016},{\cf1  }{\cf15 "}{\cf15 {\u1044}{\u1101}{\u1074}{\u1080}{\u1076} {\u1060}{\u1080}{\u1085}{\u1095}{\u1077}{\u1088}}{\cf15 "},{\cf1  }{\cf15 "}{\cf15 {\u1057}{\u1086}{\u1094}{\u1080}{\u1072}{\u1083}{\u1100}{\u1085}{\u1072}{\u1103} {\u1089}{\u1077}{\u1090}{\u1100}}{\cf15 "});{\cf1 \par
+}{\cf1     }Nevskiy.catalog.add({\cf6 2019},{\cf1  }{\cf15 "}{\cf15 {\u1044}{\u1101}{\u1074}{\u1080}{\u1076} {\u1060}{\u1080}{\u1085}{\u1095}{\u1077}{\u1088}}{\cf15 "},{\cf1  }{\cf15 "}{\cf15 {\u1052}{\u1072}{\u1085}{\u1082}}{\cf15 "});{\cf1 \par
+}{\cf1 \par
+}{\cf1     }ui{\cf6 -}{\cf6 >}label_welcome{\cf6 -}{\cf6 >}setHidden({\cf6 1});{\cf1 \par
+}{\cf1     }ui{\cf6 -}{\cf6 >}groupBox_logs{\cf6 -}{\cf6 >}setHidden({\cf6 1});{\cf1 \par
+}{\cf1     }ui{\cf6 -}{\cf6 >}groupBox_registration{\cf6 -}{\cf6 >}setHidden({\cf6 1});{\cf1 \par
+}{\cf1     }ui{\cf6 -}{\cf6 >}pushButton_quit{\cf6 -}{\cf6 >}setHidden({\cf6 1});{\cf1 \par
+}{\cf1     }update_films(ui);{\cf1 \par
+}{\cf1 \par
+}\}{\cf1 \par
+}{\cf1 \par
+}{\cf1 \par
+}{\cf1 \par
+}Widget{\cf6 :}{\cf6 :}{\cf6 ~}Widget(){\cf1 \par
+}\{{\cf1 \par
+}{\cf1     }{\cf4\b delete}{\cf1  }ui;{\cf1 \par
+}\}{\cf1 \par
+}{\cf1 \par
+}{\cf1 \par
+}{\cf1 \par
+}{\cf5 void}{\cf1  }Widget{\cf6 :}{\cf6 :}on_pushButton_check_cost_clicked(){\cf1 \par
+}\{{\cf1 \par
+}{\cf1     }{\cf5 double}{\cf1  }cost;{\cf1 \par
+}{\cf1     }{\cf4\b auto}{\cf1  }rent{\cf1  }{\cf6 =}{\cf1  }{\cf4\b new}{\cf1  }Rental({\cf4\b new}{\cf1  }DailyRentalStrategy());{\cf1 \par
+}{\cf1     }{\cf5 int}{\cf1  }period{\cf1  }{\cf6 =}{\cf1  }ui{\cf6 -}{\cf6 >}comboBox_period{\cf6 -}{\cf6 >}currentIndex();{\cf1 \par
+}{\cf1     }{\cf4\b switch}{\cf1  }(period){\cf1  }\{{\cf1 \par
+}{\cf1     }{\cf4\b case}{\cf1  }{\cf6 0}:{\cf1 \par
+}{\cf1         }rent{\cf1  }{\cf6 =}{\cf1  }{\cf4\b new}{\cf1  }Rental({\cf4\b new}{\cf1  }DailyRentalStrategy());{\cf1 \par
+}{\cf1         }cost{\cf1  }{\cf6 =}{\cf1  }rent{\cf6 -}{\cf6 >}CalculateRentalCost({\cf6 1});{\cf1 \par
+}{\cf1         }{\cf4\b break};{\cf1 \par
+}{\cf1     }{\cf4\b case}{\cf1  }{\cf6 1}:{\cf1 \par
+}{\cf1          }rent{\cf1  }{\cf6 =}{\cf1  }{\cf4\b new}{\cf1  }Rental({\cf4\b new}{\cf1  }DailyRentalStrategy());{\cf1 \par
+}{\cf1         }cost{\cf1  }{\cf6 =}{\cf1  }rent{\cf6 -}{\cf6 >}CalculateRentalCost({\cf6 2});{\cf1 \par
+}{\cf1         }{\cf4\b break};{\cf1 \par
+}{\cf1     }{\cf4\b case}{\cf1  }{\cf6 2}:{\cf1 \par
+}{\cf1         }rent{\cf1  }{\cf6 =}{\cf1  }{\cf4\b new}{\cf1  }Rental({\cf4\b new}{\cf1  }WeeklyRentalStrategy());{\cf1 \par
+}{\cf1         }cost{\cf1  }{\cf6 =}{\cf1  }rent{\cf6 -}{\cf6 >}CalculateRentalCost({\cf6 1});{\cf1 \par
+}{\cf1         }{\cf4\b break};{\cf1 \par
+}{\cf1     }{\cf4\b default}{\cf6 :}{\cf1 \par
+}{\cf1         }{\cf4\b break};{\cf1 \par
+}{\cf1     }\}{\cf1 \par
+}{\cf1 \par
+}{\cf1     }ui{\cf6 -}{\cf6 >}label_cost{\cf6 -}{\cf6 >}setText(QString{\cf6 :}{\cf6 :}number(cost));{\cf1 \par
+}\}{\cf1 \par
+}{\cf1 \par
+}{\cf5 void}{\cf1  }Widget{\cf6 :}{\cf6 :}on_pushButton_take_clicked(){\cf1 \par
+}\{{\cf1 \par
+}{\cf1     }shop{\cf1  }{\cf6 *}{\cf1  }current;{\cf1 \par
+}{\cf1     }{\cf4\b if}(ui{\cf6 -}{\cf6 >}comboBox__shop_select{\cf6 -}{\cf6 >}currentIndex(){\cf1  }{\cf6 =}{\cf6 =}{\cf1  }{\cf6 0})\{{\cf1 \par
+}{\cf1       }current{\cf1  }{\cf6 =}{\cf6 &}Dibenko;{\cf1 \par
+}{\cf1     }\}{\cf1 \par
+}{\cf1     }{\cf4\b else}\{{\cf1 \par
+}{\cf1         }current{\cf1  }{\cf6 =}{\cf6 &}Nevskiy;{\cf1 \par
+}{\cf1     }\}{\cf1 \par
+}{\cf1     }std{\cf6 :}{\cf6 :}string{\cf1  }name{\cf1  }{\cf6 =}cur_user;{\cf1 \par
+}{\cf1     }{\cf4\b if}(name{\cf6 =}{\cf6 =}{\cf15 "}{\cf15 "}){\cf1  }\{{\cf1 \par
+}{\cf1         }QMessageBox{\cf1  }msgBox;{\cf1 \par
+}{\cf1         }msgBox.setText({\cf15 "}{\cf15 {\u1042}{\u1099} {\u1085}{\u1077} {\u1087}{\u1088}{\u1086}{\u1096}{\u1083}{\u1080} {\u1088}{\u1077}{\u1075}{\u1080}{\u1089}{\u1090}{\u1088}{\u1072}{\u1094}{\u1080}{\u1102}}{\cf15 "});{\cf1 \par
+}{\cf1         }msgBox.exec();{\cf1 \par
+}{\cf1         }{\cf4\b return};{\cf1 \par
+}{\cf1     }\}{\cf1 \par
+}{\cf1 \par
+}{\cf1 \par
+}{\cf1     }subscriber{\cf6 *}{\cf1  }sub{\cf1  }{\cf6 =}{\cf1  }subs.find(name);{\cf1 \par
+}{\cf1     }movie{\cf6 *}{\cf1  }mov{\cf1  }{\cf6 =}{\cf1  }current{\cf6 -}{\cf6 >}catalog.get(ui{\cf6 -}{\cf6 >}comboBox_film{\cf6 -}{\cf6 >}currentIndex());{\cf1 \par
+}{\cf1     }info{\cf1  }{\cf6 *}{\cf1  }input{\cf1  }{\cf6 =}{\cf1  }{\cf4\b new}{\cf1  }info(mov,{\cf1  }sub);{\cf1 \par
+}{\cf1     }RM.add(input);{\cf1 \par
+}{\cf1 \par
+}{\cf1     }ui{\cf6 -}{\cf6 >}comboBox_film_return{\cf6 -}{\cf6 >}clear();{\cf1 \par
+}{\cf1 \par
+}{\cf1     }sub{\cf1  }{\cf6 =}{\cf1  }subs.find(name);{\cf1 \par
+}{\cf1     }{\cf4\b if}{\cf1  }(sub{\cf6 =}{\cf6 =}{\cf4\b nullptr}){\cf1  }{\cf4\b return};{\cf1 \par
+}{\cf1 \par
+}{\cf1     }info{\cf6 *}{\cf1  }cur{\cf1  }{\cf6 =}{\cf1  }RM.head;{\cf1 \par
+}{\cf1     }std{\cf6 :}{\cf6 :}string{\cf1  }res{\cf1  };{\cf1 \par
+}{\cf1     }{\cf4\b while}{\cf1  }(cur)\{{\cf1 \par
+}{\cf1         }{\cf4\b if}(cur{\cf6 -}{\cf6 >}renterId{\cf1  }{\cf6 =}{\cf6 =}{\cf1  }sub{\cf6 -}{\cf6 >}id){\cf1 \par
+}{\cf1         }\{res{\cf6 =}{\cf1  }cur{\cf6 -}{\cf6 >}film_name;{\cf1 \par
+}{\cf1         }ui{\cf6 -}{\cf6 >}comboBox_film_return{\cf6 -}{\cf6 >}addItem(QString{\cf6 :}{\cf6 :}fromStdString(res));\}{\cf1 \par
+}{\cf1         }cur{\cf1  }{\cf6 =}{\cf1  }cur{\cf6 -}{\cf6 >}next;{\cf1 \par
+}{\cf1     }\}{\cf1 \par
+}{\cf1 \par
+}{\cf1    }{\cf2\i // std::string addition = mov->name;\par
+}{\cf1    }{\cf2\i // ui->comboBox_film_return->addItem(QString::fromStdString(addition));\par
+}\}{\cf1 \par
+}{\cf1 \par
+}{\cf1 \par
+}{\cf1 \par
+}{\cf5 void}{\cf1  }Widget{\cf6 :}{\cf6 :}on_pushButton_return_clicked(){\cf1 \par
+}\{{\cf1 \par
+}{\cf1     }std{\cf6 :}{\cf6 :}string{\cf1  }name{\cf1  }{\cf6 =}{\cf1  }cur_user;{\cf1 \par
+}{\cf1     }{\cf4\b if}(name{\cf6 =}{\cf6 =}{\cf15 "}{\cf15 "}){\cf1  }\{{\cf1 \par
+}{\cf1         }QMessageBox{\cf1  }msgBox;{\cf1 \par
+}{\cf1         }msgBox.setText({\cf15 "}{\cf15 {\u1042}{\u1099} {\u1085}{\u1077} {\u1087}{\u1088}{\u1086}{\u1096}{\u1083}{\u1080} {\u1088}{\u1077}{\u1075}{\u1080}{\u1089}{\u1090}{\u1088}{\u1072}{\u1094}{\u1080}{\u1102}}{\cf15 "});{\cf1 \par
+}{\cf1         }msgBox.exec();{\cf1 \par
+}{\cf1         }{\cf4\b return};{\cf1 \par
+}{\cf1     }\}{\cf1 \par
+}{\cf1     }subscriber{\cf6 *}{\cf1  }sub{\cf1  }{\cf6 =}{\cf1  }subs.find(name);{\cf1 \par
+}{\cf1     }std{\cf6 :}{\cf6 :}string{\cf1  }mov{\cf1  }{\cf6 =}{\cf1  }ui{\cf6 -}{\cf6 >}comboBox_film_return{\cf6 -}{\cf6 >}currentText().toStdString();{\cf1 \par
+}{\cf1 \par
+}{\cf1 \par
+}{\cf1     }RM.return_film(mov,{\cf1  }sub);{\cf1 \par
+}{\cf1 \par
+}{\cf1     }info{\cf6 *}{\cf1  }cur{\cf1  }{\cf6 =}{\cf1  }RM.head;{\cf1 \par
+}{\cf1     }std{\cf6 :}{\cf6 :}string{\cf1  }res{\cf1  };{\cf1 \par
+}{\cf1     }ui{\cf6 -}{\cf6 >}comboBox_film_return{\cf6 -}{\cf6 >}clear();{\cf1 \par
+}{\cf1     }{\cf4\b while}{\cf1  }(cur)\{{\cf1 \par
+}{\cf1         }{\cf4\b if}(cur{\cf6 -}{\cf6 >}renterId{\cf1  }{\cf6 =}{\cf6 =}{\cf1  }sub{\cf6 -}{\cf6 >}id){\cf1 \par
+}{\cf1         }\{res{\cf6 =}{\cf1  }cur{\cf6 -}{\cf6 >}film_name;{\cf1 \par
+}{\cf1         }ui{\cf6 -}{\cf6 >}comboBox_film_return{\cf6 -}{\cf6 >}addItem(QString{\cf6 :}{\cf6 :}fromStdString(res));\}{\cf1 \par
+}{\cf1         }cur{\cf1  }{\cf6 =}{\cf1  }cur{\cf6 -}{\cf6 >}next;{\cf1 \par
+}{\cf1     }\}{\cf1 \par
+}{\cf1    }{\cf2\i // ui->comboBox_film_return->removeItem(0);\par
+}{\cf1 \par
+}\}{\cf1 \par
+}{\cf1 \par
+}{\cf5 void}{\cf1  }Widget{\cf6 :}{\cf6 :}on_pushButton_check_clicked(){\cf1 \par
+}\{{\cf1 \par
+}{\cf1 \par
+}\}{\cf1 \par
+}{\cf1 \par
+}{\cf5 void}{\cf1  }Widget{\cf6 :}{\cf6 :}on_pushButton_show_films_clicked(){\cf1 \par
+}\{{\cf1 \par
+}{\cf1     }ui{\cf6 -}{\cf6 >}label_logs{\cf6 -}{\cf6 >}clear();{\cf1 \par
+}{\cf1     }std{\cf6 :}{\cf6 :}string{\cf1  }outp{\cf1  }{\cf6 =}{\cf1  }{\cf15 "}{\cf15 {\u1050}{\u1083}{\u1072}{\u1089}{\u1089} {\u1060}{\u1080}{\u1083}{\u1100}{\u1084}{\u1086}{\u1074}:}{\cf17\b \\n}{\cf15 id}{\cf17\b \\t}{\cf15 {\u1053}{\u1072}{\u1079}{\u1074}{\u1072}{\u1085}{\u1080}{\u1077}}{\cf17\b \\t}{\cf15 {\u1040}{\u1074}{\u1090}{\u1086}{\u1088}}{\cf17\b \\t}{\cf17\b \\t}{\cf15 {\u1075}{\u1086}{\u1076}}{\cf15 "};{\cf1 \par
+}{\cf1 \par
+}{\cf1     }shop{\cf1  }{\cf6 *}{\cf1  }current;{\cf1 \par
+}{\cf1     }{\cf4\b if}(ui{\cf6 -}{\cf6 >}comboBox__shop_select{\cf6 -}{\cf6 >}currentIndex(){\cf1  }{\cf6 =}{\cf6 =}{\cf1  }{\cf6 0})\{{\cf1 \par
+}{\cf1       }current{\cf1  }{\cf6 =}{\cf6 &}Dibenko;{\cf1 \par
+}{\cf1     }\}{\cf1 \par
+}{\cf1     }{\cf4\b else}\{{\cf1 \par
+}{\cf1         }current{\cf1  }{\cf6 =}{\cf6 &}Nevskiy;{\cf1 \par
+}{\cf1     }\}{\cf1 \par
+}{\cf1 \par
+}{\cf1     }{\cf4\b for}({\cf5 int}{\cf1  }i{\cf1  }{\cf6 =}{\cf1  }{\cf6 0};{\cf1  }i{\cf6 <}current{\cf6 -}{\cf6 >}catalog.get_length();i{\cf6 +}{\cf6 +})\{{\cf1 \par
+}{\cf1         }outp{\cf6 +}{\cf6 =}{\cf15 "}{\cf17\b \\n}{\cf15  }{\cf15 "}{\cf6 +}std{\cf6 :}{\cf6 :}to_string(current{\cf6 -}{\cf6 >}catalog.get(i){\cf6 -}{\cf6 >}id){\cf6 +}{\cf15 "}{\cf17\b \\t}{\cf15 "}{\cf6 +}current{\cf6 -}{\cf6 >}catalog.get(i){\cf6 -}{\cf6 >}name{\cf6 +}{\cf15 "}{\cf17\b \\t}{\cf15 "}{\cf6 +}current{\cf6 -}{\cf6 >}catalog.get(i){\cf6 -}{\cf6 >}author{\cf6 +}{\cf15 "}{\cf17\b \\t}{\cf15 "}{\cf6 +}std{\cf6 :}{\cf6 :}to_string(current{\cf6 -}{\cf6 >}catalog.get(i){\cf6 -}{\cf6 >}year);{\cf1 \par
+}{\cf1     }\}{\cf1 \par
+}{\cf1     }ui{\cf6 -}{\cf6 >}label_logs{\cf6 -}{\cf6 >}setText(QString{\cf6 :}{\cf6 :}fromStdString(outp));{\cf1 \par
+}\}{\cf1 \par
+}{\cf1 \par
+}{\cf5 void}{\cf1  }Widget{\cf6 :}{\cf6 :}on_pushButton_show_films_2_clicked(){\cf1 \par
+}\{{\cf1 \par
+}{\cf1     }ui{\cf6 -}{\cf6 >}label_logs{\cf6 -}{\cf6 >}clear();{\cf1 \par
+}{\cf1     }std{\cf6 :}{\cf6 :}string{\cf1  }outp{\cf1  }{\cf6 =}{\cf1  }{\cf15 "}{\cf15 {\u1050}{\u1083}{\u1072}{\u1089}{\u1089} {\u1102}{\u1079}{\u1077}{\u1088}{\u1086}{\u1074}:}{\cf17\b \\n}{\cf15 id}{\cf17\b \\t}{\cf15 {\u1060}{\u1048}{\u1054}}{\cf15 "};{\cf1 \par
+}{\cf1 \par
+}{\cf1     }{\cf4\b for}({\cf5 int}{\cf1  }i{\cf1  }{\cf6 =}{\cf1  }{\cf6 0};{\cf1  }i{\cf6 <}subs.get_length();i{\cf6 +}{\cf6 +})\{{\cf1 \par
+}{\cf1         }outp{\cf6 +}{\cf6 =}{\cf15 "}{\cf17\b \\n}{\cf15  }{\cf15 "}{\cf6 +}std{\cf6 :}{\cf6 :}to_string(subs.get(i){\cf6 -}{\cf6 >}id){\cf6 +}{\cf15 "}{\cf17\b \\t}{\cf15 "}{\cf6 +}subs.get(i){\cf6 -}{\cf6 >}fio;{\cf1 \par
+}{\cf1     }\}{\cf1 \par
+}{\cf1     }ui{\cf6 -}{\cf6 >}label_logs{\cf6 -}{\cf6 >}setText(QString{\cf6 :}{\cf6 :}fromStdString(outp));{\cf1 \par
+}\}{\cf1 \par
+}{\cf1 \par
+}{\cf5 void}{\cf1  }Widget{\cf6 :}{\cf6 :}on_pushButton_show_films_3_clicked(){\cf1 \par
+}\{{\cf1 \par
+}{\cf1     }ui{\cf6 -}{\cf6 >}label_logs{\cf6 -}{\cf6 >}clear();{\cf1 \par
+}{\cf1     }std{\cf6 :}{\cf6 :}string{\cf1  }outp{\cf1  }{\cf6 =}{\cf1  }{\cf15 "}{\cf15 {\u1050}{\u1083}{\u1072}{\u1089}{\u1089} {\u1060}{\u1080}{\u1083}{\u1100}{\u1084}{\u1086}{\u1074}:}{\cf17\b \\n}{\cf15 idOP}{\cf17\b \\t}{\cf15 Renter id}{\cf17\b \\t}{\cf15 {\u1053}{\u1072}{\u1079}{\u1074} {\u1092}{\u1080}{\u1083}{\u1100}{\u1084}{\u1072}}{\cf17\b \\t}{\cf15 {\u1044}{\u1072}{\u1090}{\u1072}}{\cf15 "};{\cf1 \par
+}{\cf1 \par
+}{\cf1     }{\cf4\b for}({\cf5 int}{\cf1  }i{\cf1  }{\cf6 =}{\cf1  }{\cf6 0};{\cf1  }i{\cf6 <}RM.get_length();i{\cf6 +}{\cf6 +})\{{\cf1 \par
+}{\cf1         }outp{\cf6 +}{\cf6 =}{\cf15 "}{\cf17\b \\n}{\cf15  }{\cf15 "}{\cf6 +}std{\cf6 :}{\cf6 :}to_string(RM.get(i){\cf6 -}{\cf6 >}OperId){\cf6 +}{\cf15 "}{\cf17\b \\t}{\cf15 "}{\cf6 +}std{\cf6 :}{\cf6 :}to_string(RM.get(i){\cf6 -}{\cf6 >}renterId){\cf6 +}{\cf15 "}{\cf17\b \\t}{\cf15 "}{\cf6 +}RM.get(i){\cf6 -}{\cf6 >}film_name{\cf6 +}{\cf15 "}{\cf17\b \\t}{\cf15 "}{\cf6 +}RM.get(i){\cf6 -}{\cf6 >}date_return;{\cf1 \par
+}{\cf1     }\}{\cf1 \par
+}{\cf1     }ui{\cf6 -}{\cf6 >}label_logs{\cf6 -}{\cf6 >}setText(QString{\cf6 :}{\cf6 :}fromStdString(outp));{\cf1 \par
+}\}{\cf1 \par
+}{\cf1 \par
+}{\cf5 void}{\cf1  }Widget{\cf6 :}{\cf6 :}on_pushButton_clicked(){\cf1 \par
+}\{{\cf1 \par
+}{\cf1     }ui{\cf6 -}{\cf6 >}groupBox_registration{\cf6 -}{\cf6 >}setHidden({\cf6 0});{\cf1 \par
+}{\cf1 \par
+}\}{\cf1 \par
+}{\cf1 \par
+}{\cf5 void}{\cf1  }Widget{\cf6 :}{\cf6 :}on_pushButton_registrate_clicked(){\cf1 \par
+}\{{\cf1 \par
+}{\cf1     }std{\cf6 :}{\cf6 :}string{\cf1  }name{\cf1  }{\cf6 =}{\cf1  }ui{\cf6 -}{\cf6 >}lineEdit_registration{\cf6 -}{\cf6 >}text().toStdString();{\cf1 \par
+}{\cf1     }subs.registers(name);{\cf1 \par
+}{\cf1     }ui{\cf6 -}{\cf6 >}groupBox_registration{\cf6 -}{\cf6 >}setHidden({\cf6 1});{\cf1 \par
+}{\cf1     }ui{\cf6 -}{\cf6 >}label_welcome{\cf6 -}{\cf6 >}setText(QString{\cf6 :}{\cf6 :}fromStdString({\cf15 "}{\cf15 {\u1044}{\u1086}{\u1073}{\u1088}{\u1086} {\u1087}{\u1086}{\u1078}{\u1072}{\u1083}{\u1086}{\u1074}{\u1072}{\u1090}{\u1100}, }{\cf15 "}{\cf6 +}name));{\cf1 \par
+}{\cf1     }ui{\cf6 -}{\cf6 >}label_welcome{\cf6 -}{\cf6 >}setHidden({\cf6 0});{\cf1 \par
+}{\cf1     }ui{\cf6 -}{\cf6 >}pushButton{\cf6 -}{\cf6 >}setHidden({\cf6 1});{\cf1 \par
+}{\cf1     }cur_user{\cf1  }{\cf6 =}{\cf1  }name;{\cf1 \par
+}{\cf1     }ui{\cf6 -}{\cf6 >}pushButton_quit{\cf6 -}{\cf6 >}setHidden({\cf6 0});{\cf1 \par
+}\}{\cf1 \par
+}{\cf1 \par
+}{\cf5 void}{\cf1  }Widget{\cf6 :}{\cf6 :}on_pushButton_2_clicked(){\cf1 \par
+}\{{\cf1 \par
+}{\cf1     }{\cf4\b if}{\cf1  }(ui{\cf6 -}{\cf6 >}groupBox_logs{\cf6 -}{\cf6 >}isHidden())\{{\cf1 \par
+}{\cf1         }ui{\cf6 -}{\cf6 >}groupBox_logs{\cf6 -}{\cf6 >}setHidden({\cf6 0});{\cf1 \par
+}{\cf1         }ui{\cf6 -}{\cf6 >}groupBox_ArendaTake{\cf6 -}{\cf6 >}setHidden({\cf6 1});{\cf1 \par
+}{\cf1         }ui{\cf6 -}{\cf6 >}groupBox_ArendaReturn{\cf6 -}{\cf6 >}setHidden({\cf6 1});{\cf1 \par
+}{\cf1         }ui{\cf6 -}{\cf6 >}pushButton_2{\cf6 -}{\cf6 >}setText(QString{\cf6 :}{\cf6 :}fromStdString({\cf15 "}{\cf15 {\u1057}{\u1082}{\u1088}{\u1099}{\u1090}{\u1100} {\u1083}{\u1086}{\u1075}{\u1080}}{\cf15 "}));{\cf1 \par
+}{\cf1     }\}{\cf1 \par
+}{\cf1     }{\cf4\b else}\{{\cf1 \par
+}{\cf1         }ui{\cf6 -}{\cf6 >}groupBox_logs{\cf6 -}{\cf6 >}setHidden({\cf6 1});{\cf1 \par
+}{\cf1         }ui{\cf6 -}{\cf6 >}pushButton_2{\cf6 -}{\cf6 >}setText(QString{\cf6 :}{\cf6 :}fromStdString({\cf15 "}{\cf15 {\u1055}{\u1086}{\u1082}{\u1072}{\u1079}{\u1072}{\u1090}{\u1100} {\u1083}{\u1086}{\u1075}{\u1080}}{\cf15 "}));{\cf1 \par
+}{\cf1         }ui{\cf6 -}{\cf6 >}groupBox_ArendaTake{\cf6 -}{\cf6 >}setHidden({\cf6 0});{\cf1 \par
+}{\cf1         }ui{\cf6 -}{\cf6 >}groupBox_ArendaReturn{\cf6 -}{\cf6 >}setHidden({\cf6 0});{\cf1 \par
+}{\cf1     }\}{\cf1 \par
+}{\cf1 \par
+}\}{\cf1 \par
+}{\cf1 \par
+}{\cf5 void}{\cf1  }Widget{\cf6 :}{\cf6 :}on_comboBox__shop_select_currentIndexChanged({\cf5 int}{\cf1  }index){\cf1 \par
+}\{{\cf1 \par
+}{\cf1     }update_films(ui);{\cf1 \par
+}\}{\cf1 \par
+}{\cf1 \par
+}{\cf5 void}{\cf1  }Widget{\cf6 :}{\cf6 :}on_pushButton_quit_clicked(){\cf1 \par
+}\{{\cf1 \par
+}{\cf1     }cur_user{\cf6 =}{\cf15 "}{\cf15 "};{\cf1 \par
+}{\cf1     }ui{\cf6 -}{\cf6 >}pushButton_quit{\cf6 -}{\cf6 >}setHidden({\cf6 1});{\cf1 \par
+}{\cf1     }ui{\cf6 -}{\cf6 >}pushButton{\cf6 -}{\cf6 >}setHidden({\cf6 0});{\cf1 \par
+}{\cf1     }ui{\cf6 -}{\cf6 >}label_welcome{\cf6 -}{\cf6 >}setHidden({\cf6 1});{\cf1 \par
+}\}{\cf1 \par
+}{\cf1 \par
+}widget.h{\cf1 \par
+}{\cf3 #}{\cf3 ifndef WIDGET_H}{\cf3 \par
+}{\cf3 #}{\cf3 define WIDGET_H}{\cf3 \par
+}{\cf1 \par
+}{\cf3 #}{\cf3 include}{\cf1  }{\cf2\i <QWidget>}{\cf3 \par
+}{\cf3 #}{\cf3 include}{\cf1  }{\cf2\i <string>}{\cf3 \par
+}{\cf1 \par
+}{\cf4\b namespace}{\cf1  }{\cf8\b Ui}{\cf1  }\{{\cf1 \par
+}{\cf4\b class}{\cf1  }{\cf8\b Widget};{\cf1 \par
+}\}{\cf1 \par
+}{\cf1 \par
+}{\cf4\b class}{\cf1  }{\cf8\b Widget}{\cf1  }{\cf6 :}{\cf1  }{\cf4\b public}{\cf1  }QWidget{\cf1 \par
+}\{{\cf1 \par
+}{\cf1     }Q_OBJECT{\cf1 \par
+}{\cf1 \par
+}{\cf1 \par
+}{\cf4\b public}{\cf6 :}{\cf1 \par
+}{\cf1 \par
+}{\cf1     }{\cf4\b explicit}{\cf1  }Widget(QWidget{\cf1  }{\cf6 *}parent{\cf1  }{\cf6 =}{\cf1  }{\cf6 0});{\cf1 \par
+}{\cf1     }{\cf6 ~}Widget();{\cf1 \par
+}{\cf1 \par
+}{\cf4\b private}{\cf1  }slots{\cf6 :}{\cf1 \par
+}{\cf1     }{\cf5 void}{\cf1  }on_pushButton_registrate_clicked();{\cf1 \par
+}{\cf1 \par
+}{\cf1     }{\cf5 void}{\cf1  }{\cf8 on_pushButton_check_cost_clicked}();{\cf1 \par
+}{\cf1 \par
+}{\cf1     }{\cf5 void}{\cf1  }{\cf8 on_pushButton_take_clicked}();{\cf1 \par
+}{\cf1 \par
+}{\cf1 \par
+}{\cf1     }{\cf1 \par
+}{\cf1     }{\cf5 void}{\cf1  }{\cf8 on_pushButton_return_clicked}();{\cf1 \par
+}{\cf1 \par
+}{\cf1     }{\cf5 void}{\cf1  }{\cf8 on_pushButton_check_clicked}();{\cf1 \par
+}{\cf1 \par
+}{\cf1     }{\cf5 void}{\cf1  }{\cf8 on_pushButton_show_films_clicked}();{\cf1 \par
+}{\cf1 \par
+}{\cf1     }{\cf5 void}{\cf1  }{\cf8 on_pushButton_show_films_2_clicked}();{\cf1 \par
+}{\cf1 \par
+}{\cf1     }{\cf5 void}{\cf1  }{\cf8 on_pushButton_show_films_3_clicked}();{\cf1 \par
+}{\cf1 \par
+}{\cf1     }{\cf5 void}{\cf1  }{\cf8 on_pushButton_clicked}();{\cf1 \par
+}{\cf1 \par
+}{\cf1     }{\cf5 void}{\cf1  }{\cf8 on_pushButton_2_clicked}();{\cf1 \par
+}{\cf1 \par
+}{\cf1     }{\cf5 void}{\cf1  }{\cf8 on_comboBox__shop_select_currentIndexChanged}({\cf5 int}{\cf1  }index);{\cf1 \par
+}{\cf1 \par
+}{\cf1     }{\cf5 void}{\cf1  }{\cf8 on_pushButton_quit_clicked}();{\cf1 \par
+}{\cf1 \par
+}{\cf4\b private}{\cf6 :}{\cf1 \par
+}{\cf1     }Ui{\cf6 :}{\cf6 :}Widget{\cf1  }{\cf6 *}ui;{\cf1 \par
+}\};{\cf1 \par
+}{\cf1 \par
+}{\cf3 #}{\cf3 endif }{\cf2\i // WIDGET_H\par
+}}

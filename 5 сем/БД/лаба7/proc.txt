@@ -1,3 +1,5 @@
+--вставка и очистка 
+
 create OR REPLACE procedure ins_tree(ins_kind varchar(128), ins_plant date, ins_alleya varchar(128), ins_park varchar(128))
 LANGUAGE plpgsql 
 AS $$
@@ -57,12 +59,10 @@ create or replace procedure del_tree(id_t int)
 language plpgsql
 as $$
 begin
-
-	
+	declare id_all_new int = (select id_alleya from tree_alleya where id_tree = id_t);
 	begin
 	delete from tree_alleya where id_t = tree_alleya.id_tree;
 	end;
-	declare id_all_new int = (select id_alleya from tree_alleya where id_tree = id_t);
 	begin
 	if not exists (select * from tree_alleya where id_alleya=id_all_new)
 	then delete from alleya where id_alleya = id_all_new;
