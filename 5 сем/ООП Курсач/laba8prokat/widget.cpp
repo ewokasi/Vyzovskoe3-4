@@ -13,8 +13,21 @@ RentalMovies RM;
 shop Dibenko("Дыбенко");
 shop Nevskiy("Невский");
 std::string cur_user="";
+
+int mark_stars(Ui::Widget *ui, int st){
+     QCheckBox *stars[] = {ui->checkBox, ui->checkBox_2, ui->checkBox_3, ui->checkBox_4, ui->checkBox_5};
+    for (int i =0;i<5 ; i++){
+        stars[i]->setCheckState(Qt::CheckState(0));
+    }
+    for (int i =0;i<st ; i++){
+        stars[i]->setCheckState(Qt::CheckState(1));
+    }
+    return st;
+
+}
+int last_stared ;
 void update_films(Ui::Widget *ui){
-    ui->comboBox_film->clear();
+    ui->listWidget_catalog->clear();
     shop * current;
     if(ui->comboBox__shop_select->currentIndex() == 0){
       current =&Dibenko;
@@ -23,9 +36,16 @@ void update_films(Ui::Widget *ui){
         current =&Nevskiy;
     }
 
+
     for(int i = 0; i< current->catalog.get_length(); i++){
-        std::string name = current->catalog.get(i)->name + ", " + std::to_string(current->catalog.get(i)->year);
-        ui->comboBox_film->addItem(QString::fromStdString(name));
+        std::string rat = "";
+        for (int j = 0; j<3; j++){
+            rat+= std::to_string(current->catalog.get(i)->rating)[j];
+        }
+        std::string name = current->catalog.get(i)->name + ", " + std::to_string(current->catalog.get(i)->year) +' '+rat + " ⭐" ;
+
+
+        ui->listWidget_catalog->addItem(QString::fromStdString(name));
 
     }
 }
@@ -54,9 +74,7 @@ Widget::Widget(QWidget *parent) :
     Dibenko.catalog.add(2018, "Денис Вильнев", "Бегущий в лабиринте");
     Dibenko.catalog.add(2000, "Стивен Спилберг", "Список Шиндлера");
     Dibenko.catalog.add(2014, "Алексей Учитель", "Кислород");
-    Dibenko.catalog.add(2016, "Дэвид Финчер", "Социальная сеть");
-    Dibenko.catalog.add(2019, "Дэвид Финчер", "Манк");
-    Dibenko.catalog.add(2005, "Фрэнк Маршалл", "Последний самурай");
+
 
     Nevskiy.catalog.add(1997, "Фрэнк Дарабонт", "Темная башня"     );
     Nevskiy.catalog.add(1990, "Дэвид Кроненберг", "История насилия");
@@ -64,10 +82,7 @@ Widget::Widget(QWidget *parent) :
     Nevskiy.catalog.add(2006, "Квентин Тарантино", "Убить Билла");
     Nevskiy.catalog.add(2013, "Алексей Балабанов", "Морфий");
     Nevskiy.catalog.add(2018, "Денис Вильнев", "Бегущий в лабиринте");
-    Nevskiy.catalog.add(2000, "Стивен Спилберг", "Список Шиндлера");
-    Nevskiy.catalog.add(2014, "Алексей Учитель", "Кислород");
-    Nevskiy.catalog.add(2016, "Дэвид Финчер", "Социальная сеть");
-    Nevskiy.catalog.add(2019, "Дэвид Финчер", "Манк");
+
 
     ui->label_welcome->setHidden(1);
     ui->groupBox_logs->setHidden(1);
@@ -130,11 +145,11 @@ void Widget::on_pushButton_take_clicked()
 
 
     subscriber* sub = subs.find(name);
-    movie* mov = current->catalog.get(ui->comboBox_film->currentIndex());
+    movie* mov = current->catalog.get(ui->listWidget_catalog->currentRow());
     info * input = new info(mov, sub);
     RM.add(input);
 
-    ui->comboBox_film_return->clear();
+    ui->listWidget_film_return->clear();
 
     sub = subs.find(name);
     if (sub==nullptr) return;
@@ -144,12 +159,11 @@ void Widget::on_pushButton_take_clicked()
     while (cur){
         if(cur->renterId == sub->id)
         {res= cur->film_name;
-        ui->comboBox_film_return->addItem(QString::fromStdString(res));}
+        ui->listWidget_film_return->addItem(QString::fromStdString(res));}
         cur = cur->next;
     }
 
-   // std::string addition = mov->name;
-   // ui->comboBox_film_return->addItem(QString::fromStdString(addition));
+
 }
 
 
@@ -164,21 +178,21 @@ void Widget::on_pushButton_return_clicked()
         return;
     }
     subscriber* sub = subs.find(name);
-    std::string mov = ui->comboBox_film_return->currentText().toStdString();
+    std::string mov = ui->listWidget_film_return->currentItem()->text().toStdString();
 
 
     RM.return_film(mov, sub);
 
     info* cur = RM.head;
     std::string res ;
-    ui->comboBox_film_return->clear();
+    ui->listWidget_film_return->clear();
     while (cur){
         if(cur->renterId == sub->id)
         {res= cur->film_name;
-        ui->comboBox_film_return->addItem(QString::fromStdString(res));}
+        ui->listWidget_film_return->addItem(QString::fromStdString(res));}
         cur = cur->next;
     }
-   // ui->comboBox_film_return->removeItem(0);
+
 
 }
 
@@ -188,9 +202,11 @@ void Widget::on_pushButton_check_clicked()
 }
 
 void Widget::on_pushButton_show_films_clicked()
+
 {
-    ui->label_logs->clear();
-    std::string outp = "Класс Фильмов:\nid\tНазвание\tАвтор\t\tгод";
+
+
+    std::string outp = "Класс Фильмов:\nid\tНазвание\t\t\t\t\tАвтор\t\tгод";
 
     shop * current;
     if(ui->comboBox__shop_select->currentIndex() == 0){
@@ -199,33 +215,79 @@ void Widget::on_pushButton_show_films_clicked()
     else{
         current =&Nevskiy;
     }
-
+    ui->tableWidget_logs->clear();
+    ui->tableWidget_logs->setColumnCount(5);
+    QStringList headers;
+    headers<<"id" << "name" << "author"<<"year" <<"rating";
+    ui->tableWidget_logs->setHorizontalHeaderLabels(headers);
     for(int i = 0; i<current->catalog.get_length();i++){
-        outp+="\n "+std::to_string(current->catalog.get(i)->id)+"\t"+current->catalog.get(i)->name+"\t"+current->catalog.get(i)->author+"\t"+std::to_string(current->catalog.get(i)->year);
+         ui->tableWidget_logs->insertRow(i);
+            QTableWidgetItem *item=new QTableWidgetItem (QString::fromStdString(current->catalog.get(i)->name));
+            QTableWidgetItem *item2=new QTableWidgetItem (QString::fromStdString(current->catalog.get(i)->author));
+            QTableWidgetItem *item3=new QTableWidgetItem (QString::fromStdString(std::to_string(current->catalog.get(i)->year)));
+            QTableWidgetItem *item4=new QTableWidgetItem (QString::fromStdString(std::to_string(current->catalog.get(i)->rating)));
+            QTableWidgetItem *item5=new QTableWidgetItem (QString::fromStdString(std::to_string(current->catalog.get(i)->id)));
+
+            ui->tableWidget_logs->setItem(i, 0, item5);
+            ui->tableWidget_logs->setItem(i, 1, item);
+            ui->tableWidget_logs->setItem(i, 2, item2);
+            ui->tableWidget_logs->setItem(i, 3, item3);
+            ui->tableWidget_logs->setItem(i, 4, item4);
+
+
+
     }
-    ui->label_logs->setText(QString::fromStdString(outp));
+
 }
 
 void Widget::on_pushButton_show_films_2_clicked()
 {
-    ui->label_logs->clear();
-    std::string outp = "Класс юзеров:\nid\tФИО";
 
-    for(int i = 0; i<subs.get_length();i++){
-        outp+="\n "+std::to_string(subs.get(i)->id)+"\t"+subs.get(i)->fio;
+
+
+    ui->tableWidget_logs->clear();
+    ui->tableWidget_logs->setColumnCount(2);
+    QStringList headers;
+    headers << "id" << "fio" ;
+    ui->tableWidget_logs->setHorizontalHeaderLabels(headers);
+    for(int i = 0; i< subs.get_length();i++){
+         ui->tableWidget_logs->insertRow(i);
+            QTableWidgetItem *item=new QTableWidgetItem (QString::fromStdString(std::to_string(subs.get(i)->id)));
+            QTableWidgetItem *item2=new QTableWidgetItem (QString::fromStdString(subs.get(i)->fio));
+
+            ui->tableWidget_logs->setItem(i, 0, item);
+            ui->tableWidget_logs->setItem(i, 1, item2);
+
+
     }
-    ui->label_logs->setText(QString::fromStdString(outp));
+
 }
 
 void Widget::on_pushButton_show_films_3_clicked()
 {
-    ui->label_logs->clear();
-    std::string outp = "Класс Фильмов:\nidOP\tRenter id\tНазв фильма\tДата";
 
-    for(int i = 0; i<RM.get_length();i++){
-        outp+="\n "+std::to_string(RM.get(i)->OperId)+"\t"+std::to_string(RM.get(i)->renterId)+"\t"+RM.get(i)->film_name+"\t"+RM.get(i)->date_return;
+    ui->tableWidget_logs->clear();
+    ui->tableWidget_logs->setColumnCount(4);
+    QStringList headers;
+    headers << "OperId" << "renterId" << "film_name" << "date_return";
+    ui->tableWidget_logs->setHorizontalHeaderLabels(headers);
+
+    for(int i = 0; i< subs.get_length();i++){
+         ui->tableWidget_logs->insertRow(i);
+            QTableWidgetItem *item=new QTableWidgetItem (QString::fromStdString(std::to_string(RM.get(i)->OperId)));
+            QTableWidgetItem *item2=new QTableWidgetItem (QString::fromStdString(std::to_string(RM.get(i)->renterId)));
+            QTableWidgetItem *item3=new QTableWidgetItem (QString::fromStdString(RM.get(i)->film_name));
+            QTableWidgetItem *item4=new QTableWidgetItem (QString::fromStdString(RM.get(i)->date_return));
+
+            ui->tableWidget_logs->setItem(i, 0, item);
+            ui->tableWidget_logs->setItem(i, 1, item2);
+            ui->tableWidget_logs->setItem(i, 2, item3);
+            ui->tableWidget_logs->setItem(i, 3, item4);
+
+
     }
-    ui->label_logs->setText(QString::fromStdString(outp));
+
+
 }
 
 void Widget::on_pushButton_clicked()
@@ -274,4 +336,59 @@ void Widget::on_pushButton_quit_clicked()
     ui->pushButton_quit->setHidden(1);
     ui->pushButton->setHidden(0);
     ui->label_welcome->setHidden(1);
+}
+
+void Widget::on_pushButton_3_clicked()
+{
+    std::string name = ui->lineEdit_film_name->text().toStdString();
+    std::string author = ui->lineEdit_film_author->text().toStdString();
+    std::string year = ui->lineEdit_film_year->text().toStdString();
+    shop * current;
+    if(ui->comboBox__shop_select->currentIndex() == 0){
+      current =&Dibenko;
+    }
+    else{
+        current =&Nevskiy;
+    }
+    current->catalog.add(std::stoi(year), author, name);
+}
+
+void Widget::on_checkBox_5_clicked()
+{
+
+   last_stared= mark_stars(ui, 5);
+}
+
+void Widget::on_checkBox_4_clicked()
+{
+    last_stared=mark_stars(ui, 4);
+}
+
+void Widget::on_checkBox_3_clicked()
+{
+   last_stared= mark_stars(ui, 3);
+}
+
+void Widget::on_checkBox_2_clicked()
+{
+    last_stared=mark_stars(ui, 2);
+}
+
+void Widget::on_checkBox_clicked()
+{
+   last_stared= mark_stars(ui, 1);
+}
+
+void Widget::on_pushButton_4_clicked()
+{
+    shop * current;
+    if(ui->comboBox__shop_select->currentIndex() == 0){
+      current =&Dibenko;
+    }
+    else{
+        current =&Nevskiy;
+    }
+    std::string name = ui->listWidget_film_return->currentItem()->text().toStdString();
+    current->catalog.get_by_name(name)->set_rate(last_stared);
+    update_films(ui);
 }

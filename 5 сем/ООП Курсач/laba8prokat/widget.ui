@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1225</width>
-    <height>704</height>
+    <height>1146</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -206,10 +206,10 @@ background-color: rgb(161, 161, 161);
   <widget class="QGroupBox" name="content">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>30</x>
      <y>90</y>
      <width>1141</width>
-     <height>581</height>
+     <height>1011</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -245,9 +245,9 @@ background-color: rgb(245, 245, 245);</string>
     <widget class="QLabel" name="label_enterFIO">
      <property name="geometry">
       <rect>
-       <x>100</x>
+       <x>50</x>
        <y>20</y>
-       <width>111</width>
+       <width>141</width>
        <height>21</height>
       </rect>
      </property>
@@ -300,10 +300,10 @@ background-color: rgb(245, 245, 245);</string>
    <widget class="QGroupBox" name="groupBox_logs">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>90</y>
+      <x>50</x>
+      <y>130</y>
       <width>1011</width>
-      <height>391</height>
+      <height>291</height>
      </rect>
     </property>
     <property name="font">
@@ -320,24 +320,6 @@ background-color: rgb(245, 245, 245);</string>
     <property name="title">
      <string>логи</string>
     </property>
-    <widget class="QLabel" name="label_logs">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>80</y>
-       <width>981</width>
-       <height>281</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
     <widget class="QPushButton" name="pushButton_show_films">
      <property name="geometry">
       <rect>
@@ -386,13 +368,105 @@ background-color: rgb(245, 245, 245);</string>
       <string>Посмотреть все аренды</string>
      </property>
     </widget>
+    <widget class="QLineEdit" name="lineEdit_film_name">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>390</y>
+       <width>201</width>
+       <height>31</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_film_author">
+     <property name="geometry">
+      <rect>
+       <x>270</x>
+       <y>390</y>
+       <width>171</width>
+       <height>31</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_film_year">
+     <property name="geometry">
+      <rect>
+       <x>470</x>
+       <y>390</y>
+       <width>141</width>
+       <height>31</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>430</y>
+       <width>131</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Название фильма</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>430</y>
+       <width>111</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>автор</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>490</x>
+       <y>440</y>
+       <width>47</width>
+       <height>13</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Год выпуска</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_3">
+     <property name="geometry">
+      <rect>
+       <x>700</x>
+       <y>390</y>
+       <width>93</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>добавить</string>
+     </property>
+    </widget>
+    <widget class="QTableWidget" name="tableWidget_logs">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>100</y>
+       <width>971</width>
+       <height>181</height>
+      </rect>
+     </property>
+    </widget>
    </widget>
    <widget class="QGroupBox" name="groupBox_ArendaTake">
     <property name="geometry">
      <rect>
-      <x>250</x>
+      <x>110</x>
       <y>90</y>
-      <width>311</width>
+      <width>441</width>
       <height>361</height>
      </rect>
     </property>
@@ -413,8 +487,8 @@ background-color: rgb(245, 245, 245);</string>
     <widget class="QLabel" name="label_4">
      <property name="geometry">
       <rect>
-       <x>50</x>
-       <y>220</y>
+       <x>40</x>
+       <y>270</y>
        <width>61</width>
        <height>51</height>
       </rect>
@@ -434,8 +508,8 @@ background-color: rgb(245, 245, 245);</string>
     <widget class="QPushButton" name="pushButton_check_cost">
      <property name="geometry">
       <rect>
-       <x>30</x>
-       <y>180</y>
+       <x>120</x>
+       <y>240</y>
        <width>231</width>
        <height>31</height>
       </rect>
@@ -452,8 +526,8 @@ background-color: rgb(245, 245, 245);</string>
     <widget class="QPushButton" name="pushButton_take">
      <property name="geometry">
       <rect>
-       <x>30</x>
-       <y>290</y>
+       <x>120</x>
+       <y>320</y>
        <width>231</width>
        <height>31</height>
       </rect>
@@ -470,8 +544,8 @@ background-color: rgb(245, 245, 245);</string>
     <widget class="QLabel" name="label_8">
      <property name="geometry">
       <rect>
-       <x>30</x>
-       <y>50</y>
+       <x>20</x>
+       <y>30</y>
        <width>171</width>
        <height>21</height>
       </rect>
@@ -491,8 +565,8 @@ background-color: rgb(245, 245, 245);</string>
     <widget class="QLabel" name="label_cost">
      <property name="geometry">
       <rect>
-       <x>120</x>
-       <y>230</y>
+       <x>110</x>
+       <y>280</y>
        <width>81</width>
        <height>31</height>
       </rect>
@@ -509,12 +583,12 @@ background-color: rgb(245, 245, 245);</string>
       <string>0</string>
      </property>
     </widget>
-    <widget class="QComboBox" name="comboBox_film">
+    <widget class="QComboBox" name="comboBox_period">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>80</y>
-       <width>271</width>
+       <x>20</x>
+       <y>180</y>
+       <width>391</width>
        <height>41</height>
       </rect>
      </property>
@@ -527,32 +601,24 @@ background-color: rgb(245, 245, 245);</string>
       <string notr="true">border-radius:2px;</string>
      </property>
     </widget>
-    <widget class="QComboBox" name="comboBox_period">
+    <widget class="QListWidget" name="listWidget_catalog">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>130</y>
-       <width>271</width>
-       <height>41</height>
+       <x>20</x>
+       <y>80</y>
+       <width>391</width>
+       <height>81</height>
       </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">border-radius:2px;</string>
      </property>
     </widget>
    </widget>
    <widget class="QGroupBox" name="groupBox_ArendaReturn">
     <property name="geometry">
      <rect>
-      <x>600</x>
+      <x>630</x>
       <y>90</y>
-      <width>281</width>
-      <height>181</height>
+      <width>411</width>
+      <height>441</height>
      </rect>
     </property>
     <property name="font">
@@ -593,8 +659,8 @@ background-color: rgb(245, 245, 245);
     <widget class="QPushButton" name="pushButton_return">
      <property name="geometry">
       <rect>
-       <x>60</x>
-       <y>120</y>
+       <x>120</x>
+       <y>370</y>
        <width>161</width>
        <height>41</height>
       </rect>
@@ -608,33 +674,217 @@ background-color: rgb(245, 245, 245);
       <string>Вернуть</string>
      </property>
     </widget>
-    <widget class="QComboBox" name="comboBox_film_return">
+    <widget class="QListWidget" name="listWidget_film_return">
      <property name="geometry">
       <rect>
-       <x>20</x>
+       <x>30</x>
        <y>70</y>
-       <width>231</width>
-       <height>41</height>
+       <width>331</width>
+       <height>141</height>
       </rect>
      </property>
-     <property name="font">
-      <font>
-       <pointsize>12</pointsize>
-      </font>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>230</y>
+       <width>331</width>
+       <height>121</height>
+      </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">border-radius:2px;</string>
+      <string notr="true">border:1px  solid rgb(39, 39, 39);
+
+border-radius:10px;
+background-color: rgb(245, 245, 245);</string>
      </property>
+     <property name="title">
+      <string>Оценить фильм</string>
+     </property>
+     <widget class="QCheckBox" name="checkBox">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>40</y>
+        <width>16</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: 0px
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="checkBox_2">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>40</y>
+        <width>16</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: 0px
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="checkBox_3">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>40</y>
+        <width>16</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: 0px
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="checkBox_4">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>40</y>
+        <width>16</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: 0px
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="checkBox_5">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>40</y>
+        <width>16</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: 0px
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_4">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>80</y>
+        <width>111</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>поставить </string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>20</y>
+        <width>16</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: 0</string>
+      </property>
+      <property name="text">
+       <string>⭐</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_7">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>20</y>
+        <width>16</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: 0</string>
+      </property>
+      <property name="text">
+       <string>⭐</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_9">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>20</y>
+        <width>16</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: 0</string>
+      </property>
+      <property name="text">
+       <string>⭐</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_10">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>20</y>
+        <width>16</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: 0</string>
+      </property>
+      <property name="text">
+       <string>⭐</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_11">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>20</y>
+        <width>16</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: 0</string>
+      </property>
+      <property name="text">
+       <string>⭐</string>
+      </property>
+     </widget>
     </widget>
-    <zorder>label_6</zorder>
-    <zorder>pushButton_return</zorder>
-    <zorder>comboBox_film_return</zorder>
-    <zorder>groupBox_logs</zorder>
    </widget>
   </widget>
   <zorder>content</zorder>
   <zorder>groupBox_navbar</zorder>
-  <zorder>label_logs</zorder>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>

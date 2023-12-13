@@ -10,6 +10,10 @@ public:
     std::string author, name;
     bool state; //0 - на складе, 1 - выдан
 
+    float cnt_rates = 1+rand()%9;
+    float sum_rates = cnt_rates+rand()%25;
+    float rating = sum_rates/cnt_rates ;
+    void set_rate( int stars);
     movie* next= nullptr;
     movie(int num=0, int i=0, int y=0, std::string auth=0, std::string n=0, bool stat =1){number=num;id=i; year = y; author = auth; name = n; state = stat;}
 
@@ -25,10 +29,25 @@ public:
     movie* get(int index);
     int get_length(){return count;}
 
+    float get_rating(int index);
+    movie* get_by_name(std::string name);
     movies(){
 
     }
 };
+
+movie* movies::get_by_name(std::string name)
+{
+
+    movie* current = head;
+    int i = 0;
+    while (i<count){
+        if(current->name==name)return current;
+        current=current->next;
+        i++;
+    }
+    return nullptr;
+}
 
 movie* movies::get(int index){
     if(count<index) return nullptr;
@@ -39,6 +58,19 @@ movie* movies::get(int index){
         i++;
     }
     return current;
+}
+
+void movie::set_rate(int stars){
+
+    this->cnt_rates++;
+    this->sum_rates+=stars;
+    this->rating =  this->sum_rates/ this->cnt_rates;
+
+}
+float movies::get_rating(int index ){
+    movie* trg = get(index);
+    return trg->rating;
+
 }
 
 void movies::add(int y, std::string auth, std::string n){

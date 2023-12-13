@@ -1,0 +1,270 @@
+
+--лимит аллей до 
+CREATE OR REPLACE FUNCTION before_insert_alleys_limit()
+RETURNS TRIGGER AS $$
+DECLARE
+    park_alleys_count INTEGER;
+BEGIN
+    -- Получаем текущее количество аллей в парке
+    SELECT COUNT(*) INTO park_alleys_count
+    FROM ALLEYA
+    WHERE ID_PARK = NEW.ID_PARK;
+
+    -- Проверяем, не превышает ли новая аллея лимит в 5
+    IF park_alleys_count >= 5 THEN
+        RAISE EXCEPTION 'Превышен лимит аллей в парке (максимум 5).';
+    END IF;
+
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER before_insert_alleys_limit
+BEFORE INSERT ON ALLEYA
+FOR EACH ROW
+EXECUTE FUNCTION before_insert_alleys_limit();
+
+--лимит аллей после
+CREATE OR REPLACE FUNCTION after_insert_alleys_limit()
+RETURNS TRIGGER AS $$
+DECLARE
+    park_alleys_count INTEGER;
+BEGIN
+    -- Получаем текущее количество аллей в парке
+    SELECT COUNT(*) INTO park_alleys_count
+    FROM ALLEYA
+    WHERE ID_PARK = NEW.ID_PARK;
+
+    -- Проверяем, не превышает ли общее количество аллей в парке лимит в 5
+    IF park_alleys_count > 5 THEN
+        RAISE EXCEPTION 'В парке слишком много аллей (максимум 5). Текущее количество: %', park_alleys_count;
+    END IF;
+
+    RETURN NULL;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER after_insert_alleys_limit
+AFTER INSERT ON ALLEYA
+FOR EACH ROW
+EXECUTE FUNCTION after_insert_alleys_limit();
+
+--
+insert into alleya (id_alleya, name, id_park) values(11, '2', 1);
+
+
+
+--удаление парка, если в нем нет аллей
+CREATE OR REPLACE FUNCTION after_delete_alley_delete_park()
+RETURNS TRIGGER AS $$
+DECLARE
+    park_alleys_count INTEGER;
+BEGIN
+    -- Получаем текущее количество аллей в парке
+    SELECT COUNT(*) INTO park_alleys_count
+    FROM ALLEYA
+    WHERE ID_PARK = OLD.ID_PARK;
+
+    -- Если в парке больше нет аллей, удаляем парк
+    IF park_alleys_count = 0 THEN
+        DELETE FROM PARK WHERE ID_PARK = OLD.ID_PARK;
+    END IF;
+
+    RETURN NULL;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER after_delete_alley_delete_park
+AFTER DELETE ON ALLEYA
+FOR EACH ROW
+EXECUTE FUNCTION after_delete_alley_delete_park();
+
+
+--не даст удалить информацию из cut, если дерево еще существует
+CREATE OR REPLACE FUNCTION before_delete_cut_check_tree_existence()
+RETURNS TRIGGER AS $$
+BEGIN
+    -- Проверяем существование дерева
+    IF EXISTS (SELECT 1 FROM TREE WHERE ID_TREE = OLD.ID_TREE) THEN
+        RAISE EXCEPTION 'Нельзя удалить информацию об обрезке, так как дерево с ID % еще существует.', OLD.ID_TREE;
+    END IF;
+
+    RETURN NULL;
+END;
+$$ LANGUAGE plpgsql;
+ 
+CREATE TRIGGER before_delete_cut_check_tree_existence
+BEFORE DELETE ON CUT
+FOR EACH ROW
+EXECUTE FUNCTION before_delete_cut_check_tree_existence();
+
+-- существует ли новый парк, и если нет, отменит операцию обновления.
+CREATE OR REPLACE FUNCTION before_update_alleya_check_park_existence()
+RETURNS TRIGGER AS $$
+BEGIN
+    -- Проверяем существование нового парка
+    IF NOT EXISTS (SELECT 1 FROM PARK WHERE ID_PARK = NEW.ID_PARK) THEN
+        RAISE EXCEPTION 'Нельзя обновить аллею. Парк с ID % не существует.', NEW.ID_PARK;
+    END IF;
+
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER before_update_alleya_check_park_existence
+BEFORE UPDATE ON ALLEYA
+FOR EACH ROW
+EXECUTE FUNCTION before_update_alleya_check_park_existence();
+
+ 
+ 
+ --существует ли дерево с новым  id_tree
+CREATE OR REPLACE FUNCTION after_update_cut_check_tree_existence()
+RETURNS TRIGGER AS $$
+BEGIN
+    -- Проверяем наличие дерева с новым ID_TREE
+    IF NOT EXISTS (SELECT 1 FROM TREE WHERE ID_TREE = NEW.ID_TREE) THEN
+        RAISE EXCEPTION 'Дерева с ID_TREE = % не существует', NEW.ID_TREE;
+    ELSE
+        RAISE NOTICE 'Данные об обрезке изменены для дерева с ID_TREE = %', NEW.ID_TREE;
+    END IF;
+
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER after_update_cut_check_tree_existence
+AFTER UPDATE ON CUT
+FOR EACH ROW
+EXECUTE FUNCTION after_update_cut_check_tree_existence();
+
+
+
+--логирование
+CREATE TABLE CHANGE_LOG (
+    LOG_ID SERIAL PRIMARY KEY,
+    TABLE_NAME VARCHAR(50) NOT NULL,
+    RECORD_ID INTEGER NOT NULL,
+    OPERATION CHAR(1) NOT NULL, -- 'I' (insert), 'U' (update), 'D' (delete)
+    LOGGED_AT TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE OR REPLACE FUNCTION log_change_park()
+RETURNS TRIGGER AS $$
+BEGIN
+    IF TG_OP = 'INSERT' THEN
+        INSERT INTO CHANGE_LOG (TABLE_NAME, RECORD_ID, OPERATION)
+        VALUES (TG_TABLE_NAME, NEW.ID_PARK, 'I');
+    ELSIF TG_OP = 'UPDATE' THEN
+        INSERT INTO CHANGE_LOG (TABLE_NAME, RECORD_ID, OPERATION)
+        VALUES (TG_TABLE_NAME, NEW.ID_PARK, 'U');
+    ELSIF TG_OP = 'DELETE' THEN
+        INSERT INTO CHANGE_LOG (TABLE_NAME, RECORD_ID, OPERATION)
+        VALUES (TG_TABLE_NAME, OLD.ID_PARK, 'D');
+    END IF;
+
+    RETURN NULL;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER log_park_changes
+AFTER INSERT OR UPDATE OR DELETE ON PARK
+FOR EACH ROW
+EXECUTE FUNCTION log_change_park();
+
+
+CREATE OR REPLACE FUNCTION log_change_alleya()
+RETURNS TRIGGER AS $$
+BEGIN
+    IF TG_OP = 'INSERT' THEN
+        INSERT INTO CHANGE_LOG (TABLE_NAME, RECORD_ID, OPERATION)
+        VALUES (TG_TABLE_NAME, NEW.ID_ALLEYA, 'I');
+    ELSIF TG_OP = 'UPDATE' THEN
+        INSERT INTO CHANGE_LOG (TABLE_NAME, RECORD_ID, OPERATION)
+        VALUES (TG_TABLE_NAME, NEW.ID_ALLEYA, 'U');
+    ELSIF TG_OP = 'DELETE' THEN
+        INSERT INTO CHANGE_LOG (TABLE_NAME, RECORD_ID, OPERATION)
+        VALUES (TG_TABLE_NAME, OLD.ID_ALLEYA, 'D');
+    END IF;
+
+    RETURN NULL;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER log_alleya_changes
+AFTER INSERT OR UPDATE OR DELETE ON ALLEYA
+FOR EACH ROW
+EXECUTE FUNCTION log_change_alleya();
+
+
+
+CREATE OR REPLACE FUNCTION log_change_tree()
+RETURNS TRIGGER AS $$
+BEGIN
+    IF TG_OP = 'INSERT' THEN
+        INSERT INTO CHANGE_LOG (TABLE_NAME, RECORD_ID, OPERATION)
+        VALUES (TG_TABLE_NAME, NEW.ID_TREE, 'I');
+    ELSIF TG_OP = 'UPDATE' THEN
+        INSERT INTO CHANGE_LOG (TABLE_NAME, RECORD_ID, OPERATION)
+        VALUES (TG_TABLE_NAME, NEW.ID_TREE, 'U');
+    ELSIF TG_OP = 'DELETE' THEN
+        INSERT INTO CHANGE_LOG (TABLE_NAME, RECORD_ID, OPERATION)
+        VALUES (TG_TABLE_NAME, OLD.ID_TREE, 'D');
+    END IF;
+
+    RETURN NULL;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER log_tree_changes
+AFTER INSERT OR UPDATE OR DELETE ON TREE
+FOR EACH ROW
+EXECUTE FUNCTION log_change_tree();
+
+
+CREATE OR REPLACE FUNCTION log_change_kind()
+RETURNS TRIGGER AS $$
+BEGIN
+    IF TG_OP = 'INSERT' THEN
+        INSERT INTO CHANGE_LOG (TABLE_NAME, RECORD_ID, OPERATION)
+        VALUES (TG_TABLE_NAME, NEW.ID_KIND, 'I');
+    ELSIF TG_OP = 'UPDATE' THEN
+        INSERT INTO CHANGE_LOG (TABLE_NAME, RECORD_ID, OPERATION)
+        VALUES (TG_TABLE_NAME, NEW.ID_KIND, 'U');
+    ELSIF TG_OP = 'DELETE' THEN
+        INSERT INTO CHANGE_LOG (TABLE_NAME, RECORD_ID, OPERATION)
+        VALUES (TG_TABLE_NAME, OLD.ID_KIND, 'D');
+    END IF;
+
+    RETURN NULL;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER log_kind_changes
+AFTER INSERT OR UPDATE OR DELETE ON KIND
+FOR EACH ROW
+EXECUTE FUNCTION log_change_kind();
+
+
+CREATE OR REPLACE FUNCTION log_change_cut()
+RETURNS TRIGGER AS $$
+BEGIN
+    IF TG_OP = 'INSERT' THEN
+        INSERT INTO CHANGE_LOG (TABLE_NAME, RECORD_ID, OPERATION)
+        VALUES (TG_TABLE_NAME, NEW.ID_CUT, 'I');
+    ELSIF TG_OP = 'UPDATE' THEN
+        INSERT INTO CHANGE_LOG (TABLE_NAME, RECORD_ID, OPERATION)
+        VALUES (TG_TABLE_NAME, NEW.ID_CUT, 'U');
+    ELSIF TG_OP = 'DELETE' THEN
+        INSERT INTO CHANGE_LOG (TABLE_NAME, RECORD_ID, OPERATION)
+        VALUES (TG_TABLE_NAME, OLD.ID_CUT, 'D');
+    END IF;
+
+    RETURN NULL;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER log_cut_changes
+AFTER INSERT OR UPDATE OR DELETE ON CUT
+FOR EACH ROW
+EXECUTE FUNCTION log_change_cut();

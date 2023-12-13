@@ -1,144 +1,160 @@
---вставка и очистка 
+--пополнение
 
-create OR REPLACE procedure ins_tree(ins_kind varchar(128), ins_plant date, ins_alleya varchar(128), ins_park varchar(128))
+CREATE OR REPLACE PROCEDURE ins_tree(ins_kind VARCHAR(128), ins_plant DATE, ins_alleya VARCHAR(128), ins_park VARCHAR(128))
 LANGUAGE plpgsql 
 AS $$
-	BEGIN declare id_all_new int;
+DECLARE 
+    id_all_new INT;
+    id_park_new INT;
+    id_kind_new INT;
+    id_t_a INT;
+    id_tree_new INT;
+BEGIN
+    -- Блок с парками
+    BEGIN
+        IF EXISTS (SELECT 1 FROM park WHERE park.name = ins_park) THEN
+            SELECT park.id_park INTO id_park_new FROM park WHERE park.name = ins_park;
+        ELSE
+            id_park_new := (NULLIF((SELECT MAX(id_park) FROM park), 0) + 1);
+            INSERT INTO park(id_park, name) VALUES (id_park_new, ins_park);
+        END IF;
+    END;
+    
+    -- Блок с аллеями
+    BEGIN
+        IF EXISTS (SELECT 1 FROM alleya WHERE alleya.name = ins_alleya) THEN
+            SELECT alleya.id_alleya INTO id_all_new FROM alleya WHERE alleya.name = ins_alleya;
+        ELSE
+            id_all_new := (NULLIF((SELECT MAX(id_alleya) FROM alleya), 0) + 1);
+            INSERT INTO alleya(id_alleya, name, id_park) VALUES (id_all_new, ins_alleya, id_park_new);
+        END IF;
+    END;
 
-	declare id_park_new int;
-	 
-	begin
-	IF exists (select * from park where park.name=ins_park)
-			THEN select park.id_park into id_park_new from park where park.name = ins_park;
-		else begin 
-				select id_park_new = (nullif(max(park.id_park), 0)+1) from park ;
-				insert into park(id_park, name_park) values (id_park_new, ins_park);
-		end;
-	end if;
-	
-	
-	
-	begin
-		IF exists(select * from alleya where alleya.name = ins_alleya) 
-				THEN select alleya.id_alleya into id_all_new from alleya where alleya.name = ins_alleya;
-			else begin
-				select id_all_new  = (nullif(max(alleya.id_alleya), 0)+1) from alleya ;
-				insert into alleya(id_alleya, name_alleya, id_park) values (id_alleya_new, ins_alleya, is_park_new);
-			END;
-		end if;
-	
-	
-	declare id_kind_new int;
-	begin
-		if exists(select * from kind where kind.name = ins_kind) 
-				then select kind.id_kind into id_kind_new from kind where kind.name = ins_kind;
-			else begin
-				select id_kind_new = (nullif(max(kind.id_kind), 0)+1) from kind ;
-				insert into kind(id_kind, name) values (id_kind_new, ins_kind);
-			end;
-		end if;
+    -- Блок с видами деревьев
+    BEGIN
+        IF EXISTS (SELECT 1 FROM kind WHERE kind.name = ins_kind) THEN
+            SELECT kind.id_kind INTO id_kind_new FROM kind WHERE kind.name = ins_kind;
+        ELSE
+            id_kind_new := (NULLIF((SELECT MAX(id_kind) FROM kind), 0) + 1);
+            INSERT INTO kind(id_kind, name) VALUES (id_kind_new, ins_kind);
+        END IF;
+    END;
 
-	declare id_t_a int = (nullif(max(tree_alleya.id_tree_alleya), 0)+1) from tree_alleya; 
-	declare id_tree_new int = (nullif(max(tree.id_tree), 0)+1) from tree; 
-	begin
-	insert into tree values (id_tree_new, id_kind_new, ins_plant);
-	insert into tree_alleya(id_tree_alleya ,id_tree, id_alleya) values (id_t_a,id_tree_new, id_all_new);
-	end;
-	end;
-	end;
-end;
-end
+    -- Блок с деревьями и аллеями
+    id_t_a := (SELECT COALESCE(MAX(id_tree_alleya), 0) + 1 FROM tree_alleya);
+    id_tree_new := (SELECT COALESCE(MAX(id_tree), 0) + 1 FROM tree);
+
+    INSERT INTO tree(id_tree, id_kind, plant) VALUES (id_tree_new, id_kind_new, ins_plant);
+    INSERT INTO tree_alleya(id_tree_alleya, id_tree, id_alleya) VALUES (id_t_a, id_tree_new, id_all_new);
+END;
 $$;
 
-call ins_tree ( 'Дуб'::varchar(128),  '2023-11-25'::date, 'Быстрая'::varchar(128), 'Космический'::varchar(128));
+CALL ins_tree('Сакура', '2023-12-11', 'Вылет', 'Аэро2');
 
 -- ///////////////////////////////////////////////////////////////////////////////////
 
 --удаление с очисткой справочника
-create or replace procedure del_tree(id_t int)
-language plpgsql
-as $$
-begin
-	declare id_all_new int = (select id_alleya from tree_alleya where id_tree = id_t);
-	begin
-	delete from tree_alleya where id_t = tree_alleya.id_tree;
-	end;
-	begin
-	if not exists (select * from tree_alleya where id_alleya=id_all_new)
-	then delete from alleya where id_alleya = id_all_new;
-	end if;
-	delete from tree where id_tree = id_t;
-	end;
+CREATE OR REPLACE PROCEDURE del_tree(id_t INT)
+LANGUAGE plpgsql
+AS $$
+DECLARE 
+    id_all_new INT;
+BEGIN
+    id_all_new := (SELECT id_alleya FROM tree_alleya WHERE id_tree = id_t);
 
-end
+    BEGIN
+        DELETE FROM tree_alleya WHERE id_tree = id_t;
+    END;
+
+    BEGIN
+        IF NOT EXISTS (SELECT * FROM tree_alleya WHERE id_alleya = id_all_new)
+        THEN 
+            DELETE FROM alleya WHERE id_alleya = id_all_new;
+        END IF;
+    END;
+
+    DELETE FROM tree WHERE id_tree = id_t;
+END;
 $$;
+call del_tree(16);
 
 -- call del_tree(25);
 
 --Каскадное удаление
-create or replace procedure del_kind_cascade(id_to_del int)
-language plpgsql 
-as $$
-begin
-	delete from tree_alleya where tree_alleya.id_tree in
-		(select tree.id_tree from tree where id_kind = id_to_del);
-	
-	delete from cut where cut.id_tree in 
-		(select tree.id_tree from tree where tree.id_kind=id_to_del);
-	
-	delete from tree where tree.id_kind = id_to_del;
-	delete from kind where kind.id_kind = id_to_del;
-end;
-$$
---Процедура вычисления и возврат значения агрегатной функции
-create or replace function count_trees() returns integer
-language plpgsql
-as $$
-begin
-
-	return nullif(count(id_tree), 0) from tree;
-end
+CREATE OR REPLACE PROCEDURE del_kind_cascade(id_to_del INT)
+LANGUAGE plpgsql 
+AS $$
+BEGIN
+    DELETE FROM tree_alleya WHERE tree_alleya.id_tree IN
+        (SELECT tree.id_tree FROM tree WHERE id_kind = id_to_del);
+    
+    DELETE FROM cut WHERE cut.id_tree IN 
+        (SELECT tree.id_tree FROM tree WHERE tree.id_kind = id_to_del);
+    
+    DELETE FROM tree WHERE tree.id_kind = id_to_del;
+    DELETE FROM kind WHERE kind.id_kind = id_to_del;
+END;
 $$;
-select count_trees();
+--Процедура вычисления и возврат значения агрегатной функции
+CREATE OR REPLACE FUNCTION count_trees() RETURNS INTEGER
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    RETURN NULLIF(COUNT(id_tree), 0) FROM tree;
+END;
+$$;
+
+SELECT count_trees();
+
 
 --Формирование статистики во временной таблице
 
+CREATE OR REPLACE FUNCTION stats() 
+RETURNS TABLE (
+    id_park INTEGER, 
+    name_park VARCHAR(128), 
+    alleya_cnt INTEGER, 
+    tree_cnt INTEGER,
+    kind_cnt INTEGER
+) 
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    CREATE TEMPORARY TABLE stat (
+        id_park INTEGER, 
+        name_park VARCHAR(128), 
+        alleya_cnt INTEGER, 
+        tree_cnt INTEGER,
+        kind_cnt INTEGER
+    );
 
-	
-create or replace function stats() 
-returns table (id_park integer, name_park varchar(128), 
-			   alleya_cnt integer, tree_cnt integer,
-			   kind_cnt integer) 
-language plpgsql
-as $$
-begin
-	CREATE TEMPORARY TABLE stat(
-	   id_park integer, name_park varchar(128), 
-			   alleya_cnt integer, tree_cnt integer,
-			   kind_cnt integer
-	);
+    INSERT INTO stat (id_park, name_park, alleya_cnt, tree_cnt, kind_cnt)
+    SELECT 
+        park.id_park,
+        park.name, 
+        COUNT(DISTINCT alleya.name), 
+        COUNT(tree_alleya.id_tree), 
+        COUNT(DISTINCT kind.name) 
+    FROM 
+        park 
+    JOIN alleya ON alleya.id_park = park.id_park 
+    JOIN tree_alleya ON tree_alleya.id_alleya = alleya.id_alleya 
+    JOIN tree ON tree.id_tree = tree_alleya.id_tree
+    JOIN kind ON kind.id_kind = tree.id_kind
+    GROUP BY 
+        park.id_park;
 
-	insert into stat(id_park, name_park, alleya_cnt, tree_cnt, kind_cnt)
-	select park.id_park,
-	park.name, 
-	count(DISTINCT alleya.name), 
-	count( tree_alleya.id_tree ), 
-	count(DISTINCT kind.name) 
-	FROM park 
-	join alleya on alleya.id_park = park.id_park 
-	join tree_alleya on tree_alleya.id_alleya = alleya.id_alleya 
-	join tree on tree.id_tree = tree_alleya.id_tree
-	join kind on kind.id_kind = tree.id_kind
-	GROUP BY park.id_park;
-	
-	
-	return  query select stat.id_park, stat.name_park 
-	,stat.alleya_cnt , stat.tree_cnt, stat.kind_cnt FROM stat;
-	
-	drop table stat;
-	
-end
+    RETURN QUERY SELECT 
+        stat.id_park, 
+        stat.name_park, 
+        stat.alleya_cnt, 
+        stat.tree_cnt, 
+        stat.kind_cnt 
+    FROM stat;
+
+    DROP TABLE stat;
+END
 $$;
 
-select * from  stats();
+SELECT * FROM stats();
 

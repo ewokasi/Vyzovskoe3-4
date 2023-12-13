@@ -45,6 +45,20 @@ private slots:
 
     void on_pushButton_quit_clicked();
 
+    void on_pushButton_3_clicked();
+
+    void on_checkBox_5_clicked();
+
+    void on_checkBox_4_clicked();
+
+    void on_checkBox_3_clicked();
+
+    void on_checkBox_2_clicked();
+
+    void on_checkBox_clicked();
+
+    void on_pushButton_4_clicked();
+
 private:
     Ui::Widget *ui;
 };
