@@ -36,7 +36,7 @@ public class timeController {
     @RequestMapping(value = "/time/add/{name}/{type}", method = RequestMethod.POST)
     public ModelAndView add(@PathVariable("name") String name,  @PathVariable("type") Integer type) {
         System.out.println("adding") ;
-        tService.add(null,name, type );
+        tService.add(0 ,name, type );
         return new ModelAndView("redirect:/time");
     }
 

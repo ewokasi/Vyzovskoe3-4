@@ -19,6 +19,7 @@ public class Time {
     this.type =  type;
   }
   @Id
+//  @Getter
   @GeneratedValue (strategy = GenerationType.IDENTITY)
   @Column(name = "id")
   public Integer id;
@@ -36,7 +37,7 @@ public class Time {
 
 
   @Getter
-  @Column(name = "name")
+  @Column(name = "name", unique=true)
   private String name;
 
   public void setName(String name) {
@@ -50,4 +51,12 @@ public class Time {
   public void setType(Integer type) {
     this.type = type;
   }
+
+  public Integer getId(){
+
+    return (this.id);
+  }
+
+
+
 }

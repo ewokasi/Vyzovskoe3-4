@@ -110,11 +110,11 @@
         <table style="border: 1px solid;width: 100%;border-collapse: collapse;">
             <thead>
             <tr>
-                <th>Id</th> <th>Type</th><th>Number</th><th sec:authorize="isAuthenticated()">Action</th>
+                <th>Type</th><th>Number</th><th sec:authorize="isAuthenticated()">Action</th>
             </tr>
             </thead>
             <tr ng-repeat="Time in ttList" id="{{Time.id}}">
-                <td>{{Time.id}}</td>
+<!--                <td>{{Time.id}}</td>-->
                 <td>{{Time.name}}</td>
                 <td>{{Time.type}}</td>
                 <td><input sec:authorize="isAuthenticated()" type="button" value="Удалить" ng-click="delTime(Time.id)"></td>

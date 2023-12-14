@@ -59,7 +59,7 @@ public class timeRestService {
             throw new ForbiddenException();
         }
 
-        return ResponseEntity.ok(tService.add(null, name, type));
+        return ResponseEntity.ok(tService.add(0, name, type));
     }
 
     @RequestMapping(value = "/search/{type}", method = RequestMethod.GET)
