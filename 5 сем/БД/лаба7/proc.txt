@@ -95,6 +95,8 @@ BEGIN
     DELETE FROM kind WHERE kind.id_kind = id_to_del;
 END;
 $$;
+
+
 --Процедура вычисления и возврат значения агрегатной функции
 CREATE OR REPLACE FUNCTION count_trees() RETURNS INTEGER
 LANGUAGE plpgsql
