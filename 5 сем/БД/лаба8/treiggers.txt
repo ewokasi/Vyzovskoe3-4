@@ -1,30 +1,22 @@
 
---лимит аллей до 
-CREATE OR REPLACE FUNCTION before_insert_alleys_limit()
-RETURNS TRIGGER AS $$
-DECLARE
-    park_alleys_count INTEGER;
-BEGIN
-    -- Получаем текущее количество аллей в парке
-    SELECT COUNT(*) INTO park_alleys_count
-    FROM ALLEYA
-    WHERE ID_PARK = NEW.ID_PARK;
+--лимит даты tree до 
 
-    -- Проверяем, не превышает ли новая аллея лимит в 5
-    IF park_alleys_count >= 5 THEN
-        RAISE EXCEPTION 'Превышен лимит аллей в парке (максимум 5).';
-    END IF;
+    CREATE OR REPLACE FUNCTION check_plant_date()
+    RETURNS TRIGGER AS $$
+    BEGIN
+        IF NEW.plant > CURRENT_DATE THEN
+            RAISE EXCEPTION 'Дата посадки не может быть в будущем';
+        END IF;
+        RETURN NEW;
+    END;
+    $$ LANGUAGE plpgsql;
 
-    RETURN NEW;
-END;
-$$ LANGUAGE plpgsql;
+    CREATE TRIGGER before_insert_check_plant_date
+    BEFORE INSERT ON TREE
+    FOR EACH ROW
+    EXECUTE FUNCTION check_plant_date();
 
-CREATE TRIGGER before_insert_alleys_limit
-BEFORE INSERT ON ALLEYA
-FOR EACH ROW
-EXECUTE FUNCTION before_insert_alleys_limit();
-
---лимит аллей после
+--лимит Аллей после
 CREATE OR REPLACE FUNCTION after_insert_alleys_limit()
 RETURNS TRIGGER AS $$
 DECLARE
@@ -37,7 +29,7 @@ BEGIN
 
     -- Проверяем, не превышает ли общее количество аллей в парке лимит в 5
     IF park_alleys_count > 5 THEN
-        RAISE EXCEPTION 'В парке слишком много аллей (максимум 5). Текущее количество: %', park_alleys_count;
+        RAISE EXCEPTION 'Предупреждение! В парке теперь слишком много аллей (максимум 5). Текущее количество: %', park_alleys_count;
     END IF;
 
     RETURN NULL;

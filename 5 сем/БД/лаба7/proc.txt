@@ -1,6 +1,6 @@
 --пополнение
 
-CREATE OR REPLACE PROCEDURE ins_tree(ins_kind VARCHAR(128), ins_plant DATE, ins_alleya VARCHAR(128), ins_park VARCHAR(128))
+CREATE OR REPLACE PROCEDURE ins_tree(ins_kind VARCHAR(128), ins_plant DATE)
 LANGUAGE plpgsql 
 AS $$
 DECLARE 
@@ -10,60 +10,42 @@ DECLARE
     id_t_a INT;
     id_tree_new INT;
 BEGIN
-    -- Блок с парками
-    BEGIN
-        IF EXISTS (SELECT 1 FROM park WHERE park.name = ins_park) THEN
-            SELECT park.id_park INTO id_park_new FROM park WHERE park.name = ins_park;
-        ELSE
-            id_park_new := (NULLIF((SELECT MAX(id_park) FROM park), 0) + 1);
-            INSERT INTO park(id_park, name) VALUES (id_park_new, ins_park);
-        END IF;
-    END;
-    
-    -- Блок с аллеями
-    BEGIN
-        IF EXISTS (SELECT 1 FROM alleya WHERE alleya.name = ins_alleya) THEN
-            SELECT alleya.id_alleya INTO id_all_new FROM alleya WHERE alleya.name = ins_alleya;
-        ELSE
-            id_all_new := (NULLIF((SELECT MAX(id_alleya) FROM alleya), 0) + 1);
-            INSERT INTO alleya(id_alleya, name, id_park) VALUES (id_all_new, ins_alleya, id_park_new);
-        END IF;
-    END;
+  
 
     -- Блок с видами деревьев
-    BEGIN
+  
         IF EXISTS (SELECT 1 FROM kind WHERE kind.name = ins_kind) THEN
             SELECT kind.id_kind INTO id_kind_new FROM kind WHERE kind.name = ins_kind;
         ELSE
             id_kind_new := (NULLIF((SELECT MAX(id_kind) FROM kind), 0) + 1);
             INSERT INTO kind(id_kind, name) VALUES (id_kind_new, ins_kind);
         END IF;
-    END;
+  
 
     -- Блок с деревьями и аллеями
-    id_t_a := (SELECT COALESCE(MAX(id_tree_alleya), 0) + 1 FROM tree_alleya);
+    
     id_tree_new := (SELECT COALESCE(MAX(id_tree), 0) + 1 FROM tree);
 
     INSERT INTO tree(id_tree, id_kind, plant) VALUES (id_tree_new, id_kind_new, ins_plant);
-    INSERT INTO tree_alleya(id_tree_alleya, id_tree, id_alleya) VALUES (id_t_a, id_tree_new, id_all_new);
+   
 END;
 $$;
 
-CALL ins_tree('Сакура', '2023-12-11', 'Вылет', 'Аэро2');
+CALL ins_tree('Клен', '2023-12-11');
 
 -- ///////////////////////////////////////////////////////////////////////////////////
 
 --удаление с очисткой справочника
-CREATE OR REPLACE PROCEDURE del_tree(id_t INT)
+CREATE OR REPLACE PROCEDURE del_tree(id_t_a INT)
 LANGUAGE plpgsql
 AS $$
 DECLARE 
     id_all_new INT;
 BEGIN
-    id_all_new := (SELECT id_alleya FROM tree_alleya WHERE id_tree = id_t);
+    id_all_new := (SELECT id_alleya FROM tree_alleya WHERE id_tree_alleya = id_t_a);
 
     BEGIN
-        DELETE FROM tree_alleya WHERE id_tree = id_t;
+        DELETE FROM tree_alleya WHERE  id_tree_alleya = id_t_a;
     END;
 
     BEGIN
@@ -73,7 +55,7 @@ BEGIN
         END IF;
     END;
 
-    DELETE FROM tree WHERE id_tree = id_t;
+   
 END;
 $$;
 call del_tree(16);
