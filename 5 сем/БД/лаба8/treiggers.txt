@@ -1,5 +1,5 @@
 
---лимит даты tree до 
+--лимит даты tree before insert 
 
     CREATE OR REPLACE FUNCTION check_plant_date()
     RETURNS TRIGGER AS $$
@@ -15,6 +15,8 @@
     BEFORE INSERT ON TREE
     FOR EACH ROW
     EXECUTE FUNCTION check_plant_date();
+
+--insert into tree (id_tree, id_kind, plant) values (55, 1, '24-12-2024');
 
 --лимит Аллей после
 CREATE OR REPLACE FUNCTION after_insert_alleys_limit()
@@ -42,23 +44,17 @@ FOR EACH ROW
 EXECUTE FUNCTION after_insert_alleys_limit();
 
 --
-insert into alleya (id_alleya, name, id_park) values(11, '2', 1);
+--insert into alleya (id_alleya, name, id_park) values(11, '2', 1);
 
 
 
---удаление парка, если в нем нет аллей
+--удаление парков если в нем нет аллей
 CREATE OR REPLACE FUNCTION after_delete_alley_delete_park()
 RETURNS TRIGGER AS $$
-DECLARE
-    park_alleys_count INTEGER;
 BEGIN
-    -- Получаем текущее количество аллей в парке
-    SELECT COUNT(*) INTO park_alleys_count
-    FROM ALLEYA
-    WHERE ID_PARK = OLD.ID_PARK;
-
+ 
     -- Если в парке больше нет аллей, удаляем парк
-    IF park_alleys_count = 0 THEN
+    IF NOT EXISTS (SELECT 1 FROM ALLEYA a WHERE a.ID_PARK = OLD.ID_PARK) THEN
         DELETE FROM PARK WHERE ID_PARK = OLD.ID_PARK;
     END IF;
 
@@ -70,6 +66,7 @@ CREATE TRIGGER after_delete_alley_delete_park
 AFTER DELETE ON ALLEYA
 FOR EACH ROW
 EXECUTE FUNCTION after_delete_alley_delete_park();
+
 
 
 --не даст удалить информацию из cut, если дерево еще существует
