@@ -142,3 +142,55 @@ $$;
 
 SELECT * FROM stats();
 
+
+
+--------------------------------------
+
+CREATE OR REPLACE FUNCTION stats() 
+RETURNS TABLE (
+    id_dep INTEGER, 
+    name_dep VARCHAR(128), 
+    emp_cnt INTEGER, 
+    xray_cnt INTEGER,
+    vac_cnt INTEGER
+) 
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    CREATE TEMPORARY TABLE stat (
+        id_dep INTEGER, 
+        name_dep VARCHAR(128), 
+        emp_cnt INTEGER, 
+        xray_cnt INTEGER,
+        vac_cnt INTEGER
+    );
+
+    INSERT INTO stat (id_dep, name_dep, emp_cnt, xray_cnt, vac_cnt)
+    SELECT 
+        department.id_dep,
+        department.dep_name, 
+        COUNT(DISTINCT employee.name), 
+        COUNT(xray.id_xray), 
+        COUNT(DISTINCT vac_data.id_vac) 
+    FROM 
+        department 
+    JOIN department_employee ON department_employee.id_dep = department.id_dep
+    JOIN employee ON employee.id_em = department_employee.id_em 
+    JOIN xray ON xray.id_em = employee.id_em
+    JOIN vac_data ON vac_data.id_em = employee.id_em
+    GROUP BY 
+        park.id_park;
+
+    RETURN QUERY SELECT 
+        stat.id_park, 
+        stat.name_park, 
+        stat.alleya_cnt, 
+        stat.tree_cnt, 
+        stat.kind_cnt 
+    FROM stat;
+
+    DROP TABLE stat;
+END
+$$;
+
+SELECT * FROM stats();
