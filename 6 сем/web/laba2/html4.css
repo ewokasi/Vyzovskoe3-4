@@ -1,0 +1,65 @@
+body{
+    
+    margin: 0px;
+    padding: 0px;
+}
+#logo {
+    width: 100%; 
+    padding-left: 110px;
+    color: white;
+    background-color: rgb(77, 77, 77);   
+    float: left;
+}
+
+
+#nav{
+    display: flex;
+    padding-top: 10px;
+    padding-left: 10px;
+    justify-content: space-evenly;
+    
+}
+
+#description{
+    padding-left: 30px;
+}
+table td:hover{
+    background-color: aqua;
+}
+table td{
+    border: 1px solid;
+    padding: 0px;
+    margin: 0px;
+}
+table{
+  
+    margin-left: auto;
+    margin-right: auto;
+}
+
+caption{
+    align-items: center;
+    text-align: center;
+    padding-left: 30px;
+}
+
+::marker {
+    content: counters(list-item,'.') ':';
+    
+  }
+
+  #logo img{
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    filter: invert(100);
+  }
+  
+  #price{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .ant:hover{
+    background-color: rgb(193, 193, 193);
+  }

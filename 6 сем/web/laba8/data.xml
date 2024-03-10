@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog>
+    <antivirus id="1">
+        <name>Node32</name>
+        <price-range>Medium</price-range>
+        <rating-score>High</rating-score>
+        <logo><image src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/ESET_logo.svg/1280px-ESET_logo.svg.png"></image></logo>
+    </antivirus>
+    
+    <antivirus id="2">
+        <name>Kaspersky</name>
+        <price-range>High</price-range>
+        <rating-score>High</rating-score>
+        <logo><image src="https://www.kaspersky.ru/content/ru-ru/images/repository/pr/kompaniya-predstavila-svoj-novyj-brending-i-logotip1.png"></image></logo>
+    </antivirus>
+    
+    <antivirus id="3">
+        <name>Bitdefender</name>
+        <price-range>High</price-range>
+        <rating-score>High</rating-score>
+        <logo><image src="https://logowik.com/content/uploads/images/bitdefender-antivirus.jpg"></image></logo>
+    </antivirus>
+    
+    <antivirus id="4">
+        <name>Avast</name>
+        <price-range>Low</price-range>
+        <rating-score>Medium</rating-score>
+        <logo><image src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Avast_logo_2021.svg/2560px-Avast_logo_2021.svg.png"></image></logo>
+    </antivirus>
+    
+    <antivirus id="5">
+        <name>McAfee</name>
+        <price-range>Medium</price-range>
+        <rating-score>Medium</rating-score>
+        <logo><image src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/McAfee_logo_%282017%29.svg/1280px-McAfee_logo_%282017%29.svg.png"></image></logo>
+    </antivirus>
+    
+    <antivirus id="6">
+        <name>Norton</name>
+        <price-range>High</price-range>
+        <rating-score>High</rating-score>
+        <logo><image src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Norton-logo-2021.svg/1024px-Norton-logo-2021.svg.png"></image></logo>
+    </antivirus>
+    
+    <antivirus id="7">
+        <name>Avira</name>
+        <price-range>Medium</price-range>
+        <rating-score>High</rating-score>
+        <logo><image src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Avira_logo_2014.svg/2560px-Avira_logo_2014.svg.png"></image></logo>
+    </antivirus>
+    
+    <antivirus id="8">
+        <name>Trend Micro</name>
+        <price-range>Medium</price-range>
+        <rating-score>Medium</rating-score>
+        <logo><image src="https://cdn.worldvectorlogo.com/logos/trend-micro-logo.svg"></image></logo>
+    </antivirus>
+    
+    <antivirus id="9">
+        <name>Comodo</name>
+        <price-range>Low</price-range>
+        <rating-score>Medium</rating-score>
+        <logo><image src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Comodo_logo_2019.svg/1280px-Comodo_logo_2019.svg.png"></image></logo>
+    </antivirus>
+    
+    <antivirus id="10">
+        <name>ZoneAlarm</name>
+        <price-range>Low</price-range>
+        <rating-score>Low</rating-score>
+        <logo><image src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/ZoneAlarm_LOGO.svg/1280px-ZoneAlarm_LOGO.svg.png"></image></logo>
+    </antivirus>
+</catalog>

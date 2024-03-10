@@ -5,10 +5,10 @@ from bson.objectid import ObjectId
 from datetime import datetime
 
 client = MongoClient("mongodb://localhost:27017/")
-collection = client['laba1_bd']['tree']
+collection = client['laba1_bd']['item']
 alleya = client['laba1_bd']['alleya']
-fountain = client['laba1_bd']['fountain']
-statue = client['laba1_bd']['statue']
+fountain = client['laba1_bd']['item']
+statue = client['laba1_bd']['item']
 kinds = ['Клен','Сосна','Береза','Дуб','Липа', 'Ель','Яблоня','Ива','Тополь','Пихта']
 
 
@@ -18,32 +18,32 @@ def insert_trees(count):
         r_year = random.randint(1990,2023)
         r_month = random.randint(1,11)
         r_day = random.randint(1,25)
-        id = collection.insert_one({'kind':kinds[r_kind], 'plant': datetime(r_year, r_month, r_day), 'cut': datetime(r_year, r_month+1, r_day)}).inserted_id
+        id = collection.insert_one({'kind':kinds[r_kind], 'plant': datetime(r_year, r_month, r_day), 'cut': datetime(r_year, r_month+1, r_day), "status": "tree"}).inserted_id
         if i%6==0:
             alleya.update_one(
                                 {"_id" : ObjectId("65c9f3d77af9b337b832d3d2")},
-                                { "$push": { "trees": id } })
+                                 { "$push": { "items": {"id": id, "status":"tree"} } })
         elif i%6==1:
             alleya.update_one(
-                                {"_id" : ObjectId("65c9f3df7af9b337b832d3d3")},
-                                { "$push": { "trees": id } })
+                                {"_id" : ObjectId("65d481a290dbdccbe343c183")},
+                                 { "$push": { "items": {"id": id, "status":"tree"} } })
             
         elif i%6==2:
             alleya.update_one(
-                                {"_id" : ObjectId("65ca06897af9b337b832d3f5")},
-                                { "$push": { "trees": id } })
+                                {"_id" : ObjectId("65d481d790dbdccbe343c184")},
+                                 { "$push": { "items": {"id": id, "status":"tree"} } })
         elif i%6==3:
             alleya.update_one(
-                                {"_id" : ObjectId("65ca06917af9b337b832d3f6")},
-                                { "$push": { "trees": id } })
+                                {"_id" : ObjectId("65d481e190dbdccbe343c185")},
+                                 { "$push": { "items": {"id": id, "status":"tree"} } })
         elif i%6==4:
             alleya.update_one(
-                                {"_id" : ObjectId("65ca06997af9b337b832d3f7")},
-                                { "$push": { "trees": id } })
+                                {"_id" : ObjectId("65d481ec90dbdccbe343c186")},
+                                 { "$push": { "items": {"id": id, "status":"tree"} } })
         elif i%6==5:
             alleya.update_one(
-                                {"_id" : ObjectId("65ca06aa7af9b337b832d3f8")},
-                                { "$push": { "trees": id } })
+                                {"_id" : ObjectId("65d4820890dbdccbe343c187")},
+                                 { "$push": { "items": {"id": id, "status":"tree"} } })
     
         
 
@@ -53,25 +53,21 @@ def insert_fountains(count):
         r_year = random.randint(1990,2023)
         r_month = random.randint(1,11)
         r_day = random.randint(1,25)
-        id = fountain.insert_one({'date': datetime(r_year, r_month, r_day)}).inserted_id
-        if i%6==0:
+        id = fountain.insert_one({'date': datetime(r_year, r_month, r_day), "status": "fountain"}).inserted_id
+        if i%3==0:
             alleya.update_one(
                                 {"_id" : ObjectId("65c9f3d77af9b337b832d3d2")},
-                                { "$push": { "fountains": id } })
-        elif i%6==1:
+                                { "$push": { "items": {"id": id, "status":"fountain"} } })
+        elif i%3==1:
             alleya.update_one(
-                                {"_id" : ObjectId("65c9f3df7af9b337b832d3d3")},
-                                { "$push": { "fountains": id } })
+                                {"_id" : ObjectId("65d4820890dbdccbe343c187")},
+                                { "$push": { "items": {"id": id, "status":"fountain"} } })
             
-        elif i%6==2:
+        elif i%3==2:
             alleya.update_one(
-                                {"_id" : ObjectId("65ca06897af9b337b832d3f5")},
-                                { "$push": { "fountains": id } })
-        elif i%6==3:
-            alleya.update_one(
-                                {"_id" : ObjectId("65ca06917af9b337b832d3f6")},
-                                { "$push": { "fountains": id } })
-    
+                                {"_id" : ObjectId("65d481ec90dbdccbe343c186")},
+                                 { "$push": { "items": {"id": id, "status":"fountain"} } })
+        
 
 
 def insert_statue(count):
@@ -80,18 +76,19 @@ def insert_statue(count):
         r_year = random.randint(1990,2023)
         r_month = random.randint(1,11)
         r_day = random.randint(1,25)
-        id = statue.insert_one({'date': datetime(r_year, r_month, r_day)}).inserted_id
+        id = statue.insert_one({'date': datetime(r_year, r_month, r_day), "status":"statue"}).inserted_id
       
         if i%2==0:
             alleya.update_one(
-                                {"_id" : ObjectId("65c9f3df7af9b337b832d3d3")},
-                                { "$push": { "statue": id } })
-            
+                                {"_id" : ObjectId("65c9f3d77af9b337b832d3d2")},
+                                 { "$push": { "items": {"id": id, "status":"statue"} } })
         
         elif i%2==1:
             alleya.update_one(
-                                {"_id" : ObjectId("65ca06917af9b337b832d3f6")},
-                                { "$push": { "statue": id } })
+                                {"_id" : ObjectId("65d481ec90dbdccbe343c186")},
+                                 { "$push": { "items": {"id": id, "status":"statue"} } })
     
-#if __name__=="__main__":
-#    insert_statue(3)
+if __name__=="__main__":
+   insert_fountains(2)
+   insert_trees(10)
+   insert_statue(4)

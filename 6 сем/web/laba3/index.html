@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head><title>Редактор JavaScript</title></head>
+<body>   Введите скрипт:<br/>
+    <textarea id="mycode" rows=10 cols=40></textarea>
+    <br/>Результат:<br/>
+    <textarea id="myrezult" rows=3 cols=40></textarea> <br/>
+    <input id="size" type="number" placeholder="Размерность матрицы" value="5">
+
+    <button onclick= "document.getElementById('myrezult').value =
+    eval(document.getElementById('mycode').value)">
+    Выполнить
+    </button>
+    <button onclick=
+    "document.getElementById('mycode').value='';
+    document.getElementById('myrezult').value=''"> Очистить
+    </button >
+    <a href="extra.html">extra</a>
+
+
+    <script> 
+        res = `function fillMatrix(n) {
+    let matrix = [];
+    for (let i = 0; i < n; i++) {
+        matrix[i] = new Array(n).fill(0);
+    }
+    for (let i = 0; i < n; i++) {
+        for (let j = 0; j <= i; j++) {
+            matrix[i][j] = i - j;
+        }
+    }
+    return matrix;
+}
+let size = Number(document.getElementById('size').value);
+const resultMatrix = fillMatrix(size);
+result = '';
+for (let i = 0; i < size; i++) {
+   result += resultMatrix[i].join(' ')+'\\n';
+}
+result;`;
+document.getElementById('mycode').value=res;
+    </script>
+</body>
+</html>
+
+
+<!-- function fillMatrix(n) {
+    let matrix = [];
+    
+   
+    for (let i = 0; i < n; i++) {
+        matrix[i] = new Array(n).fill(0);
+    }
+    
+
+    for (let i = 0; i < n; i++) {
+        for (let j = 0; j <= i; j++) {
+            matrix[i][j] = i - j;
+        }
+    }
+    
+    return matrix;
+}
+
+
+const size = 6;
+const resultMatrix = fillMatrix(size);
+result = '';
+for (let i = 0; i < size; i++) {
+   result += resultMatrix[i].join(' ')+'\n';
+}
+result -->
+
+
+ 
+

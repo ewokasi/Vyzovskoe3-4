@@ -1,0 +1,48 @@
+img {
+    vertical-align: middle;
+}
+/* Локальные стили */
+caption {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+mark {
+    background-color: yellow;
+}
+code {
+    font-family: Courier, monospace;
+    color: green;
+}
+footer em {
+    font-size: 0.8em;
+}
+td:hover{
+    background-color:rgb(122, 181, 248);
+}
+
+
+a:link {
+    color: rgb(0, 163, 192); 
+    text-decoration: underline dotted ;
+}
+a:visited {
+    color: rgb(240, 23, 23); 
+    text-decoration: underline dotted;
+}
+h1 + p {
+    margin-top: 20px;
+}
+p::first-letter {
+    font-size: 100%; /* Увеличение размера первой буквы в параграфе */
+}
+
+p::first-line {
+    font-weight: bold; /* Делаем первую строку в параграфе жирной */
+}
+
+::marker {
+    content: counters(list-item,'.') ':';
+    
+  }
+  

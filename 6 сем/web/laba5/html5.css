@@ -1,0 +1,134 @@
+img {
+    vertical-align: middle;
+}
+/* Локальные стили */
+caption {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+mark {
+    background-color: yellow;
+}
+code {
+    font-family: Courier, monospace;
+    color: green;
+}
+footer em {
+    font-size: 0.8em;
+}
+td:hover{
+    background-color:rgb(122, 181, 248);
+}
+
+
+a:link {
+    color: rgb(0, 163, 192); 
+    text-decoration: underline dotted ;
+}
+a:visited {
+    color: rgb(240, 23, 23); 
+    text-decoration: underline dotted;
+}
+h1 + p {
+    margin-top: 20px;
+}
+p::first-letter {
+    font-size: 100%; /* Увеличение размера первой буквы в параграфе */
+}
+
+p::first-line {
+    font-weight: bold; /* Делаем первую строку в параграфе жирной */
+}
+
+::marker {
+    content: counters(list-item,'.') ':';
+    
+  }
+  
+      /* Глобальные стили */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    header, footer {
+     
+        background-color: #333;
+        color: rgb(255,255,255);
+        text-align: center;
+        padding: 10px 0;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+    }
+    main {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+    table {
+      
+        border-collapse: collapse;
+        width: 80%;
+        margin-bottom: 20px;
+        
+    }
+    
+    th, td {
+        padding: 8px;
+        text-align: center;
+    }
+    th {
+        background-color: #333;
+        color: white;
+    }
+    tbody tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    #clock{
+        color: #000;
+        font-weight: bold;
+        font-size: 30px;
+      }
+
+      form {
+        width: 500px;
+        margin: 0 auto;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+      
+      input, select, textarea {
+        width: 100%;
+        padding: 5px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+      }
+      
+      input[type="checkbox"], input[type="radio"] {
+        width: auto;
+        margin-right: 5px;
+      }
+      
+      input[type="submit"] {
+        width: auto;
+        padding: 5px 10px;
+        background-color: #444;
+        color: #fff;
+        border: 0;
+        cursor: pointer;
+      }
+      
+      input[type="submit"]:hover {
+        background-color: #333;
+      }
+      
