@@ -1,0 +1,143 @@
+
+//a)
+db.alleya.aggregate([
+  {
+    $unwind: "$items" // Развернуть массив items
+  },
+  {
+    $match: {"items.status": "tree", "items.id": {$in: db.item.distinct("_id", {"kind": /Клен/i})}} // Фильтр для кленов
+  },
+  {
+    $group: {
+      _id: "$_id",
+      name: {$first: "$name"}, // Получить имя аллеи
+      count: {$sum: 1} // Подсчитать количество кленов на аллее
+    }
+  }
+,
+  {
+    $match: {count: {$gte: 2}} // Фильтр для аллеи с 2 и более кленами
+  },
+  {
+    $project: {name: 1} // Вывести только имя аллеи
+  }
+])
+
+
+// б)
+db.alleya.aggregate([
+  {
+    $match: {
+      "items.status": { $all: ["statue", "fountain"] } // Находим аллеи с элементами статуй или фонтанов
+    }
+  },
+  {
+    $group: {
+      _id: "$_id",
+      name: { $first: "$name" }, // Получаем имя аллеи
+      items: { $push: "$items.status" } // Создаем массив статусов элементов на аллее
+    }
+  }
+])
+
+
+// в)
+db.item.aggregate([
+  {
+    $match: { "status": "tree" } // Находим только элементы с типом "tree"
+  },
+  {
+    $group: {
+      _id: null,
+      latestPlantDate: { $max: "$plant" } // Находим максимальную дату посадки
+    }
+  },
+  {
+    $lookup: {
+      from: "item",
+      let: { latestPlantDate: "$latestPlantDate" },
+      pipeline: [
+        {
+          $match: {
+            $expr: {
+              $eq: ["$plant", "$$latestPlantDate"] // Находим элемент с датой посадки равной максимальной
+            },
+            "status": "tree" // Убеждаемся, что это дерево
+          }
+        }
+      ],
+      as: "latestTree" // Сохраняем результат в поле "latestTree"
+    }
+  },
+  {
+    $unwind: "$latestTree" // Развертываем результат
+  },
+  {
+    $project: {
+      _id: "$latestTree._id",
+      kind: "$latestTree.kind",
+      plantDate: "$latestTree.plant"
+    }
+  }
+])
+
+// г)
+db.item.aggregate([
+  {
+    $match: { "status": "tree" } // Находим только элементы с типом "tree"
+  },
+  {
+    $group: {
+      _id: "$kind", // Группируем по породе деревьев
+      count: { $sum: 1 } // Считаем количество деревьев каждой породы
+    }
+  },
+  {
+    $sort: { count: -1 } // Сортируем по убыванию количества деревьев
+  },
+  {
+    $limit: 1 // Получаем только первую запись с наибольшим количеством деревьев
+  }
+])
+
+// д)
+db.alleya.aggregate([
+  {
+    $match: { "items.status": { $ne: "fountain" } } // Находим аллеи, где статус элемента не является "fountain"
+  },
+  {
+    $project: {
+      name: 1,
+      items: {
+        $filter: {
+          input: "$items",
+          as: "item",
+          cond: { $ne: ["$$item.status", "fountain"] } // Фильтруем элементы аллеи, оставляем только те, у которых статус не "fountain"
+        }
+      }
+    }
+  }
+])
+
+
+
+// update
+db.alleya.update_one(
+  {"_id" : ObjectId("65c9f3d329b337b832d3d4")},
+   { "$push": { "items": {"_id":  ObjectId("65c9f3d329b337b832d3f4"), "status":"statue"} } })
+   
+
+db.item.updateOne(
+  { "_id": ObjectId("601c11b3d8e31506c64b07d4") },
+  { "$set": { "kind": "Клен" } }
+);
+
+// delete
+
+db.item.deleteOne({ "_id": ObjectId("601c11b3d8e31506c64b07d4") });
+
+db.alleya.updateMany(
+  {}, // Пустой фильтр, чтобы применить обновление ко всем документам коллекции
+  { $pull: { "items": { "id": ObjectId("601c11b3d8e31506c64b07d4") } } }
+)
+

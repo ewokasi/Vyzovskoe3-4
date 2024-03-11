@@ -8,10 +8,10 @@
       "$oid": "65c9f3d77af9b337b832d3d2"
     },
     {
-      "$oid": "65ca06897af9b337b832d3f5"
+      "$oid": "65d481d790dbdccbe343c184"
     },
     {
-      "$oid": "65ca06917af9b337b832d3f6"
+      "$oid": "65d481ec90dbdccbe343c186"
     }
   ]
 },
@@ -22,13 +22,13 @@
   "name": "Спортивный Парк",
   "alleyas": [
     {
-      "$oid": "65c9f3df7af9b337b832d3d3"
+      "$oid": "65d481a290dbdccbe343c183"
     },
     {
-      "$oid": "65ca06997af9b337b832d3f7"
+      "$oid": "65d481e190dbdccbe343c185"
     },
     {
-      "$oid": "65ca06aa7af9b337b832d3f8"
+      "$oid": "65d4820890dbdccbe343c187"
     }
   ]
 }]
