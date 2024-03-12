@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Слайд-шоу</title>
+    <style>
+        /* CSS для стилизации слайдов */
+        .slideshow-container {
+            position: relative;
+            max-width: 1000px;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .mySlides {
+            display: none;
+            width: 100%;
+        }
+
+        #intro{
+            font-size: x-large;
+            font-weight: 600;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="intro">Нажмите на изображение, чтобы перейти к нему</div>
+
+<div class="slideshow-container">
+    <!-- Каждое изображение является гиперссылкой на соответствующий файл -->
+    <div class="mySlides">
+        <a href="image1.png"><img src="image1.png" style="width:100%"></a>
+    </div>
+
+    <div class="mySlides">
+        <a href="image2.png"><img src="image2.png" style="width:100%"></a>
+    </div>
+
+    <div class="mySlides">
+        <a href="image3.png"><img src="image3.png" style="width:100%"></a>
+    </div>
+</div>
+
+<script>
+    var slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+        var slides = document.getElementsByClassName("mySlides");
+       
+        for (var i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+       
+        slideIndex++;
+        if (slideIndex > slides.length) {
+            slideIndex = 1;
+        }
+   
+        slides[slideIndex - 1].style.display = "block";
+      
+        setTimeout(showSlides, 1000);
+    }
+</script>
+
+</body>
+</html>

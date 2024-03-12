@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+        function filterArray(array, callback) {
+    var filteredArray = [];
+    for (var i = 0; i < array.length; i++) {
+        if (callback(array[i])) {
+            filteredArray.push(array[i]);
+        }
+    }
+    return filteredArray;
+}
+
+    // Пример фильтрации четных чисел
+    var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+    function isEven(number) {
+        return number % 2 === 0;
+    }
+
+    var evenNumbers = filterArray(numbers, isEven);
+    alert("Четные числа:"+ evenNumbers);
+
+    // Пример фильтрации нечетных чисел
+    function isOdd(number) {
+        return number % 2 !== 0;
+    }
+
+    var oddNumbers = filterArray(numbers, isOdd);
+    alert("Нечетные числа:"+ oddNumbers);
+
+    </script>
+</body>
+</html>

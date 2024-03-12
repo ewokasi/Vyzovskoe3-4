@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Веб-страница с навигацией и изображениями</title>
+    <style>
+        /* Стили для навигационной панели */
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        .dropdown {
+            float: left;
+            overflow: hidden;
+        }
+
+        .dropdown .dropbtn {
+            font-size: 16px;
+            border: none;
+            outline: none;
+            color: white;
+            padding: 14px 20px;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+        }
+
+        .navbar a:hover, .dropdown:hover .dropbtn {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Стили для отображения изображений */
+        .image-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            max-height: 400px;
+            display: none; /* По умолчанию скрываем изображения */
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <div class="dropdown">
+        <button class="dropbtn">Спас На Крови
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="spas_day.jpg">День</a>
+            <a href="spas_night.jpg">Ночь</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">Лахта
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="lahta_day.jpg">День</a>
+            <a href="lahta_night.jpg">Ночь</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">ГУАП
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="guap_day.jpg">День</a>
+            <a href="guap_night.jpg">Ночь</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">Адмиралтейство
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="admir_day.jpg">День</a>
+            <a href="admir_night.jpg">Ночь</a>
+        </div>
+    </div>
+</div>
+
+<div class="image-container">
+    <!-- Изображения -->
+    <img id="image1" src="image1.jpg">
+    <img id="image2" src="image2.jpg">
+    <img id="image3" src="image3.jpg">
+    <img id="image4" src="image4.jpg">
+</div>
+
+<script>
+    // Обработчики щелчков для каждой ссылки
+    document.querySelector('.navbar a:nth-of-type(1)').addEventListener('click', function() {
+        displayImage('image1');
+    });
+
+    document.querySelector('.navbar a:nth-of-type(2)').addEventListener('click', function() {
+        displayImage('image2');
+    });
+
+    document.querySelector('.dropdown-content a:nth-of-type(1)').addEventListener('click', function() {
+        displayImage('image3');
+    });
+
+    document.querySelector('.dropdown-content a:nth-of-type(2)').addEventListener('click', function() {
+        displayImage('image4');
+    });
+
+    // Функция для отображения изображения по его id
+    function displayImage(imageId) {
+        // Скрываем все изображения
+        var images = document.querySelectorAll('.image-container img');
+        images.forEach(function(img) {
+            img.style.display = 'none';
+        });
+
+        // Отображаем только нужное изображение
+        var imageToShow = document.getElementById(imageId);
+        if (imageToShow) {
+            imageToShow.style.display = 'block';
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+            async function fetchData(url) {
+        try {
+            const response = await fetch(url);
+            
+            if (!response.ok) {
+                throw new Error(`Ошибка при загрузке данных: ${response.status}`);
+            }
+            
+            const data = await response.text();
+            return data;
+        } catch (error) {
+            return Promise.reject(error.message);
+        }
+    }
+
+    fetchData('https://lms.guap.ru/new/mod/assign/view.php?id=139187')
+    .then(data => {
+        alert('Данные:' + data);
+    })
+    .catch(error => {
+        alert('Ошибка:' + error);
+    });
+
+    </script>
+</body>
+</html>

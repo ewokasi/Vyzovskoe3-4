@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+<script>
+
+var group1 = [
+    { фамилия: "Иванов", баллы: 85 },
+    { фамилия: "Петров", баллы: 70 },
+    { фамилия: "Сидоров", баллы: 95 },
+    { фамилия: "Кузнецов", баллы: 60 },
+    { фамилия: "Смирнов", баллы: 88 },
+    { фамилия: "Морозов", баллы: 75 },
+    { фамилия: "Васильев", баллы: 82 },
+    { фамилия: "Новиков", баллы: 90 },
+    { фамилия: "Козлов", баллы: 78 },
+    { фамилия: "Лебедев", баллы: 85 }
+];
+
+var group2 = [
+    { фамилия: "Соколов", баллы: 92 },
+    { фамилия: "Попов", баллы: 85 },
+    { фамилия: "Андреев", баллы: 78 },
+    { фамилия: "Алексеев", баллы: 91 },
+    { фамилия: "Григорьев", баллы: 87 },
+    { фамилия: "Степанов", баллы: 80 },
+    { фамилия: "Архипов", баллы: 96 },
+    { фамилия: "Федоров", баллы: 83 },
+    { фамилия: "Дмитриев", баллы: 79 },
+    { фамилия: "Коновалов", баллы: 88 }
+];
+
+
+function filterStudents(group) {
+    return group.filter(student => student.баллы >= 80 && student.баллы <= 100);
+}
+
+
+var selectedGroup1 = filterStudents(group1);
+var selectedGroup2 = filterStudents(group2);
+
+var selectedStudents = selectedGroup1.concat(selectedGroup2);
+
+
+var countGroup1 = selectedGroup1.length;
+var countGroup2 = selectedGroup2.length;
+
+
+var totalScore = selectedStudents.reduce((acc, student) => acc + student.баллы, 0);
+var averageScore = totalScore / selectedStudents.length;
+
+
+var message = "Отобрано студентов из первой группы: " + countGroup1 + "\n";
+message += "Отобрано студентов из второй группы: " + countGroup2 + "\n";
+message += "Всего отобрано студентов с баллами от 80 до 100: " + selectedStudents.length + "\n";
+message += "\nОтобранные студенты:\n";
+selectedStudents.forEach(student => {
+    message += student.фамилия + ": " + student.баллы + " баллов\n";
+});
+message += "\nСредний балл отобранных на работу студентов: " + averageScore.toFixed(2);
+
+
+alert(message);
+
+</script>
+</body>
+</html>
