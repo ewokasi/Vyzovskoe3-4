@@ -454,8 +454,9 @@ Memory Map of the image
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000        -       0x00000300   Zero   RW           11    STACK               asm.o
-
+    0x20000000        -       0x00000300   Zero   RW           69    .bss               c_w.l(libspace.o)
+	0x20000060        -       0x00002C40   Zero   RW           11    STACK               asm.o
+	0x00002CA0        -       0x00000280   Zero   RW           12    HEAP               asm.o
 
 ==============================================================================
 

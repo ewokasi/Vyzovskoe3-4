@@ -1,5 +1,5 @@
 
-//a)
+//a)аллеи, на которых встречаются разные виды кленов (клен в названии)
 db.alleya.aggregate([
   {
     $unwind: "$items" // Развернуть массив items
@@ -24,7 +24,7 @@ db.alleya.aggregate([
 ])
 
 
-// б)
+// б)аллеи, на которых есть и статуи и фонтаны
 db.alleya.aggregate([
   {
     $match: {
@@ -41,7 +41,7 @@ db.alleya.aggregate([
 ])
 
 
-// в)
+// в)дерево, которое было посажено позже всех
 db.item.aggregate([
   {
     $match: { "status": "tree" } // Находим только элементы с типом "tree"
@@ -81,38 +81,32 @@ db.item.aggregate([
   }
 ])
 
-// г)
+// г)порода, деревьев которой больше всего //вывод с одинаковым числом
 db.item.aggregate([
   {
-    $match: { "status": "tree" } // Находим только элементы с типом "tree"
+    $match: { "status": "tree" } // фильтруем только документы со статусом "tree"
   },
   {
     $group: {
-      _id: "$kind", // Группируем по породе деревьев
-      count: { $sum: 1 } // Считаем количество деревьев каждой породы
+      _id: "$kind", // группируем по полю "kind"
+      count: { $sum: 1 } // считаем количество документов в каждой группе
     }
   },
   {
-    $sort: { count: -1 } // Сортируем по убыванию количества деревьев
-  },
-  {
-    $limit: 1 // Получаем только первую запись с наибольшим количеством деревьев
-  }
-])
-
-// д)
-db.alleya.aggregate([
-  {
-    $match: { "items.status": { $ne: "fountain" } } // Находим аллеи, где статус элемента не является "fountain"
+    $group: {
+      _id: null,
+      maxCount: { $max: "$count" }, // находим максимальное значение count
+      trees: { $push: { kind: "$_id", count: "$count" } } // сохраняем все породы деревьев и их count
+    }
   },
   {
     $project: {
-      name: 1,
-      items: {
+      _id: 0,
+      maxTrees: {
         $filter: {
-          input: "$items",
-          as: "item",
-          cond: { $ne: ["$$item.status", "fountain"] } // Фильтруем элементы аллеи, оставляем только те, у которых статус не "fountain"
+          input: "$trees",
+          as: "tree",
+          cond: { $eq: ["$$tree.count", "$maxCount"] } // фильтруем только породы с максимальным значением count
         }
       }
     }
@@ -120,6 +114,29 @@ db.alleya.aggregate([
 ])
 
 
+// д)аллея, на которой нет фонтанов -------------------------------------------------
+db.alleya.aggregate([
+  {
+    $project: {
+      name: 1,
+      fountainCount: {
+        $size: {
+          $filter: {
+            input: "$items",
+            as: "item",
+            cond: { $eq: ["$$item.status", "fountain"] }
+          }
+        }
+      }
+    }
+  },
+  {
+    $match: { fountainCount: { $eq: 0 } }
+  },
+  {
+    $project: { _id: 0, name: 1 }
+  }
+])
 
 // update
 db.alleya.update_one(
@@ -131,7 +148,7 @@ db.item.updateOne(
   { "_id": ObjectId("601c11b3d8e31506c64b07d4") },
   { "$set": { "kind": "Клен" } }
 );
-
+ 
 // delete
 
 db.item.deleteOne({ "_id": ObjectId("601c11b3d8e31506c64b07d4") });

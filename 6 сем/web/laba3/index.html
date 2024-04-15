@@ -3,7 +3,7 @@
 <html>
 <head><title>Редактор JavaScript</title></head>
 <body>   Введите скрипт:<br/>
-    <textarea id="mycode" rows=10 cols=40></textarea>
+    <textarea id="mycode" rows=10 cols=40></textarea> 
     <br/>Результат:<br/>
     <textarea id="myrezult" rows=3 cols=40></textarea> <br/>
     <input id="size" type="number" placeholder="Размерность матрицы" value="5">
@@ -19,6 +19,7 @@
     <a href="extra.html">extra</a>
 
 
+
     <script> 
         res = `function fillMatrix(n) {
     let matrix = [];
@@ -32,11 +33,12 @@
     }
     return matrix;
 }
+
 let size = Number(document.getElementById('size').value);
 const resultMatrix = fillMatrix(size);
 result = '';
 for (let i = 0; i < size; i++) {
-   result += resultMatrix[i].join(' ')+'\\n';
+   result += resultMatrix[i].join(' ')+'asdasdasd\n';
 }
 result;`;
 document.getElementById('mycode').value=res;

@@ -1,8 +1,8 @@
-Stack_Size EQU 0x00000300
+Stack_Size EQU 0x00002C40
 		AREA STACK, NOINIT, READWRITE, ALIGN=3
 Stack_Mem SPACE Stack_Size
 __initial_sp
-Heap_Size EQU 0x00000300
+Heap_Size EQU 0x00000280
 		AREA HEAP, NOINIT, READWRITE, ALIGN=3
 __heap_base
 Heap_Mem SPACE Heap_Size
