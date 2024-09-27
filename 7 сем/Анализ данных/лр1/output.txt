@@ -1,0 +1,73 @@
+2024-09-27 02:51:26.709526
+Data function: get_normalized_filtered_train_test_and_val_data
+Train RMSE for RMM: 0.8491782481720171
+Train R2 Score for RMM: 0.01178338832683723
+Test RMSE for RMM: 0.8526171921627197
+Test R2 Score for RMM: 0.004014714878382564
+Valid RMSE for RMM: 0.9675045995045547
+Valid R2 Score for RMM: -0.051782841045772576
+
+Data function: get_normalized_filtered_train_test_and_val_data
+Train RMSE for LIN: 10822.549745017765
+Train R2 Score for LIN: -0.49349749088287354
+Test RMSE for LIN: 12193.222909777278
+Test R2 Score for LIN: -0.5792217254638672
+Valid RMSE for LIN: 10033.070835532642
+Valid R2 Score for LIN: -0.2833669185638428
+
+#################################
+
+Data function: get_normalized_train_test_and_val_data
+Train RMSE for RMM: 0.6069859149262493
+Train R2 Score for RMM: 0.2503187917649192
+Test RMSE for RMM: 0.6406916880721522
+Test R2 Score for RMM: 0.21713870166706017
+Valid RMSE for RMM: 0.6592003077464111
+Valid R2 Score for RMM: 0.23660287082634512
+
+Data function: get_normalized_train_test_and_val_data
+Train RMSE for LIN: 10822.39199457478
+Train R2 Score for LIN: -0.49345386028289795
+Test RMSE for LIN: 12193.033976751865
+Test R2 Score for LIN: -0.5791729688644409
+Valid RMSE for LIN: 10032.925155087003
+Valid R2 Score for LIN: -0.28332948684692383
+
+#################################
+
+Data function: get_raw_filtered_train_test_and_val_data
+Train RMSE for RMM: 4618.219672254043
+Train R2 Score for RMM: 0.7280465960502625
+Test RMSE for RMM: 4846.674110347448
+Test R2 Score for RMM: 0.7504866719245911
+Valid RMSE for RMM: 4590.805164019946
+Valid R2 Score for RMM: 0.7313042283058167
+
+Data function: get_raw_filtered_train_test_and_val_data
+Train RMSE for LIN: 4618.219672254043
+Train R2 Score for LIN: 0.7280465960502625
+Test RMSE for LIN: 4846.674110347448
+Test R2 Score for LIN: 0.7504866719245911
+Valid RMSE for LIN: 4590.805164019946
+Valid R2 Score for LIN: 0.7313042283058167
+
+#################################
+
+Data function: get_raw_train_test_and_val_data
+Train RMSE for RMM: 8847.678577328554
+Train R2 Score for RMM: 0.0018312931060791016
+Test RMSE for RMM: 9781.374134774955
+Test R2 Score for RMM: -0.016262412071228027
+Valid RMSE for RMM: 8974.71357658462
+Valid R2 Score for RMM: -0.02689075469970703
+
+Data function: get_raw_train_test_and_val_data
+Train RMSE for LIN: 8847.678577328554
+Train R2 Score for LIN: 0.0018312931060791016
+Test RMSE for LIN: 9781.374134774955
+Test R2 Score for LIN: -0.016262412071228027
+Valid RMSE for LIN: 8974.71357658462
+Valid R2 Score for LIN: -0.02689075469970703
+
+#################################
+
