@@ -4,9 +4,9 @@ import matplotlib.pyplot as plt
 def f(x):
     return np.sin(2 * x) / (x ** 2)
 
-population_size = 30
-generations = 30
-mutation_rate = 0.1
+population_size = 100
+generations = 50
+mutation_rate = 0.2
 mutation_chance = 0.9
 x_bounds = [-20, -3.1]
 
