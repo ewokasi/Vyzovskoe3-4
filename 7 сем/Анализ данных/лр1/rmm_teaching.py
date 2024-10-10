@@ -36,14 +36,11 @@ if __name__ =="__main__":
     x_train, y_train, x_test, y_test, x_val, y_val = get_raw_filtered_train_test_and_val_data()
     print(x_train)
 
-    model = Sequential()
-    model.add(SimpleRNN(400, activation='relu', input_shape=(x_train.shape[1], 1)))
-    model.add(Dense(1))  # Выходной слой
-
-    model.compile(optimizer='adam', loss='mean_squared_error')
+    model = LinearRegression()
+  
 
     # Обучение модели
-    model.fit(x_train, y_train, epochs=400, batch_size=32, validation_data=(x_val, y_val))
+    model.fit(x_train, y_train)
 
     # Прогнозирование
     y_train_pred = model.predict(x_train)
@@ -66,8 +63,8 @@ if __name__ =="__main__":
     with open('rmm_teaching_predictions.txt', 'a') as f:
         f.write(f"actual, predicted\n")
         for actual, predicted in zip(y_test, y_test_pred):
-            f.write(f"{actual}, {predicted[0]} \n")
+            f.write(f"{actual}, {predicted} \n")
 
 
-    filename = '400_epochs_RMM__Raw_Filtered_data.sav'
+    filename = 'Linear.sav'
     dump(model, open(filename, 'wb'))
