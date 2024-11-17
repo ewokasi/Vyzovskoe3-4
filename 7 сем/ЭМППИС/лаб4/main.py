@@ -10,50 +10,50 @@ getcontext().traps[InvalidOperation] = False
 getcontext().traps[Overflow] = False
 
 # Функции для представления операций
-def add(x: Decimal, y: Decimal) -> Decimal:
+def add(x: float, y: float) -> float:
     return x + y
 
 
-def sub(x: Decimal, y: Decimal) -> Decimal:
+def sub(x: float, y: float) -> float:
     return x - y
 
 
-def mul(x: Decimal, y: Decimal) -> Decimal:
+def mul(x: float, y: float) -> float:
     return x * y
 
 
-def div(x: Decimal, y: Decimal) -> Decimal:
-    if y != Decimal(0):
+def div(x: float, y: float) -> float:
+    if y != float(0):
         return x / y
     else:
-        return Decimal(1)
+        return float(1)
 
 
-def abs_func(x: Decimal,y: Decimal) -> Decimal:
+def abs_func(x: float,y: float) -> float:
     return abs(x)
 
 
-def sin_func(x: Decimal,y: Decimal) -> Decimal:
-    return Decimal(math.sin(float(x)))
+def sin_func(x: float,y: float) -> float:
+    return float(math.sin(float(x)))
 
 
-def cos_func(x: Decimal,y: Decimal) -> Decimal:
-    return Decimal(math.cos(float(x)))
+def cos_func(x: float,y: float) -> float:
+    return float(math.cos(float(x)))
 
 
-def exp_func(x: Decimal,y: Decimal) -> Decimal:
-    return Decimal(math.exp(float(x)))
+def exp_func(x: float,y: float) -> float:
+    return float(math.exp(float(x)))
 
 
-def power(x: Decimal, y: Decimal) -> Decimal:
-    if x == Decimal(0):
-        return Decimal(0)
-    y=y.quantize(Decimal('1'))
-    return Decimal(x ** y)
+def power(x: float, y: float) -> float:
+    if x == float(0):
+        return float(0)
+    y=y.quantize(float('1'))
+    return float(x ** y)
 
 # Типы узлов
 FUNCTIONS = [add, sub, mul, div, abs_func, sin_func, cos_func]
-TERMINALS = ['x1', 'x2', 'x3', 'x4', 'x5',Decimal(1), Decimal(2)]  # Переменные и константы
+TERMINALS = ['x1', 'x2', 'x3', 'x4', 'x5', 'x6', 'x7',float(1), float(2),float(3),float(5)]  # Переменные и константы
 
 
 class Node:
@@ -327,21 +327,11 @@ def growing_mutation(tree: Tree, max_height: int):
     return tree
 
 
-
-
-
-
-
-
 def get_tree_size(node):
     """Вычисляем размер дерева (количество узлов)."""
     if node is None:
         return 0
     return 1 + get_tree_size(node.left) + get_tree_size(node.right)
-
-
-
-
 
 
 
@@ -379,12 +369,13 @@ def calculate_fitness(population):
 
         fitness = 0
         samples = 100
-        x1,x2,x3,x4,x5 = random.sample(range(-600,600),5)
+        # Генерация случайных чисел с плавающей точкой
+        x1, x2, x3, x4, x5, x6, x7 = [random.uniform(-2, 2) for _ in range(7)]
         for _ in range(samples):
 
-            predicted = individual.tree.evaluate({'x1': Decimal(x1), 'x2': Decimal(x2), 'x3': Decimal(x3), 'x4': Decimal(x4), 'x5': Decimal(x5)})
+            predicted = individual.tree.evaluate({'x1': float(x1), 'x2': float(x2), 'x3': float(x3), 'x4': float(x4), 'x5': float(x5), 'x6': float(x6), 'x7': float(x7)})
 
-            target = target_function(Decimal(x1), Decimal(x2), Decimal(x3), Decimal(x4), Decimal(x5))  # Целевая функция (x1, x2, x3, x4, x5)
+            target = target_function(float(x1), float(x2), float(x3), float(x4), float(x5), float(x6), float(x7))  # Целевая функция (x1, x2, x3, x4, x5)
 
             fitness += ((predicted - target) ** 2)
 
@@ -392,8 +383,12 @@ def calculate_fitness(population):
 
 
     return population
-def target_function(x1, x2, x3, x4, x5):
-    return x1*x1+x2+2*x3
+def target_function(x1, x2, x3, x4, x5, x6, x7):
+    queue=[x1, x2, x3, x4, x5, x6, x7]
+    for i in range(len(queue)-1):
+        res = 100*(queue[i+1]-queue[i]**2)**2+(1-queue[i])**2
+    
+    return res
 class Individual:
     def __init__(self, tree: Tree, fitness: float):
         self.tree = tree
@@ -407,7 +402,7 @@ def initialize_population(pop_size, max_depth) -> list[Individual]:
     for _ in range(pop_size):
         tree = Tree()
         tree.create(is_grow, max_depth=depth)
-        population.append(Individual(tree, Decimal(0.0)))
+        population.append(Individual(tree, float(0.0)))
         is_grow = not is_grow
         depth = depth % max_depth
     return population
@@ -480,9 +475,10 @@ def main():
     print("Hello")
     getcontext().prec = 10
     print(getcontext())
-    population = initialize_population(500, 4)
+    population = initialize_population(500, 2)
     best_individual = genetic_algorithm(population, 100, 4, 5, 3, 0.5, 0.3)
-    print("Best Individual: ", best_individual.tree,"\n Best Fitness: ", best_individual.fitness)
+    print("Best Individual: ", best_individual.tree.print_function(),"\n Best Fitness: ", best_individual.fitness)
+    print("Best Individual: ", best_individual.tree.print_function(),"\n Best Fitness: ", best_individual.fitness)
 
 
 
