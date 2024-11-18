@@ -6,7 +6,7 @@ from sympy import Symbol, Function, Derivative, dsolve, solve
 x = Symbol('x')
 y = Function('y')(x)
 dy = Derivative(y)
-F = dy + y**2 +2*y * sin(x)
+F = (dy + y)**2 +2*y * sin(x)
 F.doit() # выводиим выражение в человекочитаемом формате ...
 print(F) # ... и в машиночитаемом виде
 dFdy = Derivative(F, y)
