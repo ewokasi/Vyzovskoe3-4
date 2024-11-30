@@ -9,13 +9,13 @@ from mpl_toolkits import mplot3d
 import matplotlib.animation as animation
 
 # константы генетического алгоритма
-POPULATION_SIZE = 50  # количество индивидуумов в популяции
-MAX_GENERATIONS = 10  # максимальное количество поколений
+POPULATION_SIZE = 20  # количество индивидуумов в популяции
+MAX_GENERATIONS = 5  # максимальное количество поколений
 
 P_CROSSOVER = 0.9  # вероятность скрещивания
 P_MUTATION = 0.1  # вероятность мутации индивидуума
 
-N_VECTOR = 2  # количество генов в хромосоме
+N_VECTOR = 3  # количество генов в хромосоме
 
 LIMIT_VALUE_TOP = 5
 LIMIT_VALUE_DOWN = -5
@@ -31,7 +31,7 @@ class Individual(list):
 
 
 def fitness_function(f):
-    return sum((i + 1) * (f[i] ** 2) for i in range(len(f)))
+    return sum((5*i + 1) * (f[i] ** 2) for i in range(len(f)))
 
 
 def individualCreator():

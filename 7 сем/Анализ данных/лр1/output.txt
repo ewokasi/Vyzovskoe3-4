@@ -1,216 +1,72 @@
 Data function: get_normalized_filtered_train_test_and_val_data
-Train RMSE for RMM: 0.848774516586352
-Train R2 Score for RMM: 0.012722836356066636
-Test RMSE for RMM: 0.8524575872633607
-Test R2 Score for RMM: 0.004387565095532842
-Valid RMSE for RMM: 0.9635019326604529
-Valid R2 Score for RMM: -0.043098173632926784
+Train RMSE for RNN: 0.8487299074678852
+Train R2 Score for RNN: 0.012826610458006593
+Test RMSE for RNN: 0.8524881584433959
+Test R2 Score for RNN: 0.004316153700478331
+Valid RMSE for RNN: 0.9622360151688807
+Valid R2 Score for RNN: -0.040358980880276896
 
 Data function: get_normalized_filtered_train_test_and_val_data
-Train RMSE for LIN: 0.8463698938368819
-Train R2 Score for LIN: 0.012722836356066636
-Test RMSE for LIN: 0.8486124842807905
-Test R2 Score for LIN: 0.013348945861240136
-Valid RMSE for LIN: 0.9577990579588952
-Valid R2 Score for LIN: -0.030786722625869567
+Train RMSE for Dense: 0.8485576136338948
+Train R2 Score for Dense: 0.013227366040954536
+Test RMSE for Dense: 0.8528615557927326
+Test R2 Score for Dense: 0.0034437260238801004
+Valid RMSE for Dense: 0.9560053395318604
+Valid R2 Score for Dense: -0.026929525605522642
 
 #################################
 
 Data function: get_normalized_train_test_and_val_data
-Train RMSE for RMM: 0.6082312335455607
-Train R2 Score for RMM: 0.24723947923703393
-Test RMSE for RMM: 0.6403289897773484
-Test R2 Score for RMM: 0.21802481301434373
-Valid RMSE for RMM: 0.6599144929490788
-Valid R2 Score for RMM: 0.23494782828847383
+Train RMSE for RNN: 0.6129881846123024
+Train R2 Score for RNN: 0.23541881767477513
+Test RMSE for RNN: 0.6396530872763695s
+Test R2 Score for RNN: 0.21967477746081576
+Valid RMSE for RNN: 0.6569185219792325
+Valid R2 Score for RNN: 0.24187863882227478
 
 Data function: get_normalized_train_test_and_val_data
-Train RMSE for LIN: 1.6191067002584813e-15
-Train R2 Score for LIN: 0.24723947923703393
-Test RMSE for LIN: 1.3586063663551436e-15
-Test R2 Score for LIN: 1.0
-Valid RMSE for LIN: 1.5716078479182352e-15
-Valid R2 Score for LIN: 1.0
+Train RMSE for Dense: 0.6055990999781079
+Train R2 Score for Dense: 0.25374055620810365
+Test RMSE for Dense: 0.6304850477449565
+Test R2 Score for Dense: 0.24188301413354718
+Valid RMSE for Dense: 0.6540796618383966
+Valid R2 Score for Dense: 0.24841689310117787
 
 #################################
 
 Data function: get_raw_filtered_train_test_and_val_data
-Train RMSE for RMM: 4352.555709962286
-Train R2 Score for RMM: 0.7584350109100342
-Test RMSE for RMM: 4546.948981217921
-Test R2 Score for RMM: 0.7803929448127747
-Valid RMSE for RMM: 4251.690028763383
-Valid R2 Score for RMM: 0.7695342898368835
+Train RMSE for RNN: 4518.686692937692
+Train R2 Score for RNN: 0.7396427392959595
+Test RMSE for RNN: 4719.987685935309
+Test R2 Score for RNN: 0.7633601427078247
+Valid RMSE for RNN: 4485.821421014299
+Valid R2 Score for RNN: 0.7434529662132263
 
 Data function: get_raw_filtered_train_test_and_val_data
-Train RMSE for LIN: 5.590773000065283e-12
-Train R2 Score for LIN: 0.7584350109100342
-Test RMSE for LIN: 5.580669050436904e-12
-Test R2 Score for LIN: 1.0
-Valid RMSE for LIN: 5.834295089763624e-12
-Valid R2 Score for LIN: 1.0
+Train RMSE for Dense: 1377.3300917743718
+Train R2 Score for Dense: 0.9758108258247375
+Test RMSE for Dense: 1372.2465549176563
+Test R2 Score for Dense: 0.9799981117248535
+Valid RMSE for Dense: 1337.019611463902
+Valid R2 Score for Dense: 0.9772092700004578
 
 #################################
 
 Data function: get_raw_train_test_and_val_data
-Train RMSE for RMM: 8850.598237682996
-Train R2 Score for RMM: 0.0011723637580871582
-Test RMSE for RMM: 9809.438631839781
-Test R2 Score for RMM: -0.0221024751663208
-Valid RMSE for RMM: 8949.136660853068
-Valid R2 Score for RMM: -0.021046042442321777
+Train RMSE for RNN: 8843.609124441928
+Train R2 Score for RNN: 0.0027492642402648926
+Test RMSE for RNN: 9799.994428234411
+Test R2 Score for RNN: -0.02013540267944336
+Valid RMSE for RNN: 8950.972162843937
+Valid R2 Score for RNN: -0.021464824676513672
 
 Data function: get_raw_train_test_and_val_data
-Train RMSE for LIN: 6.220238994778888e-12
-Train R2 Score for LIN: 0.0011723637580871582
-Test RMSE for LIN: 7.029046733931447e-12
-Test R2 Score for LIN: 1.0
-Valid RMSE for LIN: 5.957710976931527e-12
-Valid R2 Score for LIN: 1.0
-
-#################################
-
-Data function: get_normalized_filtered_train_test_and_val_data
-Train RMSE for RMM: 0.8494847053186377
-Train R2 Score for RMM: 0.011069991133103474
-Test RMSE for RMM: 0.8539124761153536
-Test R2 Score for RMM: 0.000986242763995504
-Valid RMSE for RMM: 0.9548278365046238
-Valid R2 Score for RMM: -0.02440136412540106
-
-Data function: get_normalized_filtered_train_test_and_val_data
-Train RMSE for LIN: 0.8463698938368819
-Train R2 Score for LIN: 0.011069991133103474
-Test RMSE for LIN: 0.8486124842807905
-Test R2 Score for LIN: 0.013348945861240136
-Valid RMSE for LIN: 0.9577990579588952
-Valid R2 Score for LIN: -0.030786722625869567
-
-#################################
-
-Data function: get_normalized_train_test_and_val_data
-Train RMSE for RMM: 0.6079202437071353
-Train R2 Score for RMM: 0.2480090583434541
-Test RMSE for RMM: 0.6424361758171254
-Test R2 Score for RMM: 0.21286971790261433
-Valid RMSE for RMM: 0.6639520292078448
-Valid R2 Score for RMM: 0.22555759558299293
-
-Data function: get_normalized_train_test_and_val_data
-Train RMSE for LIN: 1.6191067002584813e-15
-Train R2 Score for LIN: 0.2480090583434541
-Test RMSE for LIN: 1.3586063663551436e-15
-Test R2 Score for LIN: 1.0
-Valid RMSE for LIN: 1.5716078479182352e-15
-Valid R2 Score for LIN: 1.0
-
-#################################
-
-Data function: get_raw_filtered_train_test_and_val_data
-Train RMSE for RMM: 4553.738403662358
-Train R2 Score for RMM: 0.7355878353118896
-Test RMSE for RMM: 4759.209104465371
-Test R2 Score for RMM: 0.7594109773635864
-Valid RMSE for RMM: 4530.569026720577
-Valid R2 Score for RMM: 0.7383091449737549
-
-Data function: get_raw_filtered_train_test_and_val_data
-Train RMSE for LIN: 5.590773000065283e-12
-Train R2 Score for LIN: 0.7355878353118896
-Test RMSE for LIN: 5.580669050436904e-12
-Test R2 Score for LIN: 1.0
-Valid RMSE for LIN: 5.834295089763624e-12
-Valid R2 Score for LIN: 1.0
-
-#################################
-
-Data function: get_raw_train_test_and_val_data
-Train RMSE for RMM: 8838.812684468721
-Train R2 Score for RMM: 0.0038307905197143555
-Test RMSE for RMM: 9747.295253123923
-Test R2 Score for RMM: -0.00919342041015625
-Valid RMSE for RMM: 9019.340134710055
-Valid R2 Score for RMM: -0.037128448486328125
-
-Data function: get_raw_train_test_and_val_data
-Train RMSE for LIN: 6.220238994778888e-12
-Train R2 Score for LIN: 0.0038307905197143555
-Test RMSE for LIN: 7.029046733931447e-12
-Test R2 Score for LIN: 1.0
-Valid RMSE for LIN: 5.957710976931527e-12
-Valid R2 Score for LIN: 1.0
-
-#################################
-
-Data function: get_normalized_filtered_train_test_and_val_data
-Train RMSE for RMM: 0.8488102298968802
-Train R2 Score for RMM: 0.012639752622950473
-Test RMSE for RMM: 0.8523984696610999
-Test R2 Score for RMM: 0.00452565097784452
-Valid RMSE for RMM: 0.9648975383992129
-Valid R2 Score for RMM: -0.04612215948549925
-
-Data function: get_normalized_filtered_train_test_and_val_data
-Train RMSE for LIN: 0.8463698938368819
-Train R2 Score for LIN: 0.012639752622950473
-Test RMSE for LIN: 0.8486124842807905
-Test R2 Score for LIN: 0.013348945861240136
-Valid RMSE for LIN: 0.9577990579588952
-Valid R2 Score for LIN: -0.030786722625869567
-
-#################################
-
-Data function: get_normalized_train_test_and_val_data
-Train RMSE for RMM: 0.6089429749399298
-Train R2 Score for RMM: 0.2454767144598864
-Test RMSE for RMM: 0.636946841151495
-Test R2 Score for RMM: 0.22626361427908526
-Valid RMSE for RMM: 0.6545088461780979
-Valid R2 Score for RMM: 0.24743024408226644
-
-Data function: get_normalized_train_test_and_val_data
-Train RMSE for LIN: 1.6191067002584813e-15
-Train R2 Score for LIN: 0.2454767144598864
-Test RMSE for LIN: 1.3586063663551436e-15
-Test R2 Score for LIN: 1.0
-Valid RMSE for LIN: 1.5716078479182352e-15
-Valid R2 Score for LIN: 1.0
-
-#################################
-
-Data function: get_raw_filtered_train_test_and_val_data
-Train RMSE for RMM: 4575.0004110352975
-Train R2 Score for RMM: 0.7331129312515259
-Test RMSE for RMM: 4752.6785501445365
-Test R2 Score for RMM: 0.7600708603858948
-Valid RMSE for RMM: 4585.953742561598
-Valid R2 Score for RMM: 0.7318719029426575
-
-Data function: get_raw_filtered_train_test_and_val_data
-Train RMSE for LIN: 5.590773000065283e-12
-Train R2 Score for LIN: 0.7331129312515259
-Test RMSE for LIN: 5.580669050436904e-12
-Test R2 Score for LIN: 1.0
-Valid RMSE for LIN: 5.834295089763624e-12
-Valid R2 Score for LIN: 1.0
-
-#################################
-
-Data function: get_raw_train_test_and_val_data
-Train RMSE for RMM: 8851.37944650674
-Train R2 Score for RMM: 0.0009959936141967773
-Test RMSE for RMM: 9797.69024235336
-Test R2 Score for RMM: -0.019655704498291016
-Valid RMSE for RMM: 8966.653876311531
-Valid R2 Score for RMM: -0.0250471830368042
-
-Data function: get_raw_train_test_and_val_data
-Train RMSE for LIN: 6.220238994778888e-12
-Train R2 Score for LIN: 0.0009959936141967773
-Test RMSE for LIN: 7.029046733931447e-12
-Test R2 Score for LIN: 1.0
-Valid RMSE for LIN: 5.957710976931527e-12
-Valid R2 Score for LIN: 1.0
+Train RMSE for Dense: 8754.43778393295
+Train R2 Score for Dense: 0.02275872230529785
+Test RMSE for Dense: 9673.29694957521
+Test R2 Score for Dense: 0.006071507930755615
+Valid RMSE for Dense: 8874.359615703117
+Valid R2 Score for Dense: -0.004054069519042969
 
 #################################
 
