@@ -21,25 +21,50 @@ def generate_paysson_process(lmbda, T):
     return events
 
 
-N=34
-T=N
-T2= N+100
-lam1 = (N+8)/(N+24)
-lam2 = (N+9)/(N+25)
+N = 4
+T = N
+T2 = N + 100
+lam1 = (N + 8) / (N + 24)
+lam2 = (N + 9) / (N + 25)
 
-T = T2-T  
+T = T2 - T
 print(f"Теоретические lam1 и lam2: {lam1, lam2}")
 
+# Переменная counters для подсчёта повторений
+counters = {}
+loss = 0
 
-paysson_events1 = generate_paysson_process(lam1, T)
-paysson_events2 = generate_paysson_process(lam2, T)
-sum_events = np.sort(np.concatenate((paysson_events1, paysson_events2)))
+# Запуск генерации процессов и подсчёт
+for _ in range(1000):
+    paysson_events1 = generate_paysson_process(lam1, T)
+    paysson_events2 = generate_paysson_process(lam2, T)
+    
+    sum_events = np.sort(np.concatenate((paysson_events1, paysson_events2)))
+    
+    # Подсчёт количества различных длин пуассоновских процессов
+    event_length = len(paysson_events1)
+    if event_length not in counters:
+        counters[event_length] = 0
+    counters[event_length] += 1
 
-print(f"Практические lam1 и lam2: {len(paysson_events1)/T, len(paysson_events2)/T}")
+    # Проверка отклонения от теоретической интенсивности
+    if (abs(lam1 - len(paysson_events1) / T) / lam1) > 0.3:
+        loss += 1
 
+print(f"Из 1000 раз проверка на отклонения не прошла {loss} раз")
 
-import matplotlib.pyplot as plt
+# Сортировка ключей counters
+sorted_keys = sorted(counters.keys())
 
+# Построение гистограммы для counters
+plt.figure(figsize=(8, 6))
+plt.bar(sorted_keys, [counters[key] for key in sorted_keys], color='skyblue')
+plt.title('Частота появления различных длин пуассоновских процессов')
+plt.xlabel('Число событий')
+plt.ylabel('Частота')
+plt.show()
+
+# Графики пуассоновских процессов
 plt.figure(figsize=(10, 8))
 
 # График 1: Первый пуассоновский процесс
@@ -70,4 +95,3 @@ plt.legend()
 
 plt.tight_layout()
 plt.show()
-
