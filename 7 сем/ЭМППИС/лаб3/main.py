@@ -97,7 +97,7 @@ num_cities = len
 # Параметры
 num_cities = len(cities)
 population_size = 500  # Размер популяции
-generations = 1000  # Количество поколений
+generations = 10  # Количество поколений
 
 # Запуск генетического алгоритма
 best_route, best_distance = genetic_algorithm(num_cities, population_size, generations)
