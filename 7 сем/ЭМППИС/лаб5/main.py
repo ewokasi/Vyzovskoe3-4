@@ -7,11 +7,11 @@ def fitness_function(f):
     return sum((5 * i + 1) * (f[i] ** 2) for i in range(len(f)))
 
 # Параметры эволюционной стратегии
-population_size = 300          # Размер популяции
-max_generations = 300          # Максимальное количество поколений
+population_size = 100          # Размер популяции
+max_generations = 150          # Максимальное количество поколений
 mutation_probability = 0.5     # Вероятность мутации
 mutation_sigma = 0.5           # Стандартное отклонение для мутации
-no_improvement_limit = 100     # Лимит поколений без улучшений для остановки
+no_improvement_limit = 50     # Лимит поколений без улучшений для остановки
 
 # Диапазоны для визуализации и ограничений популяции
 x_min_vis, x_max_vis = -5.12, 5.12

@@ -1,0 +1,8 @@
+zone "kostyakov.g4134.guap.local" {
+  type master;
+  file "/etc/bind/zones/db.kostyakov.g4134.guap.local";
+};
+zone "4.20.172.in-addr.arpa" {
+  type master;
+  file "/etc/bind/zones/db.4.20.172";
+};

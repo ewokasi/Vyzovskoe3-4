@@ -2,24 +2,24 @@ import numpy as np
 import matplotlib.pyplot as plt
 import time
 
-# Заданная функция оптимизации (пример: функция Растригина)
+# Заданная функция оптимизации 
 def fitness_function(f):
     return sum((5 * i + 1) * (f[i] ** 2) for i in range(len(f)))
 
 # Параметры PSO
 def pso_optimization(
-    n=2,                      # Размерность задачи
-    population_size=50,       # Размер роя
-    max_iterations=20,       # Максимальное количество итераций
-    w=0.5,                    # Коэффициент инерции
-    c1=1.5,                   # Когнитивный коэффициент
-    c2=1.5,                   # Социальный коэффициент
+    n=3,                      # Размерность задачи
+    population_size=20,       # Размер роя
+    max_iterations=50,       # Максимальное количество итераций
+    w=0.9,                    # Коэффициент инерции
+    c1=0.4,                   # Когнитивный коэффициент
+    c2=0.4,                   # Социальный коэффициент
     x_min=-5.12,              # Нижняя граница поиска
     x_max=5.12                # Верхняя граница поиска
 ):
     # Инициализация
     particles = np.random.uniform(x_min, x_max, (population_size, n))
-    velocities = np.random.uniform(-1, 1, (population_size, n))
+    velocities = np.random.uniform(-0.1, 0.1, (population_size, n))
     
     personal_best_positions = np.copy(particles)
     personal_best_scores = np.array([fitness_function(p) for p in particles])
@@ -64,7 +64,9 @@ def pso_optimization(
             
             plt.cla()
             plt.contourf(X1, X2, Z, cmap='viridis', levels=50, alpha=0.7)
-            plt.scatter(particles[:, 0], particles[:, 1], color='blue', label='Частицы', alpha=0.6)
+            plt.scatter(particles[1, 0], particles[1, 1], color='blue', label='Частицы', alpha=1)
+            plt.scatter(particles[3:, 0], particles[3:, 1], color='red', label='Частица', alpha=0.6)
+            plt.scatter(particles[2, 0], particles[2, 1], color='orange', label='Частица', alpha=1)
             plt.scatter(global_best_position[0], global_best_position[1], color='red', label='Глобальный минимум', s=100)
             plt.title(f'Итерация {iteration + 1}')
             plt.xlabel('x1')

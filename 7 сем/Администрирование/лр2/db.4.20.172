@@ -1,0 +1,12 @@
+
+$TTL 604800
+@ IN SOA andrey.kostyakov.g4134.guap.local. root.kostyakov.g4134.guap.local. (
+  2 ; Serial
+  604800 ; Refresh
+  86400 ; Retry
+  2419200 ; Expire
+  604800 ) ; Negative Cache TTL
+;
+@ IN NS andrey.kostyakov.g4133.guap.local.
+8 IN PTR andrey.kostyakov.g4133.guap.local.
+108 IN PTR nikita.kostyakov.g4133.guap.local.
